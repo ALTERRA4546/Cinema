@@ -1,0 +1,98 @@
+﻿<Page x:Class="Cinema.SessionControls"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Cinema"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SessionControls" SizeChanged="Page_SizeChanged" Loaded="Page_Loaded">
+
+    <Grid Background="Lime">
+        <StackPanel>
+            <WrapPanel>
+                <Button x:Name="AddSession" Content="Добавить" HorizontalAlignment="Center" Width="120" VerticalAlignment="Center" FontSize="16" Click="AddSession_Click"/>
+                <Button x:Name="RemoveSession" Content="Удалить" Margin="0,0,10,0" HorizontalAlignment="Left" Width="120" VerticalAlignment="Top" FontSize="16" Click="RemoveSession_Click"/>
+                <TextBlock Text="Поиск:" Margin="0,0,10,0" FontSize="16" VerticalAlignment="Center"/>
+                <TextBox x:Name="FindData" Margin="0,0,10,0" Width="200" FontSize="16" TextChanged="FindData_TextChanged"/>
+                <CheckBox x:Name="FindDateChecker" Margin="0,6,5,0" Click="FindDateChecker_Click"/>
+                <TextBlock Text="Дата сеанса:" Margin="0,0,10,0" FontSize="16" VerticalAlignment="Center"/>
+                <DatePicker x:Name="FindSessionData" Margin="0,0,10,0"  FontSize="12" SelectedDateChanged="FindSessionData_SelectedDateChanged" IsEnabled="False"/>
+                <TextBlock x:Name="FindCounterData" Text="0/0" FontSize="16"/>
+            </WrapPanel>
+
+            <ListView x:Name="SessionList" Height="400" d:ItemsSource="{d:SampleData ItemCount=2}" MouseDoubleClick="SessionList_MouseDoubleClick">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn x:Name="SessionCodeGrid">
+                            <Label Content="Код сессии" FontSize="16"/>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Label Content="{Binding sessionID}" HorizontalAlignment="Center"  FontSize="16"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn x:Name="SessionCoverGrid">
+                            <Label Content="Постер" FontSize="16"/>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding sessionMovieCover}" HorizontalAlignment="Center"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn x:Name="SessionInfoGird">
+                            <Label Content="Информация о фильме" FontSize="16"/>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <Label Content="{Binding sessionMovieTitle}" FontSize="16"/>
+                                        <WrapPanel>
+                                            <Label Content="Жанр(ы):" FontSize="16"/>
+                                            <Label Content="{Binding sessionMovieGenre}" FontSize="16"/>
+                                        </WrapPanel>
+                                        <WrapPanel>
+                                            <Label Content="Год публикации:" FontSize="16"/>
+                                            <Label Content="{Binding sessionMovieYearOfPublication}" FontSize="16"/>
+                                        </WrapPanel>
+                                        <WrapPanel>
+                                            <Label Content="Хронометраж:" FontSize="16"/>
+                                            <Label Content="{Binding sessionMovieTiming}" FontSize="16"/>
+                                        </WrapPanel>
+                                        <WrapPanel>
+                                            <Label Content="Возрастной рейтинг:" FontSize="16"/>
+                                            <Label Content="{Binding sessionMovieAgeRating}" FontSize="16"/>
+                                        </WrapPanel>
+                                        <WrapPanel>
+                                            <Label Content="Страна:" FontSize="16"/>
+                                            <Label Content="{Binding sessionMovieCountry}" FontSize="16"/>
+                                        </WrapPanel>
+                                        <WrapPanel>
+                                            <Label Content="Актеры:" FontSize="16"/>
+                                            <TextBlock Text="{Binding sessionActors}" Margin="5,0,0,0" VerticalAlignment="Center" TextWrapping="Wrap" Foreground="Black" FontSize="16"/>
+                                        </WrapPanel>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn x:Name="SessionDateTimeGrid">
+                            <Label Content="Дата и время сеанса" FontSize="16"/>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Label Content="{Binding sessionDateAndTimeSessionStart}" FontSize="16"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn x:Name="SessionPriceGrid">
+                            <Label Content="Цена билета" FontSize="16"/>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Label Content="{Binding sessionTicketPrice}" FontSize="16"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+    </Grid>
+</Page>

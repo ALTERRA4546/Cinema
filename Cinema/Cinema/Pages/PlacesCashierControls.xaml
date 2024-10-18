@@ -1,0 +1,192 @@
+﻿<Page x:Class="Cinema.PlacesCashierControls"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Cinema"
+      mc:Ignorable="d" 
+      d:DesignHeight="550" d:DesignWidth="1050"
+      Title="PlacesCashierControls" Background="lime" Loaded="Page_Loaded">
+
+    <Grid>
+        <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel>
+                <WrapPanel Margin="0,0,0,10">
+                    <TextBlock Text="Ряд 1" Margin="10,0,10,0" VerticalAlignment="Center" FontSize="16"/>
+                    <Button x:Name="Row1Place1" Content="1" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row1_Click"/>
+                    <Button x:Name="Row1Place2" Content="2" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row1_Click"/>
+                    <Button x:Name="Row1Place3" Content="3" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row1_Click"/>
+                    <Button x:Name="Row1Place4" Content="4" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row1_Click"/>
+                    <Button x:Name="Row1Place5" Content="5" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row1_Click"/>
+                    <Button x:Name="Row1Place6" Content="6" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row1_Click"/>
+                    <Button x:Name="Row1Place7" Content="7" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row1_Click"/>
+                    <Button x:Name="Row1Place8" Content="8" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row1_Click"/>
+                    <Button x:Name="Row1Place9" Content="9" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row1_Click"/>
+                    <Button x:Name="Row1Place10" Content="10" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row1_Click"/>
+                    <Button x:Name="Row1Place11" Content="11" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row1_Click"/>
+                    <Button x:Name="Row1Place12" Content="12" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row1_Click"/>
+                    <Button x:Name="Row1Place13" Content="13" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row1_Click"/>
+                    <Button x:Name="Row1Place14" Content="14" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row1_Click"/>
+                    <Button x:Name="Row1Place15" Content="15" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row1_Click"/>
+                    <TextBlock Text="Ряд 1" Margin="0,0,10,0" VerticalAlignment="Center" FontSize="16"/>
+                </WrapPanel>
+                <WrapPanel Margin="0,0,0,10">
+                    <TextBlock Text="Ряд 2" Margin="10,0,10,0" VerticalAlignment="Center" FontSize="16"/>
+                    <Button x:Name="Row2Place1" Content="1" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row2_Click"/>
+                    <Button x:Name="Row2Place2" Content="2" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row2_Click"/>
+                    <Button x:Name="Row2Place3" Content="3" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row2_Click"/>
+                    <Button x:Name="Row2Place4" Content="4" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row2_Click"/>
+                    <Button x:Name="Row2Place5" Content="5" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row2_Click"/>
+                    <Button x:Name="Row2Place6" Content="6" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row2_Click"/>
+                    <Button x:Name="Row2Place7" Content="7" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row2_Click"/>
+                    <Button x:Name="Row2Place8" Content="8" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row2_Click"/>
+                    <Button x:Name="Row2Place9" Content="9" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row2_Click"/>
+                    <Button x:Name="Row2Place10" Content="10" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row2_Click"/>
+                    <Button x:Name="Row2Place11" Content="11" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row2_Click"/>
+                    <Button x:Name="Row2Place12" Content="12" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row2_Click"/>
+                    <Button x:Name="Row2Place13" Content="13" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row2_Click"/>
+                    <Button x:Name="Row2Place14" Content="14" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row2_Click"/>
+                    <Button x:Name="Row2Place15" Content="15" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row2_Click"/>
+                    <TextBlock Text="Ряд 2" Margin="0,0,10,0" VerticalAlignment="Center" FontSize="16"/>
+                </WrapPanel>
+                <WrapPanel Margin="0,0,0,10">
+                    <TextBlock Text="Ряд 3" Margin="10,0,10,0" VerticalAlignment="Center" FontSize="16"/>
+                    <Button x:Name="Row3Place1" Content="1" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row3_Click"/>
+                    <Button x:Name="Row3Place2" Content="2" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row3_Click"/>
+                    <Button x:Name="Row3Place3" Content="3" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row3_Click"/>
+                    <Button x:Name="Row3Place4" Content="4" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row3_Click"/>
+                    <Button x:Name="Row3Place5" Content="5" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row3_Click"/>
+                    <Button x:Name="Row3Place6" Content="6" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row3_Click"/>
+                    <Button x:Name="Row3Place7" Content="7" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row3_Click"/>
+                    <Button x:Name="Row3Place8" Content="8" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row3_Click"/>
+                    <Button x:Name="Row3Place9" Content="9" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row3_Click"/>
+                    <Button x:Name="Row3Place10" Content="10" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row3_Click"/>
+                    <Button x:Name="Row3Place11" Content="11" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row3_Click"/>
+                    <Button x:Name="Row3Place12" Content="12" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row3_Click"/>
+                    <Button x:Name="Row3Place13" Content="13" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row3_Click"/>
+                    <Button x:Name="Row3Place14" Content="14" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row3_Click"/>
+                    <Button x:Name="Row3Place15" Content="15" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row3_Click"/>
+                    <TextBlock Text="Ряд 3" Margin="0,0,10,0" VerticalAlignment="Center" FontSize="16"/>
+                </WrapPanel>
+                <WrapPanel Margin="0,0,0,10">
+                    <TextBlock Text="Ряд 4" Margin="10,0,10,0" VerticalAlignment="Center" FontSize="16"/>
+                    <Button x:Name="Row4Place1" Content="1" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row4_Click"/>
+                    <Button x:Name="Row4Place2" Content="2" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row4_Click"/>
+                    <Button x:Name="Row4Place3" Content="3" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row4_Click"/>
+                    <Button x:Name="Row4Place4" Content="4" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row4_Click"/>
+                    <Button x:Name="Row4Place5" Content="5" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row4_Click"/>
+                    <Button x:Name="Row4Place6" Content="6" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row4_Click"/>
+                    <Button x:Name="Row4Place7" Content="7" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row4_Click"/>
+                    <Button x:Name="Row4Place8" Content="8" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row4_Click"/>
+                    <Button x:Name="Row4Place9" Content="9" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row4_Click"/>
+                    <Button x:Name="Row4Place10" Content="10" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row4_Click"/>
+                    <Button x:Name="Row4Place11" Content="11" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row4_Click"/>
+                    <Button x:Name="Row4Place12" Content="12" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row4_Click"/>
+                    <Button x:Name="Row4Place13" Content="13" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row4_Click"/>
+                    <Button x:Name="Row4Place14" Content="14" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row4_Click"/>
+                    <Button x:Name="Row4Place15" Content="15" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row4_Click"/>
+                    <TextBlock Text="Ряд 4" Margin="0,0,10,0" VerticalAlignment="Center" FontSize="16"/>
+                </WrapPanel>
+                <WrapPanel Margin="0,0,0,10">
+                    <TextBlock Text="Ряд 5" Margin="10,0,10,0" VerticalAlignment="Center" FontSize="16"/>
+                    <Button x:Name="Row5Place1" Content="1" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row5_Click"/>
+                    <Button x:Name="Row5Place2" Content="2" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row5_Click"/>
+                    <Button x:Name="Row5Place3" Content="3" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row5_Click"/>
+                    <Button x:Name="Row5Place4" Content="4" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row5_Click"/>
+                    <Button x:Name="Row5Place5" Content="5" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row5_Click"/>
+                    <Button x:Name="Row5Place6" Content="6" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row5_Click"/>
+                    <Button x:Name="Row5Place7" Content="7" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row5_Click"/>
+                    <Button x:Name="Row5Place8" Content="8" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row5_Click"/>
+                    <Button x:Name="Row5Place9" Content="9" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row5_Click"/>
+                    <Button x:Name="Row5Place10" Content="10" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row5_Click"/>
+                    <Button x:Name="Row5Place11" Content="11" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row5_Click"/>
+                    <Button x:Name="Row5Place12" Content="12" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row5_Click"/>
+                    <Button x:Name="Row5Place13" Content="13" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row5_Click"/>
+                    <Button x:Name="Row5Place14" Content="14" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row5_Click"/>
+                    <Button x:Name="Row5Place15" Content="15" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row5_Click"/>
+                    <TextBlock Text="Ряд 5" Margin="0,0,10,0" VerticalAlignment="Center" FontSize="16"/>
+                </WrapPanel>
+                <WrapPanel Margin="0,0,0,10">
+                    <TextBlock Text="Ряд 6" Margin="10,0,10,0" VerticalAlignment="Center" FontSize="16"/>
+                    <Button x:Name="Row6Place1" Content="1" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row6_Click"/>
+                    <Button x:Name="Row6Place2" Content="2" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row6_Click"/>
+                    <Button x:Name="Row6Place3" Content="3" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row6_Click"/>
+                    <Button x:Name="Row6Place4" Content="4" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row6_Click"/>
+                    <Button x:Name="Row6Place5" Content="5" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row6_Click"/>
+                    <Button x:Name="Row6Place6" Content="6" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row6_Click"/>
+                    <Button x:Name="Row6Place7" Content="7" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row6_Click"/>
+                    <Button x:Name="Row6Place8" Content="8" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row6_Click"/>
+                    <Button x:Name="Row6Place9" Content="9" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row6_Click"/>
+                    <Button x:Name="Row6Place10" Content="10" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row6_Click"/>
+                    <Button x:Name="Row6Place11" Content="11" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row6_Click"/>
+                    <Button x:Name="Row6Place12" Content="12" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row6_Click"/>
+                    <Button x:Name="Row6Place13" Content="13" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row6_Click"/>
+                    <Button x:Name="Row6Place14" Content="14" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row6_Click"/>
+                    <Button x:Name="Row6Place15" Content="15" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row6_Click"/>
+                    <TextBlock Text="Ряд 6" Margin="0,0,10,0" VerticalAlignment="Center" FontSize="16"/>
+                </WrapPanel>
+                <WrapPanel Margin="0,0,0,10">
+                    <TextBlock Text="Ряд 7" Margin="10,0,10,0" VerticalAlignment="Center" FontSize="16"/>
+                    <Button x:Name="Row7Place1" Content="1" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row7_Click"/>
+                    <Button x:Name="Row7Place2" Content="2" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row7_Click"/>
+                    <Button x:Name="Row7Place3" Content="3" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row7_Click"/>
+                    <Button x:Name="Row7Place4" Content="4" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row7_Click"/>
+                    <Button x:Name="Row7Place5" Content="5" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row7_Click"/>
+                    <Button x:Name="Row7Place6" Content="6" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row7_Click"/>
+                    <Button x:Name="Row7Place7" Content="7" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row7_Click"/>
+                    <Button x:Name="Row7Place8" Content="8" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row7_Click"/>
+                    <Button x:Name="Row7Place9" Content="9" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row7_Click"/>
+                    <Button x:Name="Row7Place10" Content="10" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row7_Click"/>
+                    <Button x:Name="Row7Place11" Content="11" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row7_Click"/>
+                    <Button x:Name="Row7Place12" Content="12" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row7_Click"/>
+                    <Button x:Name="Row7Place13" Content="13" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row7_Click"/>
+                    <Button x:Name="Row7Place14" Content="14" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row7_Click"/>
+                    <Button x:Name="Row7Place15" Content="15" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row7_Click"/>
+                    <TextBlock Text="Ряд 7" Margin="0,0,10,0" VerticalAlignment="Center" FontSize="16"/>
+                </WrapPanel>
+                <WrapPanel Margin="0,0,0,10">
+                    <TextBlock Text="Ряд 8" Margin="10,0,10,0" VerticalAlignment="Center" FontSize="16"/>
+                    <Button x:Name="Row8Place1" Content="1" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row8_Click"/>
+                    <Button x:Name="Row8Place2" Content="2" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row8_Click"/>
+                    <Button x:Name="Row8Place3" Content="3" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row8_Click"/>
+                    <Button x:Name="Row8Place4" Content="4" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row8_Click"/>
+                    <Button x:Name="Row8Place5" Content="5" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row8_Click"/>
+                    <Button x:Name="Row8Place6" Content="6" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row8_Click"/>
+                    <Button x:Name="Row8Place7" Content="7" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row8_Click"/>
+                    <Button x:Name="Row8Place8" Content="8" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row8_Click"/>
+                    <Button x:Name="Row8Place9" Content="9" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row8_Click"/>
+                    <Button x:Name="Row8Place10" Content="10" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row8_Click"/>
+                    <Button x:Name="Row8Place11" Content="11" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row8_Click"/>
+                    <Button x:Name="Row8Place12" Content="12" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row8_Click"/>
+                    <Button x:Name="Row8Place13" Content="13" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row8_Click"/>
+                    <Button x:Name="Row8Place14" Content="14" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row8_Click"/>
+                    <Button x:Name="Row8Place15" Content="15" Margin="0,0,10,0" Width="35" FontSize="26" Click="Row8_Click"/>
+                    <TextBlock Text="Ряд 8" Margin="0,0,10,0" VerticalAlignment="Center" FontSize="16"/>
+                </WrapPanel>
+            </StackPanel>
+            <Grid VerticalAlignment="Top" Margin="10,0,0,0" Width="200">
+                <Rectangle Fill="Black" Opacity="0.2" />
+                <StackPanel>
+                    <TextBlock Text="Бронирование билета" Margin="0,10,0,0" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"/>
+                    <StackPanel>
+                        <Label Content="Ряд" HorizontalAlignment="Center" FontSize="18"/>
+                        <Label x:Name="SelectedRow" Content="" HorizontalAlignment="Center" FontSize="18"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <Label Content="Место" HorizontalAlignment="Center" FontSize="18"/>
+                        <Label x:Name="SelectedPlace" Content="" HorizontalAlignment="Center" FontSize="18"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <Label Content="Цена билета" HorizontalAlignment="Center" FontSize="18"/>
+                        <Label x:Name="TicketPrice" Content="" HorizontalAlignment="Center" FontSize="18"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <Label Content="Дата и время сеанса" HorizontalAlignment="Center" FontSize="18"/>
+                        <Label x:Name="DateTimeSession" Content="" HorizontalAlignment="Center" FontSize="18"/>
+                    </StackPanel>
+                    <Button x:Name="BookingTicket" Margin="10,0,10,10" Content="Забронировать" FontSize="16" Click="BookingTicket_Click"/>
+                </StackPanel>
+            </Grid>
+        </WrapPanel>
+    </Grid>
+</Page>
