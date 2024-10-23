@@ -98,19 +98,25 @@
     <Compile Include="ActorsInMovies.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Pages\AddOrEditActor.xaml.cs">
+    <Compile Include="Pages\SettingsControls.xaml.cs">
+      <DependentUpon>SettingsControls.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\AddOrEditActor.xaml.cs">
       <DependentUpon>AddOrEditActor.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\AddOrEditEmployee.xaml.cs">
+    <Compile Include="Windows\AddOrEditEmployee.xaml.cs">
       <DependentUpon>AddOrEditEmployee.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\AddOrEditGenre.xaml.cs">
+    <Compile Include="Windows\AddOrEditGenre.xaml.cs">
       <DependentUpon>AddOrEditGenre.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\AddOrEditMovie.xaml.cs">
+    <Compile Include="Windows\AddOrEditMovie.xaml.cs">
       <DependentUpon>AddOrEditMovie.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\AddOrEditSession.xaml.cs">
+    <Compile Include="Windows\AddOrEditSession.xaml.cs">
       <DependentUpon>AddOrEditSession.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
@@ -228,23 +234,27 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Pages\AddOrEditActor.xaml">
+    <Page Include="Pages\SettingsControls.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\AddOrEditEmployee.xaml">
+    <Page Include="Windows\AddOrEditActor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\AddOrEditGenre.xaml">
+    <Page Include="Windows\AddOrEditEmployee.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\AddOrEditMovie.xaml">
+    <Page Include="Windows\AddOrEditGenre.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\AddOrEditSession.xaml">
+    <Page Include="Windows\AddOrEditMovie.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\AddOrEditSession.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

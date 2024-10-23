@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Cinema.Pages;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -80,6 +82,12 @@ namespace Cinema
             {
                 Application.Current.Shutdown();
             }
+        }
+
+        private void SettingsPage_Click(object sender, RoutedEventArgs e)
+        {
+            PageManager.Navigate(new SettingsControls());
+            CurrentPage.Text = "Настройки";
         }
     }
 }

@@ -40,7 +40,8 @@ namespace Cinema
             public string sessionMovieAgeRating { get; set; }
             public string sessionMovieCountry { get; set; }
             public string sessionActors { get; set; }
-            public DateTime sessionDateAndTimeSessionStart {  get; set; }
+            public string sessionDateSessionStart {  get; set; }
+            public string sessionTimeSessionStart {  get; set; }
             public string sessionTicketPrice { get; set; }
         }
 
@@ -178,7 +179,8 @@ namespace Cinema
                     sessionDataClass.sessionMovieTiming = sessionLine.Timing;
                     sessionDataClass.sessionMovieAgeRating = sessionLine.AgeRating + "+";
                     sessionDataClass.sessionMovieCountry = sessionLine.movieCountry;
-                    sessionDataClass.sessionDateAndTimeSessionStart = sessionLine.DateAndTimeSession;
+                    sessionDataClass.sessionDateSessionStart = sessionLine.DateAndTimeSession.ToString().Split(' ')[0];
+                    sessionDataClass.sessionTimeSessionStart = sessionLine.DateAndTimeSession.ToString().Split(' ')[1];
                     sessionDataClass.sessionTicketPrice = sessionLine.TicketPrice.ToString().Remove(sessionLine.TicketPrice.ToString().Length-2,2) + " руб.";
 
                     sessionDataList.Add(sessionDataClass);
@@ -196,7 +198,7 @@ namespace Cinema
             SessionCodeGrid.Width = 0;
             SessionCoverGrid.Width = ActualWidth - ActualWidth * 0.8;
             SessionInfoGird.Width = ActualWidth - ActualWidth * 0.6;
-            SessionDateTimeGrid.Width = ActualWidth - ActualWidth * 0.8;
+            SessionInformationSeasonGrid.Width = ActualWidth - ActualWidth * 0.8;
             SessionPriceGrid.Width = ActualWidth - ActualWidth * 0.8;
             SessionList.Height = ActualHeight - 25;
         }

@@ -34,6 +34,7 @@ namespace Cinema
         public virtual DbSet<MovieGenre> MovieGenre { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<Session> Session { get; set; }
+        public virtual DbSet<Settings> Settings { get; set; }
         public virtual DbSet<Ticket> Ticket { get; set; }
     }
 }

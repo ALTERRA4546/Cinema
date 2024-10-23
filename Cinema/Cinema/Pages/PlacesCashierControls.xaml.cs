@@ -15,6 +15,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using static Cinema.Authorization;
+using System.Text.RegularExpressions;
+using System.Windows.Controls.Primitives;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
+using Org.BouncyCastle.Asn1.Ocsp;
+using static iTextSharp.text.pdf.events.IndexEvents;
+using System.Data.Entity;
 
 namespace Cinema
 {
@@ -42,749 +48,125 @@ namespace Cinema
             {
                 var ticketData = dataBase.Ticket.Where(w => w.IDSession == TransmittedData.idSelectedCashierSession).ToList();
 
-                foreach (var ticketLine in ticketData)
+                var settingsData = dataBase.Settings.OrderByDescending(o => o.DateTimeChange).FirstOrDefault();
+
+                if (settingsData != null)
                 {
-                    switch (ticketLine.RowNumber)
+                    Hall.Children.Clear();
+
+                    for (int row = 0; row < settingsData.RowHall; row++)
                     {
-                        case 1:
-                            switch (ticketLine.PlaceNumber)
+                        WrapPanel wrapPanel = new WrapPanel();
+
+                        TextBlock textBlockBegin = new TextBlock();
+                        textBlockBegin.Text = $"Ряд {row + 1}";
+                        textBlockBegin.FontSize = 10;
+                        textBlockBegin.Margin = new Thickness(0, 0, 5, 0);
+                        textBlockBegin.VerticalAlignment = VerticalAlignment.Center;
+
+                        TextBlock textBlockEnd = new TextBlock();
+                        textBlockEnd.Text = $"Ряд {row + 1}";
+                        textBlockEnd.FontSize = 10;
+                        textBlockEnd.VerticalAlignment = VerticalAlignment.Center;
+
+                        wrapPanel.Children.Add(textBlockBegin);
+                        for (int place = 1; place <= settingsData.PlaceHall; place++)
+                        {
+                            Button button = new Button();
+                            button.Content = place;
+                            button.Name = $"Row{row}Place{place}";
+                            button.Width = 18;
+                            button.Height = 18;
+                            button.FontSize = 10;
+                            button.Margin = new Thickness(0, 0, 5, 0);
+                            button.Click += HallButton_Click;
+
+                            foreach (var ticketLine in ticketData)
                             {
-                                case 1:
-                                    Row1Place1.Foreground = Brushes.Red;
-                                    Row1Place1.IsEnabled = false;
-                                    break;
-
-                                case 2:
-                                    Row1Place2.Foreground = Brushes.Red;
-                                    Row1Place2.IsEnabled = false;
-                                    break;
-
-                                case 3:
-                                    Row1Place3.Foreground = Brushes.Red;
-                                    Row1Place3.IsEnabled = false;
-                                    break;
-
-                                case 4:
-                                    Row1Place4.Foreground = Brushes.Red;
-                                    Row1Place4.IsEnabled = false;
-                                    break;
-
-                                case 5:
-                                    Row1Place5.Foreground = Brushes.Red;
-                                    Row1Place5.IsEnabled = false;
-                                    break;
-
-                                case 6:
-                                    Row1Place6.Foreground = Brushes.Red;
-                                    Row1Place6.IsEnabled = false;
-                                    break;
-
-                                case 7:
-                                    Row1Place7.Foreground = Brushes.Red;
-                                    Row1Place7.IsEnabled = false;
-                                    break;
-
-                                case 8:
-                                    Row1Place8.Foreground = Brushes.Red;
-                                    Row1Place8.IsEnabled = false;
-                                    break;
-
-                                case 9:
-                                    Row1Place9.Foreground = Brushes.Red;
-                                    Row1Place9.IsEnabled = false;
-                                    break;
-
-                                case 10:
-                                    Row1Place10.Foreground = Brushes.Red;
-                                    Row1Place10.IsEnabled = false;
-                                    break;
-
-                                case 11:
-                                    Row1Place11.Foreground = Brushes.Red;
-                                    Row1Place11.IsEnabled = false;
-                                    break;
-
-                                case 12:
-                                    Row1Place12.Foreground = Brushes.Red;
-                                    Row1Place12.IsEnabled = false;
-                                    break;
-
-                                case 13:
-                                    Row1Place13.Foreground = Brushes.Red;
-                                    Row1Place13.IsEnabled = false;
-                                    break;
-
-                                case 14:
-                                    Row1Place14.Foreground = Brushes.Red;
-                                    Row1Place14.IsEnabled = false;
-                                    break;
-
-                                case 15:
-                                    Row1Place15.Foreground = Brushes.Red;
-                                    Row1Place15.IsEnabled = false;
-                                    break;
+                                if (row + 1 == ticketLine.RowNumber && place == ticketLine.PlaceNumber)
+                                {
+                                    button.Foreground = Brushes.Red;
+                                    button.IsEnabled = false;
+                                }
                             }
-                            break;
 
-                        case 2:
-                            switch (ticketLine.PlaceNumber)
-                            {
-                                case 1:
-                                    Row2Place1.Foreground = Brushes.Red;
-                                    Row2Place1.IsEnabled = false;
-                                    break;
+                            wrapPanel.Children.Add(button);
+                        }
+                        wrapPanel.Children.Add(textBlockEnd);
 
-                                case 2:
-                                    Row2Place2.Foreground = Brushes.Red;
-                                    Row2Place2.IsEnabled = false;
-                                    break;
+                        StackPanel stackPanel = new StackPanel();
+                        stackPanel.Margin = new Thickness(0, 0, 0, 5);
+                        stackPanel.HorizontalAlignment = HorizontalAlignment.Center;
+                        stackPanel.Children.Add(wrapPanel);
 
-                                case 3:
-                                    Row2Place3.Foreground = Brushes.Red;
-                                    Row2Place3.IsEnabled = false;
-                                    break;
-
-                                case 4:
-                                    Row2Place4.Foreground = Brushes.Red;
-                                    Row2Place4.IsEnabled = false;
-                                    break;
-
-                                case 5:
-                                    Row2Place5.Foreground = Brushes.Red;
-                                    Row2Place5.IsEnabled = false;
-                                    break;
-
-                                case 6:
-                                    Row2Place6.Foreground = Brushes.Red;
-                                    Row2Place6.IsEnabled = false;
-                                    break;
-
-                                case 7:
-                                    Row2Place7.Foreground = Brushes.Red;
-                                    Row2Place7.IsEnabled = false;
-                                    break;
-
-                                case 8:
-                                    Row2Place8.Foreground = Brushes.Red;
-                                    Row2Place8.IsEnabled = false;
-                                    break;
-
-                                case 9:
-                                    Row2Place9.Foreground = Brushes.Red;
-                                    Row2Place9.IsEnabled = false;
-                                    break;
-
-                                case 10:
-                                    Row2Place10.Foreground = Brushes.Red;
-                                    Row2Place10.IsEnabled = false;
-                                    break;
-
-                                case 11:
-                                    Row2Place11.Foreground = Brushes.Red;
-                                    Row2Place11.IsEnabled = false;
-                                    break;
-
-                                case 12:
-                                    Row2Place12.Foreground = Brushes.Red;
-                                    Row2Place12.IsEnabled = false;
-                                    break;
-
-                                case 13:
-                                    Row2Place13.Foreground = Brushes.Red;
-                                    Row2Place13.IsEnabled = false;
-                                    break;
-
-                                case 14:
-                                    Row2Place14.Foreground = Brushes.Red;
-                                    Row2Place14.IsEnabled = false;
-                                    break;
-
-                                case 15:
-                                    Row2Place15.Foreground = Brushes.Red;
-                                    Row2Place15.IsEnabled = false;
-                                    break;
-                            }
-                            break;
-
-                        case 3:
-                            switch (ticketLine.PlaceNumber)
-                            {
-                                case 1:
-                                    Row3Place1.Foreground = Brushes.Red;
-                                    Row3Place1.IsEnabled = false;
-                                    break;
-
-                                case 2:
-                                    Row3Place2.Foreground = Brushes.Red;
-                                    Row3Place2.IsEnabled = false;
-                                    break;
-
-                                case 3:
-                                    Row3Place3.Foreground = Brushes.Red;
-                                    Row3Place3.IsEnabled = false;
-                                    break;
-
-                                case 4:
-                                    Row3Place4.Foreground = Brushes.Red;
-                                    Row3Place4.IsEnabled = false;
-                                    break;
-
-                                case 5:
-                                    Row3Place5.Foreground = Brushes.Red;
-                                    Row3Place5.IsEnabled = false;
-                                    break;
-
-                                case 6:
-                                    Row3Place6.Foreground = Brushes.Red;
-                                    Row3Place6.IsEnabled = false;
-                                    break;
-
-                                case 7:
-                                    Row3Place7.Foreground = Brushes.Red;
-                                    Row3Place7.IsEnabled = false;
-                                    break;
-
-                                case 8:
-                                    Row3Place8.Foreground = Brushes.Red;
-                                    Row3Place8.IsEnabled = false;
-                                    break;
-
-                                case 9:
-                                    Row3Place9.Foreground = Brushes.Red;
-                                    Row3Place9.IsEnabled = false;
-                                    break;
-
-                                case 10:
-                                    Row3Place10.Foreground = Brushes.Red;
-                                    Row3Place10.IsEnabled = false;
-                                    break;
-
-                                case 11:
-                                    Row3Place11.Foreground = Brushes.Red;
-                                    Row3Place11.IsEnabled = false;
-                                    break;
-
-                                case 12:
-                                    Row3Place12.Foreground = Brushes.Red;
-                                    Row3Place12.IsEnabled = false;
-                                    break;
-
-                                case 13:
-                                    Row3Place13.Foreground = Brushes.Red;
-                                    Row3Place13.IsEnabled = false;
-                                    break;
-
-                                case 14:
-                                    Row3Place14.Foreground = Brushes.Red;
-                                    Row3Place14.IsEnabled = false;
-                                    break;
-
-                                case 15:
-                                    Row3Place15.Foreground = Brushes.Red;
-                                    Row3Place15.IsEnabled = false;
-                                    break;
-                            }
-                            break;
-
-                        case 4:
-                            switch (ticketLine.PlaceNumber)
-                            {
-                                case 1:
-                                    Row4Place1.Foreground = Brushes.Red;
-                                    Row4Place1.IsEnabled = false;
-                                    break;
-
-                                case 2:
-                                    Row4Place2.Foreground = Brushes.Red;
-                                    Row4Place2.IsEnabled = false;
-                                    break;
-
-                                case 3:
-                                    Row4Place3.Foreground = Brushes.Red;
-                                    Row4Place3.IsEnabled = false;
-                                    break;
-
-                                case 4:
-                                    Row4Place4.Foreground = Brushes.Red;
-                                    Row4Place4.IsEnabled = false;
-                                    break;
-
-                                case 5:
-                                    Row4Place5.Foreground = Brushes.Red;
-                                    Row4Place5.IsEnabled = false;
-                                    break;
-
-                                case 6:
-                                    Row4Place6.Foreground = Brushes.Red;
-                                    Row4Place6.IsEnabled = false;
-                                    break;
-
-                                case 7:
-                                    Row4Place7.Foreground = Brushes.Red;
-                                    Row4Place7.IsEnabled = false;
-                                    break;
-
-                                case 8:
-                                    Row4Place8.Foreground = Brushes.Red;
-                                    Row4Place8.IsEnabled = false;
-                                    break;
-
-                                case 9:
-                                    Row4Place9.Foreground = Brushes.Red;
-                                    Row4Place9.IsEnabled = false;
-                                    break;
-
-                                case 10:
-                                    Row4Place10.Foreground = Brushes.Red;
-                                    Row4Place10.IsEnabled = false;
-                                    break;
-
-                                case 11:
-                                    Row4Place11.Foreground = Brushes.Red;
-                                    Row4Place11.IsEnabled = false;
-                                    break;
-
-                                case 12:
-                                    Row4Place12.Foreground = Brushes.Red;
-                                    Row4Place12.IsEnabled = false;
-                                    break;
-
-                                case 13:
-                                    Row4Place13.Foreground = Brushes.Red;
-                                    Row4Place13.IsEnabled = false;
-                                    break;
-
-                                case 14:
-                                    Row4Place14.Foreground = Brushes.Red;
-                                    Row4Place14.IsEnabled = false;
-                                    break;
-
-                                case 15:
-                                    Row4Place15.Foreground = Brushes.Red;
-                                    Row4Place15.IsEnabled = false;
-                                    break;
-                            }
-                            break;
-
-                        case 5:
-                            switch (ticketLine.PlaceNumber)
-                            {
-                                case 1:
-                                    Row5Place1.Foreground = Brushes.Red;
-                                    Row5Place1.IsEnabled = false;
-                                    break;
-
-                                case 2:
-                                    Row5Place2.Foreground = Brushes.Red;
-                                    Row5Place2.IsEnabled = false;
-                                    break;
-
-                                case 3:
-                                    Row5Place3.Foreground = Brushes.Red;
-                                    Row5Place3.IsEnabled = false;
-                                    break;
-
-                                case 4:
-                                    Row5Place4.Foreground = Brushes.Red;
-                                    Row5Place4.IsEnabled = false;
-                                    break;
-
-                                case 5:
-                                    Row5Place5.Foreground = Brushes.Red;
-                                    Row5Place5.IsEnabled = false;
-                                    break;
-
-                                case 6:
-                                    Row5Place6.Foreground = Brushes.Red;
-                                    Row5Place6.IsEnabled = false;
-                                    break;
-
-                                case 7:
-                                    Row5Place7.Foreground = Brushes.Red;
-                                    Row5Place7.IsEnabled = false;
-                                    break;
-
-                                case 8:
-                                    Row5Place8.Foreground = Brushes.Red;
-                                    Row5Place8.IsEnabled = false;
-                                    break;
-
-                                case 9:
-                                    Row5Place9.Foreground = Brushes.Red;
-                                    Row5Place9.IsEnabled = false;
-                                    break;
-
-                                case 10:
-                                    Row5Place10.Foreground = Brushes.Red;
-                                    Row5Place10.IsEnabled = false;
-                                    break;
-
-                                case 11:
-                                    Row5Place11.Foreground = Brushes.Red;
-                                    Row5Place11.IsEnabled = false;
-                                    break;
-
-                                case 12:
-                                    Row5Place12.Foreground = Brushes.Red;
-                                    Row5Place12.IsEnabled = false;
-                                    break;
-
-                                case 13:
-                                    Row5Place13.Foreground = Brushes.Red;
-                                    Row5Place13.IsEnabled = false;
-                                    break;
-
-                                case 14:
-                                    Row5Place14.Foreground = Brushes.Red;
-                                    Row5Place14.IsEnabled = false;
-                                    break;
-
-                                case 15:
-                                    Row5Place15.Foreground = Brushes.Red;
-                                    Row5Place15.IsEnabled = false;
-                                    break;
-                            }
-                            break;
-
-                        case 6:
-                            switch (ticketLine.PlaceNumber)
-                            {
-                                case 1:
-                                    Row6Place1.Foreground = Brushes.Red;
-                                    Row6Place1.IsEnabled = false;
-                                    break;
-
-                                case 2:
-                                    Row6Place2.Foreground = Brushes.Red;
-                                    Row6Place2.IsEnabled = false;
-                                    break;
-
-                                case 3:
-                                    Row6Place3.Foreground = Brushes.Red;
-                                    Row6Place3.IsEnabled = false;
-                                    break;
-
-                                case 4:
-                                    Row6Place4.Foreground = Brushes.Red;
-                                    Row6Place4.IsEnabled = false;
-                                    break;
-
-                                case 5:
-                                    Row6Place5.Foreground = Brushes.Red;
-                                    Row6Place5.IsEnabled = false;
-                                    break;
-
-                                case 6:
-                                    Row6Place6.Foreground = Brushes.Red;
-                                    Row6Place6.IsEnabled = false;
-                                    break;
-
-                                case 7:
-                                    Row6Place7.Foreground = Brushes.Red;
-                                    Row6Place7.IsEnabled = false;
-                                    break;
-
-                                case 8:
-                                    Row6Place8.Foreground = Brushes.Red;
-                                    Row6Place8.IsEnabled = false;
-                                    break;
-
-                                case 9:
-                                    Row6Place9.Foreground = Brushes.Red;
-                                    Row6Place9.IsEnabled = false;
-                                    break;
-
-                                case 10:
-                                    Row6Place10.Foreground = Brushes.Red;
-                                    Row6Place10.IsEnabled = false;
-                                    break;
-
-                                case 11:
-                                    Row6Place11.Foreground = Brushes.Red;
-                                    Row6Place11.IsEnabled = false;
-                                    break;
-
-                                case 12:
-                                    Row6Place12.Foreground = Brushes.Red;
-                                    Row6Place12.IsEnabled = false;
-                                    break;
-
-                                case 13:
-                                    Row6Place13.Foreground = Brushes.Red;
-                                    Row6Place13.IsEnabled = false;
-                                    break;
-
-                                case 14:
-                                    Row6Place14.Foreground = Brushes.Red;
-                                    Row6Place14.IsEnabled = false;
-                                    break;
-
-                                case 15:
-                                    Row6Place15.Foreground = Brushes.Red;
-                                    Row6Place15.IsEnabled = false;
-                                    break;
-                            }
-                            break;
-
-                        case 7:
-                            switch (ticketLine.PlaceNumber)
-                            {
-                                case 1:
-                                    Row7Place1.Foreground = Brushes.Red;
-                                    Row7Place1.IsEnabled = false;
-                                    break;
-
-                                case 2:
-                                    Row7Place2.Foreground = Brushes.Red;
-                                    Row7Place2.IsEnabled = false;
-                                    break;
-
-                                case 3:
-                                    Row7Place3.Foreground = Brushes.Red;
-                                    Row7Place3.IsEnabled = false;
-                                    break;
-
-                                case 4:
-                                    Row7Place4.Foreground = Brushes.Red;
-                                    Row7Place4.IsEnabled = false;
-                                    break;
-
-                                case 5:
-                                    Row7Place5.Foreground = Brushes.Red;
-                                    Row7Place5.IsEnabled = false;
-                                    break;
-
-                                case 6:
-                                    Row7Place6.Foreground = Brushes.Red;
-                                    Row7Place6.IsEnabled = false;
-                                    break;
-
-                                case 7:
-                                    Row7Place7.Foreground = Brushes.Red;
-                                    Row7Place7.IsEnabled = false;
-                                    break;
-
-                                case 8:
-                                    Row7Place8.Foreground = Brushes.Red;
-                                    Row7Place8.IsEnabled = false;
-                                    break;
-
-                                case 9:
-                                    Row7Place9.Foreground = Brushes.Red;
-                                    Row7Place9.IsEnabled = false;
-                                    break;
-
-                                case 10:
-                                    Row7Place10.Foreground = Brushes.Red;
-                                    Row7Place10.IsEnabled = false;
-                                    break;
-
-                                case 11:
-                                    Row7Place11.Foreground = Brushes.Red;
-                                    Row7Place11.IsEnabled = false;
-                                    break;
-
-                                case 12:
-                                    Row7Place12.Foreground = Brushes.Red;
-                                    Row7Place12.IsEnabled = false;
-                                    break;
-
-                                case 13:
-                                    Row7Place13.Foreground = Brushes.Red;
-                                    Row7Place13.IsEnabled = false;
-                                    break;
-
-                                case 14:
-                                    Row7Place14.Foreground = Brushes.Red;
-                                    Row7Place14.IsEnabled = false;
-                                    break;
-
-                                case 15:
-                                    Row7Place15.Foreground = Brushes.Red;
-                                    Row7Place15.IsEnabled = false;
-                                    break;
-                            }
-                            break;
-
-                        case 8:
-                            switch (ticketLine.PlaceNumber)
-                            {
-                                case 1:
-                                    Row8Place1.Foreground = Brushes.Red;
-                                    Row8Place1.IsEnabled = false;
-                                    break;
-
-                                case 2:
-                                    Row8Place2.Foreground = Brushes.Red;
-                                    Row8Place2.IsEnabled = false;
-                                    break;
-
-                                case 3:
-                                    Row8Place3.Foreground = Brushes.Red;
-                                    Row8Place3.IsEnabled = false;
-                                    break;
-
-                                case 4:
-                                    Row8Place4.Foreground = Brushes.Red;
-                                    Row8Place4.IsEnabled = false;
-                                    break;
-
-                                case 5:
-                                    Row8Place5.Foreground = Brushes.Red;
-                                    Row8Place5.IsEnabled = false;
-                                    break;
-
-                                case 6:
-                                    Row8Place6.Foreground = Brushes.Red;
-                                    Row8Place6.IsEnabled = false;
-                                    break;
-
-                                case 7:
-                                    Row8Place7.Foreground = Brushes.Red;
-                                    Row8Place7.IsEnabled = false;
-                                    break;
-
-                                case 8:
-                                    Row8Place8.Foreground = Brushes.Red;
-                                    Row8Place8.IsEnabled = false;
-                                    break;
-
-                                case 9:
-                                    Row8Place9.Foreground = Brushes.Red;
-                                    Row8Place9.IsEnabled = false;
-                                    break;
-
-                                case 10:
-                                    Row8Place10.Foreground = Brushes.Red;
-                                    Row8Place10.IsEnabled = false;
-                                    break;
-
-                                case 11:
-                                    Row8Place11.Foreground = Brushes.Red;
-                                    Row8Place11.IsEnabled = false;
-                                    break;
-
-                                case 12:
-                                    Row8Place12.Foreground = Brushes.Red;
-                                    Row8Place12.IsEnabled = false;
-                                    break;
-
-                                case 13:
-                                    Row8Place13.Foreground = Brushes.Red;
-                                    Row8Place13.IsEnabled = false;
-                                    break;
-
-                                case 14:
-                                    Row8Place14.Foreground = Brushes.Red;
-                                    Row8Place14.IsEnabled = false;
-                                    break;
-
-                                case 15:
-                                    Row8Place15.Foreground = Brushes.Red;
-                                    Row8Place15.IsEnabled = false;
-                                    break;
-                            }
-                            break;
+                        Hall.Children.Add(stackPanel);
                     }
+                }
+                else
+                { 
+                    Label lable = new Label();
+                    lable.FontSize = 26;
+                    lable.Content = "Зал не размечен администратором.\nОбратитесь с системному администратору.";
+                    lable.HorizontalAlignment = HorizontalAlignment.Center;
+                    lable.HorizontalContentAlignment = HorizontalAlignment.Center;
+
+                    Hall.Children.Add(lable);
                 }
 
                 var sessionData = dataBase.Session.Where(w => w.IDSession == TransmittedData.idSelectedCashierSession).FirstOrDefault();
-                TicketPrice.Content = sessionData.TicketPrice.ToString().Remove(sessionData.TicketPrice.ToString().Length-2,2) + " Руб.";
+                TicketPrice.Content = sessionData.TicketPrice.ToString().Remove(sessionData.TicketPrice.ToString().Length - 2, 2) + " Руб.";
                 DateTimeSession.Content = sessionData.DateAndTimeSession;
             }
         }
 
-        private void Row1_Click(object sender, RoutedEventArgs e)
+        private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            Button clickedButton = sender as Button;
-            if (clickedButton != null)
-            {
-                selectedRowNumber = 1;
-                selectedPlaceNumber = Convert.ToInt32(clickedButton.Content.ToString());
-
-                SelectedPlaceChange();
-            }
+            ResizeWindows();
         }
 
-        private void Row2_Click(object sender, RoutedEventArgs e)
+        private void Hall_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            Button clickedButton = sender as Button;
-            if (clickedButton != null)
-            {
-                selectedRowNumber = 2;
-                selectedPlaceNumber = Convert.ToInt32(clickedButton.Content.ToString());
-
-                SelectedPlaceChange();
-            }
+            ResizeWindows();
         }
 
-        private void Row3_Click(object sender, RoutedEventArgs e)
+        private void ResizeWindows()
         {
-            Button clickedButton = sender as Button;
-            if (clickedButton != null)
-            {
-                selectedRowNumber = 3;
-                selectedPlaceNumber = Convert.ToInt32(clickedButton.Content.ToString());
+            double maxWidth = this.ActualWidth - 10;
+            double maxHeight = this.ActualHeight - 10;
 
-                SelectedPlaceChange();
+            double scale = this.ActualWidth / (Hall.ActualWidth * 1.28);
+            double centerX = Hall.ActualWidth / 2;
+            double centerY = Hall.ActualHeight / 2;
+
+            double newWidth = Hall.ActualWidth * scale;
+            double newHeight = Hall.ActualHeight * scale;
+
+            if (newWidth > maxWidth)
+            {
+                scale = maxWidth / Hall.ActualWidth;
             }
+            if (newHeight > maxHeight)
+            {
+                scale = Math.Min(scale, maxHeight / Hall.ActualHeight);
+            }
+
+            ScaleTransform scaleTransform = new ScaleTransform(scale, scale, centerX, centerY);
+            Hall.RenderTransform = scaleTransform;
         }
 
-        private void Row4_Click(object sender, RoutedEventArgs e)
+        private void HallButton_Click(object sender, RoutedEventArgs e)
         {
             Button clickedButton = sender as Button;
+
             if (clickedButton != null)
             {
-                selectedRowNumber = 4;
-                selectedPlaceNumber = Convert.ToInt32(clickedButton.Content.ToString());
+                Match match = Regex.Match(clickedButton.Name, @"Row(\d+)Place(\d+)");
 
-                SelectedPlaceChange();
-            }
-        }
-
-        private void Row5_Click(object sender, RoutedEventArgs e)
-        {
-            Button clickedButton = sender as Button;
-            if (clickedButton != null)
-            {
-                selectedRowNumber = 5;
-                selectedPlaceNumber = Convert.ToInt32(clickedButton.Content.ToString());
-
-                SelectedPlaceChange();
-            }
-        }
-
-        private void Row6_Click(object sender, RoutedEventArgs e)
-        {
-            Button clickedButton = sender as Button;
-            if (clickedButton != null)
-            {
-                selectedRowNumber = 6;
-                selectedPlaceNumber = Convert.ToInt32(clickedButton.Content.ToString());
-
-                SelectedPlaceChange();
-            }
-        }
-
-        private void Row7_Click(object sender, RoutedEventArgs e)
-        {
-            Button clickedButton = sender as Button;
-            if (clickedButton != null)
-            {
-                selectedRowNumber = 7;
-                selectedPlaceNumber = Convert.ToInt32(clickedButton.Content.ToString());
-
-                SelectedPlaceChange();
-            }
-        }
-
-        private void Row8_Click(object sender, RoutedEventArgs e)
-        {
-            Button clickedButton = sender as Button;
-            if (clickedButton != null)
-            {
-                selectedRowNumber = 8;
-                selectedPlaceNumber = Convert.ToInt32(clickedButton.Content.ToString());
+                if (match.Success)
+                {
+                    selectedRowNumber = int.Parse(match.Groups[1].Value)+1;
+                    selectedPlaceNumber = int.Parse(match.Groups[2].Value);
+                }
 
                 SelectedPlaceChange();
             }
@@ -925,6 +307,36 @@ namespace Cinema
                     LoadData();
                 }
             }
+
         }
+
+        // UnitTest
+        /*
+        public string PrintTicketPDF()
+        {
+            string tempFilePath = Path.GetTempFileName() + ".pdf";
+
+            Document doc = new Document();
+            PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream($@"{tempFilePath}", FileMode.Create));
+            //doc.SetPageSize(PageSize.A4.Rotate());
+
+            BaseFont baseFont = BaseFont.CreateFont("C:\\Windows\\Fonts\\arial.ttf", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+            Font font = new Font(baseFont, 16);
+
+            BaseFont baseFontHead = BaseFont.CreateFont("C:\\Windows\\Fonts\\arial.ttf", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+            Font fontHead = new Font(baseFont, 20, Font.BOLD);
+
+            doc.Open();
+
+            Paragraph mainParagraph = new Paragraph("Билет", fontHead);
+            mainParagraph.Alignment = Element.ALIGN_CENTER;
+
+            doc.Add(mainParagraph);
+
+            doc.Close();
+
+            return tempFilePath;
+        }
+        */
     }
 }

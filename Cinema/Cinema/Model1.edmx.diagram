@@ -5,16 +5,17 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="7d3c0bf0106b4e0d883a7bdaf40a574b" Name="Diagram1">
-        <EntityTypeShape EntityType="CinemaModel.Actor" Width="1.5" PointX="3" PointY="8.375" />
-        <EntityTypeShape EntityType="CinemaModel.ActorsInMovies" Width="1.5" PointX="5.25" PointY="4.5" />
-        <EntityTypeShape EntityType="CinemaModel.Country" Width="1.5" PointX="0.75" PointY="4.75" />
-        <EntityTypeShape EntityType="CinemaModel.Employee" Width="1.5" PointX="5.25" PointY="11.75" />
-        <EntityTypeShape EntityType="CinemaModel.Genre" Width="1.5" PointX="3" PointY="0.75" />
-        <EntityTypeShape EntityType="CinemaModel.Movie" Width="1.5" PointX="3" PointY="3.875" />
-        <EntityTypeShape EntityType="CinemaModel.MovieGenre" Width="1.5" PointX="5.25" PointY="1.5" />
-        <EntityTypeShape EntityType="CinemaModel.Role" Width="1.5" PointX="3" PointY="12.625" />
-        <EntityTypeShape EntityType="CinemaModel.Session" Width="1.5" PointX="5.25" PointY="7.375" />
-        <EntityTypeShape EntityType="CinemaModel.Ticket" Width="1.5" PointX="7.5" PointY="7.25" />
+        <EntityTypeShape EntityType="CinemaModel.Actor" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="CinemaModel.ActorsInMovies" Width="1.5" PointX="5.25" PointY="1.875" />
+        <EntityTypeShape EntityType="CinemaModel.Country" Width="1.5" PointX="0.75" PointY="5.125" />
+        <EntityTypeShape EntityType="CinemaModel.Employee" Width="1.5" PointX="5.25" PointY="13.875" />
+        <EntityTypeShape EntityType="CinemaModel.Genre" Width="1.5" PointX="3" PointY="9.125" />
+        <EntityTypeShape EntityType="CinemaModel.Movie" Width="1.5" PointX="3" PointY="4.25" />
+        <EntityTypeShape EntityType="CinemaModel.MovieGenre" Width="1.5" PointX="5.25" PointY="5" />
+        <EntityTypeShape EntityType="CinemaModel.Role" Width="1.5" PointX="3" PointY="14.75" />
+        <EntityTypeShape EntityType="CinemaModel.Session" Width="1.5" PointX="5.25" PointY="10.5" />
+        <EntityTypeShape EntityType="CinemaModel.Settings" Width="1.5" PointX="7.75" PointY="1.5" />
+        <EntityTypeShape EntityType="CinemaModel.Ticket" Width="1.5" PointX="7.5" PointY="10.375" />
         <AssociationConnector Association="CinemaModel.FK_ActorsInMovies_Actor" />
         <AssociationConnector Association="CinemaModel.FK_ActorsInMovies_Movie" />
         <AssociationConnector Association="CinemaModel.FK_Movie_Country" />

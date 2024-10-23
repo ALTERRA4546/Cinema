@@ -1,10 +1,11 @@
 ﻿
 
-FC:\Users\King Night\source\repos\Cinema\Cinema\Pages\AddOrEditActor.xaml;;
-FC:\Users\King Night\source\repos\Cinema\Cinema\Pages\AddOrEditEmployee.xaml;;
-FC:\Users\King Night\source\repos\Cinema\Cinema\Pages\AddOrEditGenre.xaml;;
-FC:\Users\King Night\source\repos\Cinema\Cinema\Pages\AddOrEditMovie.xaml;;
-FC:\Users\King Night\source\repos\Cinema\Cinema\Pages\AddOrEditSession.xaml;;
+FC:\Users\King Night\source\repos\Cinema\Cinema\Pages\SettingsControls.xaml;;
+FC:\Users\King Night\source\repos\Cinema\Cinema\Windows\AddOrEditActor.xaml;;
+FC:\Users\King Night\source\repos\Cinema\Cinema\Windows\AddOrEditEmployee.xaml;;
+FC:\Users\King Night\source\repos\Cinema\Cinema\Windows\AddOrEditGenre.xaml;;
+FC:\Users\King Night\source\repos\Cinema\Cinema\Windows\AddOrEditMovie.xaml;;
+FC:\Users\King Night\source\repos\Cinema\Cinema\Windows\AddOrEditSession.xaml;;
 FC:\Users\King Night\source\repos\Cinema\Cinema\Windows\Authorization.xaml;;
 FC:\Users\King Night\source\repos\Cinema\Cinema\Windows\BookerPanel.xaml;;
 FC:\Users\King Night\source\repos\Cinema\Cinema\Windows\CashierPanel.xaml;;

@@ -340,5 +340,63 @@ namespace Cinema
                 }
             }
         }
+
+        // UsnitTest
+        /*
+        public string PrintPDF()
+        {
+            string findLine = FindData.Text;
+
+            string path = "C:\\AIChat\\lol.txt";
+
+            if (path != null)
+            {
+                Document doc = new Document();
+                PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream($@"{path}", FileMode.Create));
+                doc.SetPageSize(PageSize.A4.Rotate());
+
+                BaseFont baseFont = BaseFont.CreateFont("C:\\Windows\\Fonts\\arial.ttf", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+                Font font = new Font(baseFont, 12);
+
+                BaseFont baseFontHead = BaseFont.CreateFont("C:\\Windows\\Fonts\\arial.ttf", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+                Font fontHead = new Font(baseFont, 20, Font.BOLD);
+
+                doc.Open();
+
+                Paragraph mainParagraph = new Paragraph("Отчет продаж", fontHead);
+                mainParagraph.Alignment = Element.ALIGN_CENTER;
+                doc.Add(mainParagraph);
+
+                PdfPTable table = new PdfPTable(10);
+                table.SpacingBefore = 10;
+                table.WidthPercentage = 100;
+
+                table.AddCell(new Paragraph("Код фильма", font));
+                table.AddCell(new Paragraph("Название фильма", font));
+                table.AddCell(new Paragraph("Жанры", font));
+                table.AddCell(new Paragraph("Год публикации", font));
+                table.AddCell(new Paragraph("Длительность фильма", font));
+                table.AddCell(new Paragraph("Возрастной рейтинг", font));
+                table.AddCell(new Paragraph("Страна", font));
+                table.AddCell(new Paragraph("Актеры", font));
+                table.AddCell(new Paragraph("Количество проданных билетов", font));
+                table.AddCell(new Paragraph("Выручка с проданных билетов", font));
+                doc.Add(table);
+
+                double ticketPriceSumm = 0;
+                foreach (var line in ticketDataList)
+                {
+                    ticketPriceSumm += Convert.ToDouble(line.ticketSummaryCost.Replace(" руб.", ""));
+                }
+
+                Paragraph paragraph = new Paragraph("Итог: " + ticketPriceSumm.ToString() + " Руб.", font);
+                doc.Add(paragraph);
+
+                doc.Close();
+            }
+
+            return path;
+        }
+        */
     }
 }

@@ -25,7 +25,7 @@
         </StackPanel>
 
         <Grid VerticalAlignment="Bottom">
-            <Label Content="Ver. alpha 0.9.8" HorizontalAlignment="Left"/>
+            <Label Content="Ver. alpha 0.9.9" HorizontalAlignment="Left"/>
             <Label Content="Early access" HorizontalAlignment="Right"/>
         </Grid>
         <ProgressBar x:Name="LoadView" Height="5" VerticalAlignment="Bottom" IsIndeterminate="True" Visibility="Collapsed"/>

@@ -96,6 +96,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Settings">
+      <EntityTypeMapping TypeName="CinemaModel.Settings">
+        <MappingFragment StoreEntitySet="Settings">
+          <ScalarProperty Name="DateTimeChange" ColumnName="DateTimeChange" />
+          <ScalarProperty Name="PlaceHall" ColumnName="PlaceHall" />
+          <ScalarProperty Name="RowHall" ColumnName="RowHall" />
+          <ScalarProperty Name="IDSettings" ColumnName="IDSettings" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Ticket">
       <EntityTypeMapping TypeName="CinemaModel.Ticket">
         <MappingFragment StoreEntitySet="Ticket">

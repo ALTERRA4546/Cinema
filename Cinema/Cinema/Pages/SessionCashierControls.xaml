@@ -78,8 +78,12 @@
                                 <DataTemplate>
                                     <StackPanel>
                                         <WrapPanel>
-                                            <Label Content="Дата и время сеанса:" FontSize="16"/>
-                                            <Label Content="{Binding sessionCashierDateAndTimeSessionStart}" FontSize="16"/>
+                                            <Label Content="Дата начала сеанса:" FontSize="16"/>
+                                            <Label Content="{Binding sessionCashierDateSessionStart}" FontSize="16"/>
+                                        </WrapPanel>
+                                        <WrapPanel>
+                                            <Label Content="Время начала сеанса:" FontSize="16"/>
+                                            <Label Content="{Binding sessionCashierTimeSessionStart}" FontSize="16"/>
                                         </WrapPanel>
                                         <WrapPanel>
                                             <Label Content="Места в зале:" FontSize="16"/>

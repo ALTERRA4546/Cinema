@@ -10,6 +10,7 @@
     <EntitySet Name="MovieGenre" EntityType="CinemaModel.MovieGenre" />
     <EntitySet Name="Role" EntityType="CinemaModel.Role" />
     <EntitySet Name="Session" EntityType="CinemaModel.Session" />
+    <EntitySet Name="Settings" EntityType="CinemaModel.Settings" />
     <EntitySet Name="Ticket" EntityType="CinemaModel.Ticket" />
     <AssociationSet Name="FK_ActorsInMovies_Actor" Association="CinemaModel.FK_ActorsInMovies_Actor">
       <End Role="Actor" EntitySet="Actor" />
@@ -149,6 +150,15 @@
     <Property Name="TicketPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
     <NavigationProperty Name="Movie" Relationship="CinemaModel.FK_Session_Movie" FromRole="Session" ToRole="Movie" />
     <NavigationProperty Name="Ticket" Relationship="CinemaModel.FK_Ticket_Session" FromRole="Session" ToRole="Ticket" />
+  </EntityType>
+  <EntityType Name="Settings">
+    <Key>
+      <PropertyRef Name="IDSettings" />
+    </Key>
+    <Property Name="IDSettings" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RowHall" Type="Int32" Nullable="false" />
+    <Property Name="PlaceHall" Type="Int32" Nullable="false" />
+    <Property Name="DateTimeChange" Type="DateTime" Nullable="false" Precision="3" />
   </EntityType>
   <EntityType Name="Ticket">
     <Key>

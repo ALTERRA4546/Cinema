@@ -94,7 +94,7 @@ namespace Cinema
             }
         }
 
-        private async Task<string> LoadDataBase(string password, string login, string newDataSource)
+        public async Task<string> LoadDataBase(string password, string login, string newDataSource)
         {
             ConnectionStringChanged(newDataSource);
 

@@ -74,11 +74,20 @@
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn x:Name="SessionDateTimeGrid">
-                            <Label Content="Дата и время сеанса" FontSize="16"/>
+                        <GridViewColumn x:Name="SessionInformationSeasonGrid">
+                            <Label Content="Информация" FontSize="16"/>
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Label Content="{Binding sessionDateAndTimeSessionStart}" FontSize="16"/>
+                                    <StackPanel>
+                                        <WrapPanel>
+                                            <Label Content="Дата начала сеанса:" FontSize="16"/>
+                                            <Label Content="{Binding sessionDateSessionStart}" FontSize="16"/>
+                                        </WrapPanel>
+                                        <WrapPanel>
+                                            <Label Content="Время начала сеанса:" FontSize="16"/>
+                                            <Label Content="{Binding sessionTimeSessionStart}" FontSize="16"/>
+                                        </WrapPanel>
+                                    </StackPanel>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>

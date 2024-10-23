@@ -40,7 +40,8 @@ namespace Cinema
             public string sessionCashierMovieAgeRating { get; set; }
             public string sessionCashierMovieCountry { get; set; }
             public string sessionCashierActors { get; set; }
-            public DateTime sessionCashierDateAndTimeSessionStart { get; set; }
+            public string sessionCashierDateSessionStart { get; set; }
+            public string sessionCashierTimeSessionStart { get; set; }
             public string sessionCashierTicketPrice { get; set; }
             public string sessionSeatsInHall { get; set; }
         }
@@ -185,9 +186,12 @@ namespace Cinema
                     sessionDataClass.sessionCashierMovieTiming = sessionLine.Timing;
                     sessionDataClass.sessionCashierMovieAgeRating = sessionLine.AgeRating + "+";
                     sessionDataClass.sessionCashierMovieCountry = sessionLine.movieCountry;
-                    sessionDataClass.sessionCashierDateAndTimeSessionStart = sessionLine.DateAndTimeSession;
+                    sessionDataClass.sessionCashierDateSessionStart = sessionLine.DateAndTimeSession.ToString().Split(' ')[0];
+                    sessionDataClass.sessionCashierTimeSessionStart = sessionLine.DateAndTimeSession.ToString().Split(' ')[1];
                     sessionDataClass.sessionCashierTicketPrice = sessionLine.TicketPrice.ToString().Remove(sessionLine.TicketPrice.ToString().Length - 2, 2) + " руб.";
-                    sessionDataClass.sessionSeatsInHall = sessionLine.TicketCount/((movieGenresCounterTemp-1) * (movieActorCounterTemp - 1)) + "/120";
+
+                    var seatsHallData = dataBase.Settings.OrderByDescending(o => o.IDSettings).FirstOrDefault();
+                    sessionDataClass.sessionSeatsInHall = sessionLine.TicketCount/((movieGenresCounterTemp-1) * (movieActorCounterTemp - 1)) + "/" + (seatsHallData.RowHall * seatsHallData.PlaceHall);
 
                     sessionCashierDataList.Add(sessionDataClass);
                 }

@@ -35,7 +35,8 @@ namespace Cinema
         public class SessionDataAnalysis
         { 
             public int idSession {  get; set; }
-            public string dateAndTimeSession { get; set; }
+            public string dateSession { get; set; }
+            public string timeSession { get; set; }
             public string ticketCountSession { get; set; }
             public string ticketSummarySession {  get; set; }
         }
@@ -94,7 +95,8 @@ namespace Cinema
                     SessionDataAnalysis sessionDataAnalysisClass = new SessionDataAnalysis();
 
                     sessionDataAnalysisClass.idSession = sessionList.IDSession;
-                    sessionDataAnalysisClass.dateAndTimeSession = sessionList.DateAndTimeSession.ToString();
+                    sessionDataAnalysisClass.dateSession = sessionList.DateAndTimeSession.ToString().Split(' ')[0];
+                    sessionDataAnalysisClass.timeSession = sessionList.DateAndTimeSession.ToString().Split(' ')[1];
                     sessionDataAnalysisClass.ticketCountSession = sessionList.TicketCount.ToString();
                     sessionDataAnalysisClass.ticketSummarySession = sessionList.TotalCost.ToString().Remove(sessionList.TotalCost.ToString().Length-2,2) + " руб.";
 
@@ -111,7 +113,7 @@ namespace Cinema
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             SessionCodeGrid.Width = 0;
-            SessionDateGrid.Width = ActualWidth - ActualWidth * 0.5;
+            SessionInformationGrid.Width = ActualWidth - ActualWidth * 0.5;
             AnalyticsGrid.Width = ActualWidth - ActualWidth * 0.5;
             SessionList.Height = ActualHeight - 25;
         }
@@ -208,7 +210,7 @@ namespace Cinema
                     foreach (var line in sessionDataAnalysesList)
                     {
                         table.AddCell(new Paragraph(line.idSession.ToString(), font));
-                        table.AddCell(new Paragraph(line.dateAndTimeSession, font));
+                        table.AddCell(new Paragraph(line.dateSession + " " + line.timeSession, font));
                         table.AddCell(new Paragraph(line.ticketCountSession, font));
                         table.AddCell(new Paragraph(line.ticketSummarySession.ToString(), font));
 

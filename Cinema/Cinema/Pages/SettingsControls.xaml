@@ -1,0 +1,29 @@
+﻿<Page x:Class="Cinema.Pages.SettingsControls"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Cinema.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SettingsControls" SizeChanged="Page_SizeChanged">
+
+    <Grid Background="Lime">
+        <StackPanel x:Name="Hall" Margin="0,0,198,0" VerticalAlignment="Center" HorizontalAlignment="Center" SizeChanged="Hall_SizeChanged"/>
+        <Grid VerticalAlignment="Center" HorizontalAlignment="Right" Width="200">
+            <Rectangle Fill="Black" Opacity="0.2"/>
+            <StackPanel>
+                <TextBlock Margin="0,10,0,0" Text="Настройка зала" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"/>
+                <Grid Margin="0,0,0,10" HorizontalAlignment="Center">
+                    <Label Content="Ряды" FontSize="16"/>
+                    <ComboBox x:Name="SelectedRowHall" Margin="70,0,0,0" HorizontalAlignment="Left" FontSize="16" Width="100" SelectedIndex="0" SelectionChanged="SelectedRowHall_SelectionChanged"/>
+                </Grid>
+                <Grid Margin="0,0,0,10" HorizontalAlignment="Center">
+                    <Label Content="Места" FontSize="16"/>
+                    <ComboBox x:Name="SelectedPlaceHall" Margin="70,0,0,0" HorizontalAlignment="Left" FontSize="16" Width="100" SelectedIndex="0" SelectionChanged="SelectedPlaceHall_SelectionChanged"/>
+                </Grid>
+                <Button x:Name="SaveHallSettings" Content="Сохранить" Margin="10,0,10,10" FontSize="16" Click="SaveHallSettings_Click"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

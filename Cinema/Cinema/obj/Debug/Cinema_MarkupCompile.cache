@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\King Night\source\repos\Cinema\Cinema\App.xaml
-171460257158
+181412391372
 2-1957146511
-34-888411859
+362002027122
 211621346526
-Pages\AddOrEditActor.xaml;Pages\AddOrEditEmployee.xaml;Pages\AddOrEditGenre.xaml;Pages\AddOrEditMovie.xaml;Pages\AddOrEditSession.xaml;Windows\Authorization.xaml;Windows\BookerPanel.xaml;Windows\CashierPanel.xaml;Windows\DirectorsPanel.xaml;Pages\EmployeeControls.xaml;Pages\MovieAnalysis.xaml;Pages\MovieCashierControls.xaml;Pages\MovieControls.xaml;Pages\PlacesCashierControls.xaml;Pages\SessionCashierControls.xaml;Pages\SessionControls.xaml;Pages\TicketAnalysis.xaml;
+Pages\SettingsControls.xaml;Windows\AddOrEditActor.xaml;Windows\AddOrEditEmployee.xaml;Windows\AddOrEditGenre.xaml;Windows\AddOrEditMovie.xaml;Windows\AddOrEditSession.xaml;Windows\Authorization.xaml;Windows\BookerPanel.xaml;Windows\CashierPanel.xaml;Windows\DirectorsPanel.xaml;Pages\EmployeeControls.xaml;Pages\MovieAnalysis.xaml;Pages\MovieCashierControls.xaml;Pages\MovieControls.xaml;Pages\PlacesCashierControls.xaml;Pages\SessionCashierControls.xaml;Pages\SessionControls.xaml;Pages\TicketAnalysis.xaml;
 
 False
 
