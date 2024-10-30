@@ -68,7 +68,7 @@ namespace Cinema
                                 actorsInMovies in dataBase.ActorsInMovies on movie.IDMovie equals actorsInMovies.IDMovie into actorsInMoviesGroup
                                 from actorsInMovie in actorsInMoviesGroup.DefaultIfEmpty()
                                 join
-                                actors in dataBase.Actor on actorsInMovie.IDActor equals actors.IDActors into actorsGroup
+                                actors in dataBase.Actor on actorsInMovie.IDActor equals actors.IDActor into actorsGroup
                                 from actors in actorsGroup.DefaultIfEmpty()
                                 join
                                 movieGenre in dataBase.MovieGenre on movie.IDMovie equals movieGenre.IDMovie into movieGenereGroup
@@ -200,7 +200,7 @@ namespace Cinema
             SessionInfoGird.Width = ActualWidth - ActualWidth * 0.6;
             SessionInformationSeasonGrid.Width = ActualWidth - ActualWidth * 0.8;
             SessionPriceGrid.Width = ActualWidth - ActualWidth * 0.8;
-            SessionList.Height = ActualHeight - 25;
+            SessionList.Height = ActualHeight - 35;
         }
 
         private void FindData_TextChanged(object sender, TextChangedEventArgs e)

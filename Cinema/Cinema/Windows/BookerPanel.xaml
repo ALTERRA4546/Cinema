@@ -8,7 +8,7 @@
         Title="Панель менеджера" Height="550" Width="1050" MinHeight="550" MinWidth="1050" Loaded="Window_Loaded" Closing="Window_Closing">
     <Grid>
         <Grid>
-            <Menu>
+            <Menu Background="Aqua">
                 <MenuItem x:Name="MoviePage" Header="Фильмы" FontSize="16" Click="MoviePage_Click" />
                 <MenuItem x:Name="SessionPage" Header="Сеансы" FontSize="16" Click="SessionPage_Click" />
                 <MenuItem x:Name="TicketPage" Header="Продажи" FontSize="16" Click="TicketPage_Click"/>
@@ -19,6 +19,6 @@
             </WrapPanel>
         </Grid>
 
-        <Frame x:Name="PageManager" Content="MainFrame" Margin="0,23.5,0,0" NavigationUIVisibility="Hidden"  Background="Lime"/>
+        <Frame x:Name="PageManager" Content="MainFrame" Margin="0,23.5,0,0" NavigationUIVisibility="Hidden"  Background="White"/>
     </Grid>
 </Window>

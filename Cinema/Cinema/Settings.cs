@@ -17,6 +17,7 @@ namespace Cinema
         public int IDSettings { get; set; }
         public int RowHall { get; set; }
         public int PlaceHall { get; set; }
+        public string HiddenPlaces { get; set; }
         public System.DateTime DateTimeChange { get; set; }
     }
 }

@@ -8,10 +8,8 @@
         Title="Панель директора" Height="550" Width="1050" MinHeight="550" MinWidth="1050" Loaded="Window_Loaded" Closing="Window_Closing">
     <Grid>
         <Grid>
-            <Menu>
-                <MenuItem x:Name="EmployeePage" Header="Сотрудники" FontSize="16" Click="EmployeePage_Click"/>
+            <Menu Background="Aqua">
                 <MenuItem x:Name="TicketPage" Header="Продажи" FontSize="16" Click="TicketPage_Click"/>
-                <MenuItem x:Name="SettingsPage" Header="Настройки" FontSize="16" Click="SettingsPage_Click"/>
             </Menu>
             <WrapPanel HorizontalAlignment="Right">
                 <TextBlock x:Name="CurrentPage" Margin="0,0,10,0" Text="Page" FontSize="16"/>
@@ -19,6 +17,6 @@
             </WrapPanel>
         </Grid>
 
-        <Frame x:Name="PageManager" Content="MainFrame" Margin="0,23.5,0,0" NavigationUIVisibility="Hidden"  Background="Lime"/>
+        <Frame x:Name="PageManager" Content="MainFrame" Margin="0,23.5,0,0" NavigationUIVisibility="Hidden"  Background="White"/>
     </Grid>
 </Window>

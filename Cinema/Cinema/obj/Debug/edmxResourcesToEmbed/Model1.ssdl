@@ -2,9 +2,9 @@
 <Schema Namespace="Хранилище CinemaModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Actor">
     <Key>
-      <PropertyRef Name="IDActors" />
+      <PropertyRef Name="IDActor" />
     </Key>
-    <Property Name="IDActors" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDActor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Surname" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Patronymic" Type="nvarchar(max)" />
@@ -93,6 +93,7 @@
     <Property Name="IDSettings" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="RowHall" Type="int" Nullable="false" />
     <Property Name="PlaceHall" Type="int" Nullable="false" />
+    <Property Name="HiddenPlaces" Type="nvarchar(max)" />
     <Property Name="DateTimeChange" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Ticket">
@@ -110,7 +111,7 @@
     <End Role="ActorsInMovies" Type="Self.ActorsInMovies" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Actor">
-        <PropertyRef Name="IDActors" />
+        <PropertyRef Name="IDActor" />
       </Principal>
       <Dependent Role="ActorsInMovies">
         <PropertyRef Name="IDActor" />

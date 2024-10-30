@@ -7,18 +7,28 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MovieControls" SizeChanged="Page_SizeChanged" Loaded="Page_Loaded">
-    
-    <Grid Background="Lime">
-        <StackPanel>
-            <WrapPanel>
-                <Button x:Name="AddMovie" Content="Добавить" HorizontalAlignment="Left" Width="120" VerticalAlignment="Top" FontSize="16" Click="AddMovie_Click"/>
-                <Button x:Name="RemoveMovie" Content="Удалить" Margin="0,0,10,0" HorizontalAlignment="Left" Width="120" VerticalAlignment="Top" FontSize="16" Click="RemoveMovie_Click"/>
-                <TextBlock Text="Поиск:" Margin="0,0,10,0" FontSize="16" VerticalAlignment="Center"/>
-                <TextBox x:Name="FindData" Margin="0,0,10,0" Width="200" FontSize="16" TextChanged="FindData_TextChanged"/>
-                <TextBlock x:Name="FindCounterData" Text="0/0" FontSize="16"/>
-            </WrapPanel>
 
-            <ListView x:Name="MovieList" Height="400" d:ItemsSource="{d:SampleData ItemCount=2}" MouseDoubleClick="MovieList_MouseDoubleClick">
+    <Grid Background="White">
+        <StackPanel>
+            <Grid Background="Aqua" Height="35">
+                <WrapPanel Margin="10,0,0,0" VerticalAlignment="Center">
+                    <Button x:Name="AddMovie" Content="Добавить" HorizontalAlignment="Left" Width="120" FontSize="16" Background="White" Click="AddMovie_Click"/>
+                    <Button x:Name="RemoveMovie" Content="Удалить" HorizontalAlignment="Left" Width="120" FontSize="16" Background="White" Click="RemoveMovie_Click"/>
+                    <Rectangle Margin="10,0,10,0" Fill="Black" Height="25" Width="2" Opacity="0.2"/>
+                    <TextBlock Text="Поиск:" Margin="0,0,10,0" FontSize="16"/>
+                    <TextBox x:Name="FindData" Width="200" FontSize="16" TextChanged="FindData_TextChanged"/>
+                    <Rectangle Margin="10,0,10,0" Fill="Black" Height="25" Width="2" Opacity="0.2"/>
+                    <TextBlock Text="Найдено: " FontSize="16"/>
+                    <TextBlock x:Name="FindCounterData" Text="0/0" FontSize="16"/>
+                </WrapPanel>
+            </Grid>
+
+            <ListView x:Name="MovieList" Height="400" d:ItemsSource="{d:SampleData ItemCount=2}" ScrollViewer.CanContentScroll="False" MouseDoubleClick="MovieList_MouseDoubleClick">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    </Style>
+                </ListView.ItemContainerStyle>
                 <ListView.View>
                     <GridView>
                         <GridViewColumn x:Name="MovieCodeGrid">
@@ -33,7 +43,7 @@
                             <Label Content="Постер" FontSize="16"/>
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Image Source="{Binding movieCover}" HorizontalAlignment="Center"/>
+                                    <Image Source="{Binding movieCover}" MaxHeight="400" HorizontalAlignment="Center"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>

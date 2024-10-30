@@ -72,7 +72,7 @@ namespace Cinema
                                  actorsInMovies in dataBase.ActorsInMovies on movie.IDMovie equals actorsInMovies.IDMovie into actorsInMoviesGroup
                                  from actorsInMovie in actorsInMoviesGroup.DefaultIfEmpty()
                                  join
-                                 actors in dataBase.Actor on actorsInMovie.IDActor equals actors.IDActors into actorsGroup
+                                 actors in dataBase.Actor on actorsInMovie.IDActor equals actors.IDActor into actorsGroup
                                  from actors in actorsGroup.DefaultIfEmpty()
                                  where (findLine == null || movie.Title.Contains(findLine) || genere.Title.Contains(findLine) || movie.YearOfPublication.ToString().Contains(findLine) || movie.Description.Contains(findLine) || country.Title.Contains(findLine) || actors.Surname.Contains(findLine) || actors.Name.Contains(findLine) || actors.Patronymic.Contains(findLine) || actors.Nickname.Contains(findLine))
                                  select new
@@ -192,7 +192,7 @@ namespace Cinema
             ImageGrid.Width = ActualWidth - ActualWidth * 0.8;
             MovieInfoGrid.Width = ActualWidth - ActualWidth * 0.7;
             DescriptionGrid.Width = ActualWidth - ActualWidth * 0.5;
-            MovieList.Height = ActualHeight - 25;
+            MovieList.Height = ActualHeight - 35;
         }
 
         // Открытие окна редактирования

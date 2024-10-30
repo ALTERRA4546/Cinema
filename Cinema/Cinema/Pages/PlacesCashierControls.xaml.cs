@@ -21,6 +21,7 @@ using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using Org.BouncyCastle.Asn1.Ocsp;
 using static iTextSharp.text.pdf.events.IndexEvents;
 using System.Data.Entity;
+using static Cinema.TicketAnalysis;
 
 namespace Cinema
 {
@@ -36,6 +37,7 @@ namespace Cinema
 
         public int selectedRowNumber;
         public int selectedPlaceNumber;
+        public Button selectedRowPlaceButton;
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -81,6 +83,25 @@ namespace Cinema
                             button.Margin = new Thickness(0, 0, 5, 0);
                             button.Click += HallButton_Click;
 
+                            if (settingsData.HiddenPlaces != null)
+                            {
+                                string[] hidePlaceTemp = settingsData.HiddenPlaces.Split('|');
+                                foreach (var hidePlaceLine in hidePlaceTemp)
+                                {
+                                    Match match = Regex.Match(hidePlaceLine, @"Row(\d+)Place(\d+)");
+
+                                    if (match.Success)
+                                    {
+                                        if (row + 1 == int.Parse(match.Groups[1].Value) + 1 && place == int.Parse(match.Groups[2].Value))
+                                        {
+                                            button.Click -= HallButton_Click;
+                                            button.Opacity = 0;
+                                            button.IsEnabled = false;
+                                        }
+                                    }
+                                }
+                            }
+
                             foreach (var ticketLine in ticketData)
                             {
                                 if (row + 1 == ticketLine.RowNumber && place == ticketLine.PlaceNumber)
@@ -106,7 +127,8 @@ namespace Cinema
                 { 
                     Label lable = new Label();
                     lable.FontSize = 26;
-                    lable.Content = "Зал не размечен администратором.\nОбратитесь с системному администратору.";
+                    lable.Foreground = Brushes.Red;
+                    lable.Content = "Зал не размечен администратором.\rОбратитесь с системному администратору.";
                     lable.HorizontalAlignment = HorizontalAlignment.Center;
                     lable.HorizontalContentAlignment = HorizontalAlignment.Center;
 
@@ -160,12 +182,24 @@ namespace Cinema
 
             if (clickedButton != null)
             {
+                if (selectedRowPlaceButton != null)
+                {
+                    selectedRowPlaceButton.Background = (Brush)(new BrushConverter().ConvertFrom("#FFDDDDDD"));
+                    selectedRowPlaceButton.Foreground = Brushes.Black;
+                    selectedRowPlaceButton.BorderBrush = (Brush)(new BrushConverter().ConvertFrom("#FF707070"));
+                }
+
                 Match match = Regex.Match(clickedButton.Name, @"Row(\d+)Place(\d+)");
 
                 if (match.Success)
                 {
                     selectedRowNumber = int.Parse(match.Groups[1].Value)+1;
                     selectedPlaceNumber = int.Parse(match.Groups[2].Value);
+
+                    clickedButton.Background = Brushes.DeepSkyBlue;
+                    clickedButton.Foreground = Brushes.White;
+                    clickedButton.BorderBrush = Brushes.White;
+                    selectedRowPlaceButton = clickedButton;
                 }
 
                 SelectedPlaceChange();
@@ -197,6 +231,7 @@ namespace Cinema
         {
             selectedRowNumber = 0;
             selectedPlaceNumber = 0;
+            selectedRowPlaceButton = null;
             SelectedPlaceChange();
         }
 
@@ -303,8 +338,12 @@ namespace Cinema
 
                     PrintTicket(newTicket.IDTicket);
 
+                    selectedRowPlaceButton.Background = (Brush)(new BrushConverter().ConvertFrom("#FFDDDDDD"));
+                    selectedRowPlaceButton.BorderBrush = (Brush)(new BrushConverter().ConvertFrom("#FF707070"));
+                    selectedRowPlaceButton.Foreground = Brushes.Red;
+                    selectedRowPlaceButton.IsEnabled = false;
+
                     ClearPlaceChange();
-                    LoadData();
                 }
             }
 

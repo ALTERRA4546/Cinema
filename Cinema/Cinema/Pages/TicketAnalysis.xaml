@@ -8,25 +8,33 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="TicketAnalysis" SizeChanged="Page_SizeChanged" Loaded="Page_Loaded">
 
-    <Grid Background="Lime">
+    <Grid Background="White">
         <StackPanel>
-            <Grid Margin="10,0,0,0">
-                <WrapPanel>
-                    <TextBlock Text="Поиск:" Margin="0,0,10,0" FontSize="16" VerticalAlignment="Center"/>
-                    <TextBox x:Name="FindData" Margin="0,0,10,0" Width="200" FontSize="16" TextChanged="FindData_TextChanged"/>
-                    <CheckBox x:Name="FindDateChecker" Margin="0,6,5,0" Click="FindDateChecker_Click"/>
-                    <TextBlock Text="С:" Margin="0,0,10,0" FontSize="16" VerticalAlignment="Center"/>
+            <Grid Height="35" Background="Aqua">
+                <WrapPanel VerticalAlignment="Center" Margin="10,0,0,0">
+                    <TextBlock Text="Поиск:" Margin="0,0,10,0" FontSize="16"/>
+                    <TextBox x:Name="FindData" Width="200" FontSize="16" TextChanged="FindData_TextChanged"/>
+                    <Rectangle Margin="10,0,10,0" Fill="Black" Height="25" Width="2" Opacity="0.2"/>
+                    <CheckBox x:Name="FindDateChecker" Margin="0,4,5,0" Click="FindDateChecker_Click"/>
+                    <TextBlock Text="С:" Margin="0,0,10,0" FontSize="16"/>
                     <DatePicker x:Name="BeginDate" Margin="0,0,10,0"  FontSize="12" IsEnabled="False" SelectedDateChanged="BeginDate_SelectedDateChanged"/>
-                    <TextBlock Text="по" Margin="0,0,10,0" FontSize="16" VerticalAlignment="Center"/>
-                    <DatePicker x:Name="EndDate" Margin="0,0,10,0"  FontSize="12" IsEnabled="False" SelectedDateChanged="EndDate_SelectedDateChanged"/>
+                    <TextBlock Text="по" Margin="0,0,10,0" FontSize="16"/>
+                    <DatePicker x:Name="EndDate" FontSize="12" IsEnabled="False" SelectedDateChanged="EndDate_SelectedDateChanged"/>
+                    <Rectangle Margin="10,0,10,0" Fill="Black" Height="25" Width="2" Opacity="0.2"/>
+                    <TextBlock Text="Найдено: " FontSize="16"/>
                     <TextBlock x:Name="FindCounterData" Text="0/0" FontSize="16"/>
                 </WrapPanel>
-                <WrapPanel HorizontalAlignment="Right">
-                    <Button x:Name="Print" Content="Печать отчета" FontSize="16" Width="120" Click="Print_Click"/>
+                <WrapPanel HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
+                    <Button x:Name="Print" Content="Печать отчета" FontSize="16" Width="120" Click="Print_Click" Background="White"/>
                 </WrapPanel>
             </Grid>
 
-            <ListView x:Name="TicketList" Height="400" d:ItemsSource="{d:SampleData ItemCount=2}" MouseDoubleClick="TicketList_MouseDoubleClick">
+            <ListView x:Name="TicketList" Height="400" d:ItemsSource="{d:SampleData ItemCount=2}" ScrollViewer.CanContentScroll="False" MouseDoubleClick="TicketList_MouseDoubleClick">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    </Style>
+                </ListView.ItemContainerStyle>
                 <ListView.View>
                     <GridView>
                         <GridViewColumn x:Name="MovieCodeGrid">
@@ -41,7 +49,7 @@
                             <Label Content="Постер" FontSize="16"/>
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Image Source="{Binding ticketMovieCover}" HorizontalAlignment="Center"/>
+                                    <Image Source="{Binding ticketMovieCover}" MaxHeight="400" HorizontalAlignment="Center"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>

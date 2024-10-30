@@ -5,9 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cinema"
         mc:Ignorable="d"
-        Title="Жанр" Height="140" Width="500" Loaded="Window_Loaded">
+        Title="Жанр" Height="160" Width="500" Loaded="Window_Loaded">
     <Grid>
         <StackPanel>
+            <Grid>
+                <Rectangle Fill="Aqua" Height="35"/>
+                <TextBlock Text="ЖАНР" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold"/>
+            </Grid>
             <Grid HorizontalAlignment="Center" Margin="10">
                 <StackPanel>
                     <Grid Margin="0,0,0,10">
@@ -16,7 +20,7 @@
                     </Grid>
                 </StackPanel>
             </Grid>
-            <Button x:Name="Save" Margin="0,0,0,0" Content="Сохранить" Width="250" FontSize="16" Click="Save_Click"/>
+            <Button x:Name="Save" Margin="0,0,0,0" Content="Сохранить" Width="450" FontSize="16" Background="White" Click="Save_Click"/>
         </StackPanel>
     </Grid>
 </Window>

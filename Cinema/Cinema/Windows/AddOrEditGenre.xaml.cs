@@ -71,7 +71,6 @@ namespace Cinema
                     dataBase.SaveChanges();
                 }
 
-                MessageBox.Show("Данные были сохранены","Готово",MessageBoxButton.OK,MessageBoxImage.Information);
                 this.Close();
             }
         }

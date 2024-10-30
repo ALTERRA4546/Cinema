@@ -61,42 +61,82 @@ namespace Cinema
             {
                 sessionCashierDataList.Clear();
 
+                /*var sessionCashierData = (from session in dataBase.Session
+                                          join
+                                          movie in dataBase.Movie on session.IDMovie equals movie.IDMovie into movieGroup
+                                          from movie in movieGroup.DefaultIfEmpty()
+                                          join
+                                          movieGenre in dataBase.MovieGenre on movie.IDMovie equals movieGenre.IDMovie into movieGenreGroup
+                                          from movieGenre in movieGenreGroup.DefaultIfEmpty()
+                                          join
+                                          actorsInMovies in dataBase.ActorsInMovies on movie.IDMovie equals actorsInMovies.IDMovie into actorsInMoviesGroup
+                                          from actorsInMovies in actorsInMoviesGroup.DefaultIfEmpty()
+                                          join
+                                          actors in dataBase.Actor on actorsInMovies.IDActor equals actors.IDActor into actorsGroup
+                                          from actors in actorsGroup.DefaultIfEmpty()
+                                          join
+                                          genre in dataBase.Genre on movieGenre.IDGenre equals genre.IDGenre into genreGroup
+                                          from genre in genreGroup.DefaultIfEmpty()
+                                          join
+                                          country in dataBase.Country on movie.IDCountry equals country.IDCountry into countryGroup
+                                          from country in countryGroup.DefaultIfEmpty()
+                                          join
+                                          ticket in dataBase.Ticket on session.IDSession equals ticket.IDTicket into ticketGroup
+                                          from ticket in ticketGroup.DefaultIfEmpty()
+                                          where ((findLine == null || movie.Title.Contains(findLine) || genre.Title.Contains(findLine) || movie.YearOfPublication.ToString().Contains(findLine) || movie.Description.Contains(findLine) || country.Title.Contains(findLine)) && (findDate.SelectedDate == null || session.DateAndTimeSession == findDate.SelectedDate.Value) && (session.DateAndTimeSession >= DateTime.Now) && (session.IDMovie == TransmittedData.idSelectedCashierMovie))
+                                          select new
+                                          {
+                                              session.IDSession,
+                                              movie.IDMovie,
+                                              movie.Cover,
+                                              movieTitle = movie.Title,
+                                              movieGenere = genre.Title,
+                                              movie.YearOfPublication,
+                                              movie.Timing,
+                                              movie.AgeRating,
+                                              movieCountry = country.Title,
+                                              movieActors = actors.Surname + " " + actors.Name + " " + actors.Patronymic + " " + actors.Nickname,
+                                              session.DateAndTimeSession,
+                                              TicketID = ticket == null ? -1 : ticket.IDTicket,
+                                              session.TicketPrice
+                                          }).ToList();*/
+
                 var sessionCashierData = (from session in dataBase.Session
                                    join
                                    movie in dataBase.Movie on session.IDMovie equals movie.IDMovie into movieGroup
                                    from movie in movieGroup.DefaultIfEmpty()
                                    join
                                    movieGenre in dataBase.MovieGenre on movie.IDMovie equals movieGenre.IDMovie into movieGenereGroup
-                                   from movieGenere in movieGenereGroup.DefaultIfEmpty()
+                                   from movieGenre in movieGenereGroup.DefaultIfEmpty()
                                    join
                                    actorsInMovies in dataBase.ActorsInMovies on movie.IDMovie equals actorsInMovies.IDMovie into actorsInMoviesGroup
-                                   from actorsInMovie in actorsInMoviesGroup.DefaultIfEmpty()
+                                   from actorsInMovies in actorsInMoviesGroup.DefaultIfEmpty()
                                    join
-                                   actors in dataBase.Actor on actorsInMovie.IDActor equals actors.IDActors into actorsGroup
+                                   actors in dataBase.Actor on actorsInMovies.IDActor equals actors.IDActor into actorsGroup
                                    from actors in actorsGroup.DefaultIfEmpty()
                                    join
-                                   genre in dataBase.Genre on movieGenere.IDGenre equals genre.IDGenre into genereGroup
-                                   from genere in genereGroup.DefaultIfEmpty()
+                                   genre in dataBase.Genre on movieGenre.IDGenre equals genre.IDGenre into genreGroup
+                                   from genre in genreGroup.DefaultIfEmpty()
                                    join
                                    country in dataBase.Country on movie.IDCountry equals country.IDCountry into countryGroup
                                    from country in countryGroup.DefaultIfEmpty()
                                    join
                                    ticket in dataBase.Ticket on session.IDSession equals ticket.IDSession into ticketGroup
                                    from ticket in ticketGroup.DefaultIfEmpty()
-                                   where ((findLine == null || movie.Title.Contains(findLine) || genere.Title.Contains(findLine) || movie.YearOfPublication.ToString().Contains(findLine) || movie.Description.Contains(findLine) || country.Title.Contains(findLine)) && (findDate.SelectedDate == null || session.DateAndTimeSession == findDate.SelectedDate.Value) && (session.DateAndTimeSession >= DateTime.Now) && (session.IDMovie == TransmittedData.idSelectedCashierMovie))
+                                   where ((findLine == null || movie.Title.Contains(findLine) || genre.Title.Contains(findLine) || movie.YearOfPublication.ToString().Contains(findLine) || movie.Description.Contains(findLine) || country.Title.Contains(findLine)) && (findDate.SelectedDate == null || session.DateAndTimeSession == findDate.SelectedDate.Value) && (session.DateAndTimeSession >= DateTime.Now) && (session.IDMovie == TransmittedData.idSelectedCashierMovie))
                                    select new
                                    {
                                        session.IDSession,
                                        movie.Cover,
                                        movieTitle = movie.Title,
-                                       movieGenere = genere.Title,
+                                       movieGenere = genre.Title,
                                        movie.YearOfPublication,
                                        movie.Timing,
                                        movie.AgeRating,
                                        movieCountry = country.Title,
                                        movieActors = actors.Surname + " " + actors.Name + " " + actors.Patronymic + " " + actors.Nickname,
                                        session.DateAndTimeSession,
-                                       ticket.IDTicket,
+                                       TicketID = ticket == null ? 0 : ticket.IDTicket,
                                        session.TicketPrice
                                    }).ToList();
 
@@ -191,7 +231,27 @@ namespace Cinema
                     sessionDataClass.sessionCashierTicketPrice = sessionLine.TicketPrice.ToString().Remove(sessionLine.TicketPrice.ToString().Length - 2, 2) + " руб.";
 
                     var seatsHallData = dataBase.Settings.OrderByDescending(o => o.IDSettings).FirstOrDefault();
-                    sessionDataClass.sessionSeatsInHall = sessionLine.TicketCount/((movieGenresCounterTemp-1) * (movieActorCounterTemp - 1)) + "/" + (seatsHallData.RowHall * seatsHallData.PlaceHall);
+                    if (seatsHallData != null)
+                    {
+                        int hidePlaceCount = seatsHallData.HiddenPlaces.Split('|').Count();
+
+                        int purchasedTickets = sessionLine.TicketCount / ((movieGenresCounterTemp - 1) * (movieActorCounterTemp - 1));
+                        int totalTickets = (seatsHallData.RowHall * seatsHallData.PlaceHall) - hidePlaceCount;
+
+                        if (purchasedTickets == 1)
+                        {
+                            var ticketCount = dataBase.Ticket.Where(w=>w.IDSession == sessionLine.IDSession).Count();
+                            sessionDataClass.sessionSeatsInHall = ticketCount + "/" + totalTickets;
+                        }
+                        else
+                        {
+                            sessionDataClass.sessionSeatsInHall = purchasedTickets + "/" + totalTickets;
+                        }
+                    }
+                    else
+                    {
+                        sessionDataClass.sessionSeatsInHall = "Зал не размечен";
+                    }
 
                     sessionCashierDataList.Add(sessionDataClass);
                 }
@@ -208,7 +268,7 @@ namespace Cinema
             SessionInfoGird.Width = ActualWidth - ActualWidth * 0.7;
             SessionDateTimeGrid.Width = ActualWidth - ActualWidth * 0.7;
             SessionPriceGrid.Width = ActualWidth - ActualWidth * 0.8;
-            SessionCashierList.Height = ActualHeight - 25;
+            SessionCashierList.Height = ActualHeight - 35;
         }
 
         private void FindData_TextChanged(object sender, TextChangedEventArgs e)

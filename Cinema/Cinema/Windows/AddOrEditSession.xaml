@@ -5,14 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cinema"
         mc:Ignorable="d"
-        Title="Сеанс" Height="260" Width="520" Loaded="Window_Loaded" ResizeMode="NoResize">
+        Title="Сеанс" Height="280" Width="520" Loaded="Window_Loaded" ResizeMode="NoResize">
     <Grid>
         <StackPanel>
+            <Grid>
+                <Rectangle Fill="Aqua" Height="35"/>
+                <TextBlock Text="СЕАНС" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold"/>
+            </Grid>
             <Grid HorizontalAlignment="Center" Margin="10">
                 <StackPanel>
                     <Grid Margin="0,0,0,10">
                         <Label Content="Фильм:" FontSize="16"/>
-                        <ComboBox x:Name="SessionMovie" HorizontalAlignment="Left" Margin="120,0,0,0" Width="350" FontSize="16"/>
+                        <ComboBox x:Name="SessionMovie" HorizontalAlignment="Left" Margin="120,0,0,0" Width="350" Background="White" FontSize="16"/>
                     </Grid>
                     <Grid Margin="0,0,0,10">
                         <Label Content="Дата сеанса:" FontSize="16"/>
@@ -28,7 +32,7 @@
                     </Grid>
                 </StackPanel>
             </Grid>
-            <Button x:Name="Save" Margin="0,0,0,0" Content="Сохранить" Width="250" FontSize="16" Click="Save_Click"/>
+            <Button x:Name="Save" Margin="0,0,0,0" Content="Сохранить" Width="470" FontSize="16" Background="White" Click="Save_Click"/>
         </StackPanel>
     </Grid>
 </Window>

@@ -6,21 +6,21 @@
       xmlns:local="clr-namespace:Cinema"
       mc:Ignorable="d" 
       d:DesignHeight="550" d:DesignWidth="1050"
-      Title="PlacesCashierControls" Background="lime" Loaded="Page_Loaded" SizeChanged="Page_SizeChanged">
+      Title="PlacesCashierControls" Background="White" Loaded="Page_Loaded" SizeChanged="Page_SizeChanged">
 
     <Grid>
         <StackPanel x:Name="Hall" Margin="0,0,198,0" VerticalAlignment="Center" HorizontalAlignment="Center" SizeChanged="Hall_SizeChanged"/>
             <Grid VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10,0,0,0" Width="200">
-            <Rectangle Fill="Black" Opacity="0.2" />
+            <Rectangle Fill="Aqua" Opacity="0.4" />
             <StackPanel>
                 <TextBlock Text="Бронирование билета" Margin="0,10,0,0" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"/>
                 <StackPanel>
                     <Label Content="Ряд" HorizontalAlignment="Center" FontSize="18"/>
-                    <Label x:Name="SelectedRow" Content="" HorizontalAlignment="Center" FontSize="18"/>
+                    <Label x:Name="SelectedRow" Content="Нет" HorizontalAlignment="Center" FontSize="18"/>
                 </StackPanel>
                 <StackPanel>
                     <Label Content="Место" HorizontalAlignment="Center" FontSize="18"/>
-                    <Label x:Name="SelectedPlace" Content="" HorizontalAlignment="Center" FontSize="18"/>
+                    <Label x:Name="SelectedPlace" Content="Нет" HorizontalAlignment="Center" FontSize="18"/>
                 </StackPanel>
                 <StackPanel>
                     <Label Content="Цена билета" HorizontalAlignment="Center" FontSize="18"/>
@@ -30,7 +30,7 @@
                     <Label Content="Дата и время сеанса" HorizontalAlignment="Center" FontSize="18"/>
                     <Label x:Name="DateTimeSession" Content="" HorizontalAlignment="Center" FontSize="18"/>
                 </StackPanel>
-                <Button x:Name="BookingTicket" Margin="10,0,10,10" Content="Забронировать" FontSize="16" Click="BookingTicket_Click"/>
+                <Button x:Name="BookingTicket" Margin="10,0,10,10" Content="Забронировать" FontSize="16" Background="White" Click="BookingTicket_Click"/>
             </StackPanel>
         </Grid>
     </Grid>

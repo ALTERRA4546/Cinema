@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -28,6 +31,7 @@ namespace Cinema.Pages
 
         public int selectedRowHall;
         public int selectedPlaceHall;
+        public List<string> hidePlace = new List<string>();
 
         private void LoadData()
         {
@@ -55,6 +59,10 @@ namespace Cinema.Pages
                 {
                     SelectedRowHall.SelectedItem = loadData.RowHall;
                     SelectedPlaceHall.SelectedItem = loadData.PlaceHall;
+                    if (loadData.HiddenPlaces != null)
+                    {
+                        CreateHall(loadData.HiddenPlaces.Split('|'));
+                    }
                 }
             }
         }
@@ -97,20 +105,21 @@ namespace Cinema.Pages
         private void SelectedRowHall_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             selectedRowHall = (int)SelectedRowHall.SelectedItem;
-            CreateHall();
+            CreateHall(null);
         }
 
         private void SelectedPlaceHall_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             selectedPlaceHall = (int)SelectedPlaceHall.SelectedItem;
-            CreateHall();
+            CreateHall(null);
         }
 
-        private void CreateHall()
+        private void CreateHall(string[] hidePlaceLoadData)
         {
             if (selectedRowHall != 0 && selectedPlaceHall != 0)
             {
                 Hall.Children.Clear();
+                hidePlace.Clear();
 
                 for (int row = 0; row < selectedRowHall; row++)
                 {
@@ -133,10 +142,30 @@ namespace Cinema.Pages
                         Button button = new Button();
                         button.Content = place;
                         button.Name = $"Row{row}Place{place}";
+                        button.Click += HidePlace_Click;
                         button.Width = 18;
                         button.Height = 18;
                         button.FontSize = 10;
                         button.Margin = new Thickness(0, 0, 5, 0);
+
+                        if (hidePlaceLoadData != null)
+                        {
+                            foreach (var hidePlaceLine in hidePlaceLoadData)
+                            {
+                                Match match = Regex.Match(hidePlaceLine, @"Row(\d+)Place(\d+)");
+
+                                if (match.Success)
+                                {
+                                    if (row + 1 == int.Parse(match.Groups[1].Value) + 1 && place == int.Parse(match.Groups[2].Value))
+                                    {
+                                        button.Tag = button.Name;
+                                        button.Content = "";
+                                        button.Opacity = 0.2;
+                                        hidePlace.Add(button.Tag.ToString());
+                                    }
+                                }
+                            }
+                        }
 
                         wrapPanel.Children.Add(button);
                     }
@@ -152,6 +181,27 @@ namespace Cinema.Pages
             }
         }
 
+        private void HidePlace_Click(object sender, RoutedEventArgs e)
+        { 
+            Button button = (Button)sender;
+
+            if (button.Content.ToString() != "")
+            {
+                button.Tag = button.Name;
+                button.Content = "";
+                button.Opacity = 0.2;
+                hidePlace.Add(button.Tag.ToString());
+            }
+            else
+            {
+                button.Name = button.Tag.ToString();
+                button.Content = int.Parse(Regex.Match(button.Name, @"Row(\d+)Place(\d+)").Groups[2].Value);
+                button.Tag = null;
+                button.Opacity = 1;
+                hidePlace.Remove(hidePlace.FirstOrDefault(w => w == button.Name.ToString()));
+            }
+        }
+
         private void SaveHallSettings_Click(object sender, RoutedEventArgs e)
         {
             using (var dataBase = new CinemaEntities())
@@ -161,6 +211,21 @@ namespace Cinema.Pages
                 newHall.RowHall = (int)SelectedRowHall.SelectedItem;
                 newHall.PlaceHall = (int)SelectedPlaceHall.SelectedItem;
                 newHall.DateTimeChange = DateTime.Now;
+
+                string hidePlaceTemp = null;
+                foreach (var hidePlaceLine in hidePlace)
+                {
+                    if (hidePlaceLine != hidePlace.LastOrDefault())
+                    {
+                        hidePlaceTemp += hidePlaceLine + "|";
+                    }
+                    else
+                    {
+                        hidePlaceTemp += hidePlaceLine;
+                    }
+                }
+
+                newHall.HiddenPlaces = hidePlaceTemp;
 
                 dataBase.Settings.Add(newHall);
                 dataBase.SaveChanges();

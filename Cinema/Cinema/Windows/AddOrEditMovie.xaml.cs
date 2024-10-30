@@ -45,7 +45,7 @@ namespace Cinema
             using (var dataBase = new CinemaEntities())
             {
                 var genreAllData = dataBase.Genre.Select(s => new { s.IDGenre, s.Title }).ToList();
-                var actorAllData = dataBase.Actor.Select(s => new { s.IDActors, s.Surname, s.Name, s.Patronymic, s.Nickname }).ToList();
+                var actorAllData = dataBase.Actor.Select(s => new { s.IDActor, s.Surname, s.Name, s.Patronymic, s.Nickname }).ToList();
 
                 MovieGenreGrid.ItemsSource = genreAllData;
                 MovieActorGrid.ItemsSource = actorAllData;
@@ -99,12 +99,12 @@ namespace Cinema
 
                     var actorData = (from actor in dataBase.Actor
                                      join
-                                     actorInMovie in dataBase.ActorsInMovies on actor.IDActors equals actorInMovie.IDActor into actorInMovieGroup
+                                     actorInMovie in dataBase.ActorsInMovies on actor.IDActor equals actorInMovie.IDActor into actorInMovieGroup
                                      from actorInMovie in actorInMovieGroup.DefaultIfEmpty()
                                      where (actorInMovie.IDMovie == TransmittedData.idSelectedMovie)
                                      select new
                                      {
-                                         actor.IDActors,
+                                         actor.IDActor,
                                          actor.Surname,
                                          actor.Name,
                                          actor.Patronymic,
@@ -113,7 +113,7 @@ namespace Cinema
 
                     foreach (var actorLine in actorData)
                     {
-                        selectedActor.Add(actorLine.IDActors);
+                        selectedActor.Add(actorLine.IDActor);
                     }
 
                     MovieTitle.Text = movieData.movieTitle;
@@ -125,7 +125,7 @@ namespace Cinema
 
                     if (movieData.Cover != null)
                     {
-                        this.Height = 750;
+                        this.Height = 780;
                         MovieCover.Visibility = Visibility.Visible;
 
                         BitmapImage bitmapImage = new BitmapImage();
@@ -164,13 +164,13 @@ namespace Cinema
         private void LoadCover_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "PNG (*.png)|*.png|JPG (*.jpg)|*.jpg";
+            openFileDialog.Filter = "JPG (*.jpg)|*.jpg|PNG (*.png)|*.png";
 
             if(openFileDialog.ShowDialog() == true)
             {
                 coverPath = openFileDialog.FileName;
 
-                this.Height = 750;
+                this.Height = 780;
                 MovieCover.Visibility = Visibility.Visible;
                 MovieCover.Source = new BitmapImage (new Uri(openFileDialog.FileName));
             }
@@ -276,7 +276,7 @@ namespace Cinema
                     dataBase.SaveChanges();
                 }
 
-                MessageBox.Show("Фильм был добавлен","Готово",MessageBoxButton.OK,MessageBoxImage.Information);
+                MessageBox.Show("Данные сохранены","Готово",MessageBoxButton.OK,MessageBoxImage.Information);
                 this.Close();
             }
         }
@@ -445,7 +445,7 @@ namespace Cinema
                     DataGridRow row = (DataGridRow)MovieActorGrid.ItemContainerGenerator.ContainerFromIndex(MovieActorGrid.SelectedIndex) as DataGridRow;
                     DataGridCell cell = MovieActorGrid.Columns[0].GetCellContent(row).Parent as DataGridCell;
                     int selectedActor = Convert.ToInt32(((TextBlock)cell.Content).Text);
-                    var removeActor = dataBase.Actor.Where(w => w.IDActors == selectedActor).FirstOrDefault();
+                    var removeActor = dataBase.Actor.Where(w => w.IDActor == selectedActor).FirstOrDefault();
                     var removeActorInMovie = dataBase.ActorsInMovies.Where(w => w.IDActor == selectedActor).ToList();
 
                     if (removeActorInMovie.Count != 0)

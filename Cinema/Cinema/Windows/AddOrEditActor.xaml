@@ -5,9 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cinema"
         mc:Ignorable="d"
-        Title="Актер" Height="330" Width="500" Loaded="Window_Loaded" ResizeMode="NoResize">
+        Title="Актер" Height="350" Width="500" Loaded="Window_Loaded" ResizeMode="NoResize">
     <Grid>
         <StackPanel>
+            <Grid>
+                <Rectangle Fill="Aqua" Height="35"/>
+                <TextBlock Text="АКТЕР" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold"/>
+            </Grid>
             <Grid HorizontalAlignment="Center" Margin="10">
                 <StackPanel>
                     <Grid Margin="0,0,0,10">
@@ -32,12 +36,12 @@
                                 <Label Content="Фотография:" FontSize="16"/>
                                 <Image x:Name="ActorPhoto" HorizontalAlignment="Left" Margin="170,0,0,0" Width="200" Height="200" Visibility="Collapsed"/>
                             </Grid>
-                            <Button x:Name="LoadPhoto" HorizontalAlignment="Left" Margin="170,0,0,0" Content="Загрузить" Width="200" FontSize="16" Click="LoadPhoto_Click"/>
+                            <Button x:Name="LoadPhoto" HorizontalAlignment="Left" Margin="170,0,0,0" Content="Загрузить" Width="200" FontSize="16" Background="White" Click="LoadPhoto_Click"/>
                         </StackPanel>
                     </Grid>
                 </StackPanel>
             </Grid>
-            <Button x:Name="Save" Margin="0,0,0,0" Content="Сохранить" Width="250" FontSize="16" Click="Save_Click"/>
+            <Button x:Name="Save" Margin="0,0,0,0" Content="Сохранить" Width="450" FontSize="16" Background="White" Click="Save_Click"/>
         </StackPanel>
     </Grid>
 </Window>

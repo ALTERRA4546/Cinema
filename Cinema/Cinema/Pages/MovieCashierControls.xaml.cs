@@ -73,7 +73,7 @@ namespace Cinema
                                  actorsInMovies in dataBase.ActorsInMovies on movie.IDMovie equals actorsInMovies.IDMovie into actorsInMoviesGroup
                                  from actorsInMovie in actorsInMoviesGroup.DefaultIfEmpty()
                                  join
-                                 actors in dataBase.Actor on actorsInMovie.IDActor equals actors.IDActors into actorsGroup
+                                 actors in dataBase.Actor on actorsInMovie.IDActor equals actors.IDActor into actorsGroup
                                  from actors in actorsGroup.DefaultIfEmpty()
                                  join
                                  session in dataBase.Session on movie.IDMovie equals session.IDMovie into sessionGroup
@@ -202,7 +202,7 @@ namespace Cinema
             ImageGrid.Width = ActualWidth - ActualWidth * 0.8;
             MovieInfoGrid.Width = ActualWidth - ActualWidth * 0.7;
             DescriptionGrid.Width = ActualWidth - ActualWidth * 0.5;
-            MovieCashierList.Height = ActualHeight - 25;
+            MovieCashierList.Height = ActualHeight - 35;
         }
 
         // Поиск фильмов

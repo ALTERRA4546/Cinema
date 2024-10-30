@@ -3,12 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\King Night\\source\\repos\\Cinema\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3993BFA8-E902-444D-8854-D5F40062237E}|Cinema\\Cinema.csproj|C:\\Users\\King Night\\source\\repos\\Cinema\\cinema\\windows\\authorization.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{3993BFA8-E902-444D-8854-D5F40062237E}|Cinema\\Cinema.csproj|c:\\users\\king night\\source\\repos\\cinema\\cinema\\windows\\authorization.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{3993BFA8-E902-444D-8854-D5F40062237E}|Cinema\\Cinema.csproj|solutionrelative:cinema\\windows\\authorization.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3993BFA8-E902-444D-8854-D5F40062237E}|Cinema\\Cinema.csproj|c:\\users\\king night\\source\\repos\\cinema\\cinema\\windows\\authorization.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3993BFA8-E902-444D-8854-D5F40062237E}|Cinema\\Cinema.csproj|solutionrelative:cinema\\windows\\authorization.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 209,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,19 +26,6 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Authorization.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\King Night\\source\\repos\\Cinema\\Cinema\\Windows\\Authorization.xaml.cs",
-              "RelativeDocumentMoniker": "Cinema\\Windows\\Authorization.xaml.cs",
-              "ToolTip": "C:\\Users\\King Night\\source\\repos\\Cinema\\Cinema\\Windows\\Authorization.xaml.cs",
-              "RelativeToolTip": "Cinema\\Windows\\Authorization.xaml.cs",
-              "ViewState": "AgIAAFEAAAAAAAAAAAAqwGIAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T18:47:30.453Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Authorization.xaml",
               "DocumentMoniker": "C:\\Users\\King Night\\source\\repos\\Cinema\\Cinema\\Windows\\Authorization.xaml",
@@ -50,7 +33,7 @@
               "ToolTip": "C:\\Users\\King Night\\source\\repos\\Cinema\\Cinema\\Windows\\Authorization.xaml",
               "RelativeToolTip": "Cinema\\Windows\\Authorization.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-10-10T18:47:20.422Z",
+              "WhenOpened": "2024-10-30T20:52:45.079Z",
               "EditorCaption": ""
             }
           ]

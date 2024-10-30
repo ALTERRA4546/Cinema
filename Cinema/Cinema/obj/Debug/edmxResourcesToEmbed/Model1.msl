@@ -9,7 +9,7 @@
           <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Surname" ColumnName="Surname" />
-          <ScalarProperty Name="IDActors" ColumnName="IDActors" />
+          <ScalarProperty Name="IDActor" ColumnName="IDActor" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -100,6 +100,7 @@
       <EntityTypeMapping TypeName="CinemaModel.Settings">
         <MappingFragment StoreEntitySet="Settings">
           <ScalarProperty Name="DateTimeChange" ColumnName="DateTimeChange" />
+          <ScalarProperty Name="HiddenPlaces" ColumnName="HiddenPlaces" />
           <ScalarProperty Name="PlaceHall" ColumnName="PlaceHall" />
           <ScalarProperty Name="RowHall" ColumnName="RowHall" />
           <ScalarProperty Name="IDSettings" ColumnName="IDSettings" />

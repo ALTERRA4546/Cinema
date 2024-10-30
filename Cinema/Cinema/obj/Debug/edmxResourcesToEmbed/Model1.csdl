@@ -51,9 +51,9 @@
   </EntityContainer>
   <EntityType Name="Actor">
     <Key>
-      <PropertyRef Name="IDActors" />
+      <PropertyRef Name="IDActor" />
     </Key>
-    <Property Name="IDActors" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDActor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Surname" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Patronymic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -158,6 +158,7 @@
     <Property Name="IDSettings" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="RowHall" Type="Int32" Nullable="false" />
     <Property Name="PlaceHall" Type="Int32" Nullable="false" />
+    <Property Name="HiddenPlaces" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="DateTimeChange" Type="DateTime" Nullable="false" Precision="3" />
   </EntityType>
   <EntityType Name="Ticket">
@@ -177,7 +178,7 @@
     <End Type="CinemaModel.ActorsInMovies" Role="ActorsInMovies" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Actor">
-        <PropertyRef Name="IDActors" />
+        <PropertyRef Name="IDActor" />
       </Principal>
       <Dependent Role="ActorsInMovies">
         <PropertyRef Name="IDActor" />

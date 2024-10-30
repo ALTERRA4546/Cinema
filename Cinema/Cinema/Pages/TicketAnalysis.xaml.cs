@@ -61,7 +61,10 @@ namespace Cinema
             {
                 ticketDataList.Clear();
 
-                var ticketData = (from session in dataBase.Session
+                var ticketData = (from ticket in dataBase.Ticket
+                                 join
+                                 session in dataBase.Session on ticket.IDSession equals session.IDSession into SessionGroup
+                                 from session in SessionGroup.DefaultIfEmpty()
                                  join
                                  movie in dataBase.Movie on session.IDMovie equals movie.IDMovie into movieGroup
                                  from movie in movieGroup.DefaultIfEmpty()
@@ -69,7 +72,7 @@ namespace Cinema
                                  actorsInMovies in dataBase.ActorsInMovies on movie.IDMovie equals actorsInMovies.IDMovie into actorsInMoviesGroup
                                  from actorsInMovie in actorsInMoviesGroup.DefaultIfEmpty()
                                  join
-                                 actors in dataBase.Actor on actorsInMovie.IDActor equals actors.IDActors into actorsGroup
+                                 actors in dataBase.Actor on actorsInMovie.IDActor equals actors.IDActor into actorsGroup
                                  from actors in actorsGroup.DefaultIfEmpty()
                                  join
                                  movieGenre in dataBase.MovieGenre on movie.IDMovie equals movieGenre.IDMovie into movieGenereGroup
@@ -80,9 +83,6 @@ namespace Cinema
                                  join
                                  country in dataBase.Country on movie.IDCountry equals country.IDCountry into countryGroup
                                  from country in countryGroup.DefaultIfEmpty()
-                                 join
-                                 ticket in dataBase.Ticket on session.IDSession equals ticket.IDSession into ticketGroup
-                                 from ticket in ticketGroup.DefaultIfEmpty()
                                  where ((findLine == null || movie.Title.Contains(findLine) || genre.Title.Contains(findLine) || movie.YearOfPublication.ToString().Contains(findLine) || movie.Description.Contains(findLine) || country.Title.Contains(findLine)) && ((beginDate.SelectedDate == null || session.DateAndTimeSession > beginDate.SelectedDate.Value) && (endDate.SelectedDate == null || session.DateAndTimeSession < endDate.SelectedDate.Value)))
                                  select new
                                  {
@@ -193,7 +193,21 @@ namespace Cinema
                     ticketDataList.Add(ticketDataClass);
                 }
 
-                var fullMovieData = dataBase.Movie.ToList();
+                var fullMovieData = (from ticket in dataBase.Ticket
+                                     join
+                                     session in dataBase.Session on ticket.IDSession equals session.IDSession into sessionGroup
+                                     from session in sessionGroup.DefaultIfEmpty()
+                                     join
+                                     movie in dataBase.Movie on session.IDMovie equals movie.IDMovie into movieGroup
+                                     from movie in movieGroup.DefaultIfEmpty()
+                                     group ticket by movie into movieTickets
+                                     where movieTickets.Count() > 1
+                                     select new
+                                     {
+                                         Movie = movieTickets.Key,
+                                         TicketCount = movieTickets.Count()
+                                     }).ToList();
+
                 FindCounterData.Text = result.Count() + "/" + fullMovieData.Count();
 
                 TicketList.Items.Refresh();
@@ -206,7 +220,7 @@ namespace Cinema
             ImageGrid.Width = ActualWidth - ActualWidth * 0.8;
             MovieInfoGrid.Width = ActualWidth - ActualWidth * 0.6;
             AnalyticsGrid.Width = ActualWidth - ActualWidth * 0.6;
-            TicketList.Height = ActualHeight - 25;
+            TicketList.Height = ActualHeight - 35;
         }
 
         private void BeginDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)

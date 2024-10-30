@@ -20,7 +20,7 @@ namespace Cinema
             this.ActorsInMovies = new HashSet<ActorsInMovies>();
         }
     
-        public int IDActors { get; set; }
+        public int IDActor { get; set; }
         public string Surname { get; set; }
         public string Name { get; set; }
         public string Patronymic { get; set; }

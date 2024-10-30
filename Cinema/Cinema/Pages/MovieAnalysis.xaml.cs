@@ -115,7 +115,7 @@ namespace Cinema
             SessionCodeGrid.Width = 0;
             SessionInformationGrid.Width = ActualWidth - ActualWidth * 0.5;
             AnalyticsGrid.Width = ActualWidth - ActualWidth * 0.5;
-            SessionList.Height = ActualHeight - 25;
+            SessionList.Height = ActualHeight - 35;
         }
 
         private void GoBackPage_Click(object sender, RoutedEventArgs e)

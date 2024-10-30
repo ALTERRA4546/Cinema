@@ -7,9 +7,9 @@
     <Schema Namespace="Хранилище CinemaModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Actor">
           <Key>
-            <PropertyRef Name="IDActors" />
+            <PropertyRef Name="IDActor" />
           </Key>
-          <Property Name="IDActors" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDActor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Surname" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Patronymic" Type="nvarchar(max)" />
@@ -98,6 +98,7 @@
           <Property Name="IDSettings" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RowHall" Type="int" Nullable="false" />
           <Property Name="PlaceHall" Type="int" Nullable="false" />
+          <Property Name="HiddenPlaces" Type="nvarchar(max)" />
           <Property Name="DateTimeChange" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Ticket">
@@ -115,7 +116,7 @@
           <End Role="ActorsInMovies" Type="Self.ActorsInMovies" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Actor">
-              <PropertyRef Name="IDActors" />
+              <PropertyRef Name="IDActor" />
             </Principal>
             <Dependent Role="ActorsInMovies">
               <PropertyRef Name="IDActor" />
@@ -322,9 +323,9 @@
         </EntityContainer>
         <EntityType Name="Actor">
           <Key>
-            <PropertyRef Name="IDActors" />
+            <PropertyRef Name="IDActor" />
           </Key>
-          <Property Name="IDActors" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDActor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Surname" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Patronymic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -429,6 +430,7 @@
           <Property Name="IDSettings" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RowHall" Type="Int32" Nullable="false" />
           <Property Name="PlaceHall" Type="Int32" Nullable="false" />
+          <Property Name="HiddenPlaces" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DateTimeChange" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="Ticket">
@@ -448,7 +450,7 @@
           <End Type="CinemaModel.ActorsInMovies" Role="ActorsInMovies" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Actor">
-              <PropertyRef Name="IDActors" />
+              <PropertyRef Name="IDActor" />
             </Principal>
             <Dependent Role="ActorsInMovies">
               <PropertyRef Name="IDActor" />
@@ -565,7 +567,7 @@
                 <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Surname" ColumnName="Surname" />
-                <ScalarProperty Name="IDActors" ColumnName="IDActors" />
+                <ScalarProperty Name="IDActor" ColumnName="IDActor" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -656,6 +658,7 @@
             <EntityTypeMapping TypeName="CinemaModel.Settings">
               <MappingFragment StoreEntitySet="Settings">
                 <ScalarProperty Name="DateTimeChange" ColumnName="DateTimeChange" />
+                <ScalarProperty Name="HiddenPlaces" ColumnName="HiddenPlaces" />
                 <ScalarProperty Name="PlaceHall" ColumnName="PlaceHall" />
                 <ScalarProperty Name="RowHall" ColumnName="RowHall" />
                 <ScalarProperty Name="IDSettings" ColumnName="IDSettings" />

@@ -85,6 +85,12 @@ namespace Cinema
                         directorsPanel.Show();
                         this.Hide();
                         break;
+
+                    case "Администратор":
+                        AdminPanel adminPanel = new AdminPanel();
+                        adminPanel.Show();
+                        this.Hide();
+                        break;
                 }
             }
             else

@@ -41,7 +41,7 @@ namespace Cinema
             {
                 if (TransmittedData.idSelectedActor != -1)
                 {
-                    var actorData = dataBase.Actor.Where(w => w.IDActors == TransmittedData.idSelectedActor).FirstOrDefault();
+                    var actorData = dataBase.Actor.Where(w => w.IDActor == TransmittedData.idSelectedActor).FirstOrDefault();
 
                     ActorSurname.Text = actorData.Surname;
                     ActorName.Text = actorData.Name;
@@ -55,7 +55,7 @@ namespace Cinema
                         bitmapImage.StreamSource = new MemoryStream(actorData.Image);
                         bitmapImage.EndInit();
 
-                        this.Height = 495;
+                        this.Height = 515;
                         ActorPhoto.Visibility = Visibility.Visible;
                         ActorPhoto.Source = bitmapImage;
                     }                       
@@ -72,7 +72,7 @@ namespace Cinema
             {
                 actorPhotoPath = openFileDialog.FileName;
 
-                this.Height = 495;
+                this.Height = 515;
                 ActorPhoto.Visibility = Visibility.Visible;
                 ActorPhoto.Source = new BitmapImage(new Uri(openFileDialog.FileName));
             }
@@ -90,7 +90,7 @@ namespace Cinema
             {
                 if (TransmittedData.idSelectedActor != -1)
                 {
-                    var actorData = dataBase.Actor.Where(w => w.IDActors == TransmittedData.idSelectedActor).FirstOrDefault();
+                    var actorData = dataBase.Actor.Where(w => w.IDActor == TransmittedData.idSelectedActor).FirstOrDefault();
 
                     actorData.Surname = ActorSurname.Text;
                     actorData.Name = ActorName.Text;
@@ -122,7 +122,6 @@ namespace Cinema
                     dataBase.SaveChanges();
                 }
 
-                MessageBox.Show("Данные были сохранены", "Готово", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Close();
             }
         }

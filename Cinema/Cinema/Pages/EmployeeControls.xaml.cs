@@ -122,7 +122,7 @@ namespace Cinema
             ImageGrid.Width = ActualWidth - ActualWidth * 0.8;
             EmployeeInfoGrid.Width = ActualWidth - ActualWidth * 0.6;
             AuthorizationGrid.Width = ActualWidth - ActualWidth * 0.6;
-            EmployeeList.Height = ActualHeight - 25;
+            EmployeeList.Height = ActualHeight - 35;
         }
 
         private void FindData_TextChanged(object sender, TextChangedEventArgs e)

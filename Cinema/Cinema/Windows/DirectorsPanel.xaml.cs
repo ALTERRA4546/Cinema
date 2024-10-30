@@ -36,12 +36,6 @@ namespace Cinema
             CurrentPage.Text = "Сотрудники";
         }
 
-        private void EmployeePage_Click(object sender, RoutedEventArgs e)
-        {
-            PageManager.Navigate(new EmployeeControls());
-            CurrentPage.Text = "Сотрудники";           
-        }
-
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             exitMode = true;
@@ -82,12 +76,6 @@ namespace Cinema
             {
                 Application.Current.Shutdown();
             }
-        }
-
-        private void SettingsPage_Click(object sender, RoutedEventArgs e)
-        {
-            PageManager.Navigate(new SettingsControls());
-            CurrentPage.Text = "Настройки";
         }
     }
 }
