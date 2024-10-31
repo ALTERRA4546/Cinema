@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cinema"
         mc:Ignorable="d"
-        Title="Актер" Height="350" Width="500" Loaded="Window_Loaded" ResizeMode="NoResize">
+        Title="Актер" Height="370" Width="500" Loaded="Window_Loaded" ResizeMode="NoResize">
     <Grid>
         <StackPanel>
             <Grid>

@@ -55,7 +55,7 @@ namespace Cinema
                         bitmapImage.StreamSource = new MemoryStream(actorData.Image);
                         bitmapImage.EndInit();
 
-                        this.Height = 515;
+                        this.Height = 535;
                         ActorPhoto.Visibility = Visibility.Visible;
                         ActorPhoto.Source = bitmapImage;
                     }                       
@@ -72,7 +72,7 @@ namespace Cinema
             {
                 actorPhotoPath = openFileDialog.FileName;
 
-                this.Height = 515;
+                this.Height = 535;
                 ActorPhoto.Visibility = Visibility.Visible;
                 ActorPhoto.Source = new BitmapImage(new Uri(openFileDialog.FileName));
             }

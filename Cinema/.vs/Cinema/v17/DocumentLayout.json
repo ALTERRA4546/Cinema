@@ -3,8 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\King Night\\source\\repos\\Cinema\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3993BFA8-E902-444D-8854-D5F40062237E}|Cinema\\Cinema.csproj|c:\\users\\king night\\source\\repos\\cinema\\cinema\\windows\\authorization.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{3993BFA8-E902-444D-8854-D5F40062237E}|Cinema\\Cinema.csproj|c:\\users\\king night\\source\\repos\\cinema\\cinema\\windows\\addoreditmovie.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3993BFA8-E902-444D-8854-D5F40062237E}|Cinema\\Cinema.csproj|solutionrelative:cinema\\windows\\addoreditmovie.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3993BFA8-E902-444D-8854-D5F40062237E}|Cinema\\Cinema.csproj|C:\\Users\\King Night\\source\\repos\\Cinema\\cinema\\windows\\authorization.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3993BFA8-E902-444D-8854-D5F40062237E}|Cinema\\Cinema.csproj|solutionrelative:cinema\\windows\\authorization.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3993BFA8-E902-444D-8854-D5F40062237E}|Cinema\\Cinema.csproj|C:\\Users\\King Night\\source\\repos\\Cinema\\cinema\\windows\\authorization.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{3993BFA8-E902-444D-8854-D5F40062237E}|Cinema\\Cinema.csproj|solutionrelative:cinema\\windows\\authorization.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3993BFA8-E902-444D-8854-D5F40062237E}|Cinema\\Cinema.csproj|c:\\users\\king night\\source\\repos\\cinema\\cinema\\pages\\placescashiercontrols.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3993BFA8-E902-444D-8854-D5F40062237E}|Cinema\\Cinema.csproj|solutionrelative:cinema\\pages\\placescashiercontrols.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3993BFA8-E902-444D-8854-D5F40062237E}|Cinema\\Cinema.csproj|c:\\users\\king night\\source\\repos\\cinema\\cinema\\pages\\sessioncontrols.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3993BFA8-E902-444D-8854-D5F40062237E}|Cinema\\Cinema.csproj|solutionrelative:cinema\\pages\\sessioncontrols.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3993BFA8-E902-444D-8854-D5F40062237E}|Cinema\\Cinema.csproj|c:\\users\\king night\\source\\repos\\cinema\\cinema\\pages\\sessioncashiercontrols.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3993BFA8-E902-444D-8854-D5F40062237E}|Cinema\\Cinema.csproj|solutionrelative:cinema\\pages\\sessioncashiercontrols.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,6 +47,45 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "AddOrEditMovie.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\King Night\\source\\repos\\Cinema\\Cinema\\Windows\\AddOrEditMovie.xaml.cs",
+              "RelativeDocumentMoniker": "Cinema\\Windows\\AddOrEditMovie.xaml.cs",
+              "ToolTip": "C:\\Users\\King Night\\source\\repos\\Cinema\\Cinema\\Windows\\AddOrEditMovie.xaml.cs",
+              "RelativeToolTip": "Cinema\\Windows\\AddOrEditMovie.xaml.cs",
+              "ViewState": "AgIAAPgAAAAAAAAAAAAAwBYBAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-31T19:20:46.233Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PlacesCashierControls.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\King Night\\source\\repos\\Cinema\\Cinema\\Pages\\PlacesCashierControls.xaml.cs",
+              "RelativeDocumentMoniker": "Cinema\\Pages\\PlacesCashierControls.xaml.cs",
+              "ToolTip": "C:\\Users\\King Night\\source\\repos\\Cinema\\Cinema\\Pages\\PlacesCashierControls.xaml.cs",
+              "RelativeToolTip": "Cinema\\Pages\\PlacesCashierControls.xaml.cs",
+              "ViewState": "AgIAAN0AAAAAAAAAAAAawO4AAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-31T18:13:41.368Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SessionControls.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\King Night\\source\\repos\\Cinema\\Cinema\\Pages\\SessionControls.xaml.cs",
+              "RelativeDocumentMoniker": "Cinema\\Pages\\SessionControls.xaml.cs",
+              "ToolTip": "C:\\Users\\King Night\\source\\repos\\Cinema\\Cinema\\Pages\\SessionControls.xaml.cs",
+              "RelativeToolTip": "Cinema\\Pages\\SessionControls.xaml.cs",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAAAF0AAABpAQAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-31T18:08:10.611Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Authorization.xaml",
               "DocumentMoniker": "C:\\Users\\King Night\\source\\repos\\Cinema\\Cinema\\Windows\\Authorization.xaml",
               "RelativeDocumentMoniker": "Cinema\\Windows\\Authorization.xaml",
@@ -34,6 +93,32 @@
               "RelativeToolTip": "Cinema\\Windows\\Authorization.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2024-10-30T20:52:45.079Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Authorization.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\King Night\\source\\repos\\Cinema\\Cinema\\Windows\\Authorization.xaml.cs",
+              "RelativeDocumentMoniker": "Cinema\\Windows\\Authorization.xaml.cs",
+              "ToolTip": "C:\\Users\\King Night\\source\\repos\\Cinema\\Cinema\\Windows\\Authorization.xaml.cs",
+              "RelativeToolTip": "Cinema\\Windows\\Authorization.xaml.cs",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAAwGgAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-31T16:35:42.036Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SessionCashierControls.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\King Night\\source\\repos\\Cinema\\Cinema\\Pages\\SessionCashierControls.xaml.cs",
+              "RelativeDocumentMoniker": "Cinema\\Pages\\SessionCashierControls.xaml.cs",
+              "ToolTip": "C:\\Users\\King Night\\source\\repos\\Cinema\\Cinema\\Pages\\SessionCashierControls.xaml.cs",
+              "RelativeToolTip": "Cinema\\Pages\\SessionCashierControls.xaml.cs",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAQwGEAAADDAQAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-31T18:31:53.382Z",
               "EditorCaption": ""
             }
           ]

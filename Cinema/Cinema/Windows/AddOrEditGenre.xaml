@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cinema"
         mc:Ignorable="d"
-        Title="Жанр" Height="160" Width="500" Loaded="Window_Loaded">
+        Title="Жанр" Height="180" Width="500" ResizeMode="NoResize" Loaded="Window_Loaded">
     <Grid>
         <StackPanel>
             <Grid>

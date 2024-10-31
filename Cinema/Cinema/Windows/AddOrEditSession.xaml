@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cinema"
         mc:Ignorable="d"
-        Title="Сеанс" Height="280" Width="520" Loaded="Window_Loaded" ResizeMode="NoResize">
+        Title="Сеанс" Height="300" Width="520" Loaded="Window_Loaded" ResizeMode="NoResize">
     <Grid>
         <StackPanel>
             <Grid>
@@ -16,7 +16,7 @@
                 <StackPanel>
                     <Grid Margin="0,0,0,10">
                         <Label Content="Фильм:" FontSize="16"/>
-                        <ComboBox x:Name="SessionMovie" HorizontalAlignment="Left" Margin="120,0,0,0" Width="350" Background="White" FontSize="16"/>
+                        <ComboBox x:Name="SessionMovie" HorizontalAlignment="Left" Margin="120,0,0,0" Width="350" Background="White" FontSize="16" SelectedIndex="0"/>
                     </Grid>
                     <Grid Margin="0,0,0,10">
                         <Label Content="Дата сеанса:" FontSize="16"/>

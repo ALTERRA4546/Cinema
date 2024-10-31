@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cinema"
         mc:Ignorable="d"
-        Title="Авторизация" Height="240" Width="400" ResizeMode="NoResize" Loaded="Window_Loaded">
+        Title="Авторизация" Height="240" Width="400" ResizeMode="NoResize" Loaded="Window_Loaded" Closing="Window_Closing">
     <Grid>
         <StackPanel>
             <Grid Margin="0,0,0,10">
@@ -25,12 +25,12 @@
                     <Label Content="Пароль" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="16"/>
                     <TextBox x:Name="Password" HorizontalAlignment="Left" Margin="80,0,0,0" VerticalAlignment="Center" Width="250" Height="24" FontSize="16" KeyDown="Password_KeyDown"/>
                 </Grid>
-                <Button x:Name="Enter" Content="Войти" Margin="0,10,0,0" Width="200" FontSize="16" HorizontalAlignment="Center" Click="Enter_Click"/>
+                <Button x:Name="Enter" Content="Войти" Margin="0,10,0,0" Width="200" FontSize="16" HorizontalAlignment="Center" Background="White" Click="Enter_Click"/>
             </StackPanel>
         </StackPanel>
 
         <Grid VerticalAlignment="Bottom">
-            <Label Content="Pre-release v0.5.5" HorizontalAlignment="Left"/>
+            <Label Content="Pre-release v0.6.0" HorizontalAlignment="Left"/>
             <Label Content="Early access" HorizontalAlignment="Right"/>
         </Grid>
 

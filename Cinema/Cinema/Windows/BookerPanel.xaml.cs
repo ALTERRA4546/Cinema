@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cinema.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,23 +27,48 @@ namespace Cinema
         }
 
         public bool exitMode;
-
-        private void MoviePage_Click(object sender, RoutedEventArgs e)
-        {
-            PageManager.Navigate(new MovieControls());
-            CurrentPage.Text = "Фильмы";
-        }
-
-        private void SessionPage_Click(object sender, RoutedEventArgs e)
-        {
-            PageManager.Navigate(new SessionControls());
-            CurrentPage.Text = "Сеансы";
-        }
+        public Button currentSelectedButton;
+        public LinearGradientBrush linearGradientBrush = new LinearGradientBrush();
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            linearGradientBrush.StartPoint = new Point(0.5, 0);
+            linearGradientBrush.EndPoint = new Point(0.5, 1);
+            linearGradientBrush.Opacity = 0.3;
+            linearGradientBrush.GradientStops.Add(new GradientStop(Colors.Blue, 0.0));
+            linearGradientBrush.GradientStops.Add(new GradientStop(Colors.Aqua, 0.35));
+
             PageManager.Navigate(new MovieControls());
-            CurrentPage.Text = "Фильмы";
+
+            currentSelectedButton = MoviePage;
+            currentSelectedButton.Background = linearGradientBrush;
+        }
+
+        private void SelectedPage_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentSelectedButton != null)
+            {
+                currentSelectedButton.Background = Brushes.Transparent;
+            }
+
+            currentSelectedButton = sender as Button;
+
+            currentSelectedButton.Background = linearGradientBrush;
+
+            switch (currentSelectedButton.Name)
+            {
+                case "MoviePage":
+                    PageManager.Navigate(new MovieControls());
+                    break;
+
+                case "SessionPage":
+                    PageManager.Navigate(new SessionControls());
+                    break;
+
+                case "TicketPage":
+                    PageManager.Navigate(new TicketAnalysis());
+                    break;
+            }
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
@@ -70,13 +96,11 @@ namespace Cinema
         public void TicketAnalysisOpen()
         {
             PageManager.Navigate(new TicketAnalysis());
-            CurrentPage.Text = "Аналитика продаж";
         }
 
         public void MovieAnalysisOpen()
         {
             PageManager.Navigate(new MovieAnalysis());
-            CurrentPage.Text = "Аналитика сеансов";
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

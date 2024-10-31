@@ -146,6 +146,7 @@ namespace Cinema.Pages
                         button.Width = 18;
                         button.Height = 18;
                         button.FontSize = 10;
+                        button.Background = Brushes.White;
                         button.Margin = new Thickness(0, 0, 5, 0);
 
                         if (hidePlaceLoadData != null)

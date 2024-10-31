@@ -60,6 +60,18 @@ namespace Cinema
             {
                 sessionDataList.Clear();
 
+                DatePicker endDate = new DatePicker();
+                endDate.SelectedDate = null;
+
+                if (findDate.SelectedDate != null)
+                {
+                    endDate.SelectedDate = findDate.SelectedDate.Value.AddDays(1);
+                }
+                else
+                {
+                    endDate.SelectedDate = null;
+                }
+
                 var sessionData = (from session in dataBase.Session
                                 join
                                 movie in dataBase.Movie on session.IDMovie equals movie.IDMovie into movieGroup
@@ -79,7 +91,7 @@ namespace Cinema
                                 join
                                 country in dataBase.Country on movie.IDCountry equals country.IDCountry into countryGroup
                                 from country in countryGroup.DefaultIfEmpty()
-                                where ((findLine == null || movie.Title.Contains(findLine) || genere.Title.Contains(findLine) || movie.YearOfPublication.ToString().Contains(findLine) || movie.Description.Contains(findLine) || country.Title.Contains(findLine)) && (findDate.SelectedDate == null || session.DateAndTimeSession == findDate.SelectedDate.Value))
+                                where ((findLine == null || movie.Title.Contains(findLine) || genere.Title.Contains(findLine) || movie.YearOfPublication.ToString().Contains(findLine) || movie.Description.Contains(findLine) || country.Title.Contains(findLine)) && ((findDate.SelectedDate == null && endDate.SelectedDate == null) || (session.DateAndTimeSession >= findDate.SelectedDate.Value && session.DateAndTimeSession <= endDate.SelectedDate.Value)))
                                 select new
                                 {
                                     session.IDSession,

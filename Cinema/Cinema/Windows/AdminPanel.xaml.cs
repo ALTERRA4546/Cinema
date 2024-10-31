@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -27,23 +28,44 @@ namespace Cinema
         }
 
         public bool exitMode;
+        public Button currentSelectedButton;
+        public LinearGradientBrush linearGradientBrush = new LinearGradientBrush();
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            linearGradientBrush.StartPoint = new Point(0.5, 0);
+            linearGradientBrush.EndPoint = new Point(0.5, 1);
+            linearGradientBrush.Opacity = 0.3;
+            linearGradientBrush.GradientStops.Add(new GradientStop(Colors.Blue, 0.0));
+            linearGradientBrush.GradientStops.Add(new GradientStop(Colors.Aqua, 0.35));
+
             PageManager.Navigate(new EmployeeControls());
-            CurrentPage.Text = "Сотрудники";
+
+            currentSelectedButton = EmployeePage;
+            currentSelectedButton.Background = linearGradientBrush;
         }
 
-        private void EmployeePage_Click(object sender, RoutedEventArgs e)
+        private void SelectedPage_Click(object sender, RoutedEventArgs e)
         {
-            PageManager.Navigate(new EmployeeControls());
-            CurrentPage.Text = "Сотрудники";
-        }
+            if(currentSelectedButton != null)
+            {
+                currentSelectedButton.Background = Brushes.Transparent;
+            }
 
-        private void SettingsPage_Click(object sender, RoutedEventArgs e)
-        {
-            PageManager.Navigate(new SettingsControls());
-            CurrentPage.Text = "Настройки";
+            currentSelectedButton = sender as Button;
+
+            currentSelectedButton.Background = linearGradientBrush;
+
+            switch (currentSelectedButton.Name)
+            {
+                case "EmployeePage":
+                    PageManager.Navigate(new EmployeeControls());
+                    break;
+
+                case "SettingsPage":
+                    PageManager.Navigate(new SettingsControls());
+                    break;
+            }
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)

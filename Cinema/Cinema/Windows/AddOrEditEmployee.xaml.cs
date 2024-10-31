@@ -75,7 +75,7 @@ namespace Cinema
 
                     if (employeeData.Photo != null)
                     {
-                        this.Height = 685;
+                        this.Height = 695;
                         EmployeePhoto.Visibility = Visibility.Visible;
 
                         BitmapImage bitmapImage = new BitmapImage();
@@ -98,7 +98,7 @@ namespace Cinema
             {
                 employeePhotoPath = openFileDialog.FileName;
 
-                this.Height = 685;
+                this.Height = 695;
                 EmployeePhoto.Visibility = Visibility.Visible;
                 EmployeePhoto.Source = new BitmapImage(new Uri(openFileDialog.FileName));
             }

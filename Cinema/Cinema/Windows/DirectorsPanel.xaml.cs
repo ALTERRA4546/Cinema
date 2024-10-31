@@ -29,11 +29,45 @@ namespace Cinema
         }
 
         public bool exitMode;
+        public Button currentSelectedButton;
+        public LinearGradientBrush linearGradientBrush = new LinearGradientBrush();
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            linearGradientBrush.StartPoint = new Point(0.5, 0);
+            linearGradientBrush.EndPoint = new Point(0.5, 1);
+            linearGradientBrush.Opacity = 0.3;
+            linearGradientBrush.GradientStops.Add(new GradientStop(Colors.Blue, 0.0));
+            linearGradientBrush.GradientStops.Add(new GradientStop(Colors.Aqua, 0.35));
+
             PageManager.Navigate(new EmployeeControls());
-            CurrentPage.Text = "Сотрудники";
+
+            currentSelectedButton = EmployeePage;
+            currentSelectedButton.Background = linearGradientBrush;
+            
+        }
+
+        private void SelectedPage_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentSelectedButton != null)
+            {
+                currentSelectedButton.Background = Brushes.Transparent;
+            }
+
+            currentSelectedButton = sender as Button;
+
+            currentSelectedButton.Background = linearGradientBrush;
+
+            switch (currentSelectedButton.Name)
+            {
+                case "EmployeePage":
+                    PageManager.Navigate(new EmployeeControls());
+                    break;
+
+                case "TicketPage":
+                    TicketAnalysisOpen();
+                    break;
+            }
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
@@ -53,21 +87,14 @@ namespace Cinema
             this.Close();
         }
 
-        public void TicketPage_Click(object sender, RoutedEventArgs e)
-        {
-            TicketAnalysisOpen();
-        }
-
         public void TicketAnalysisOpen()
         {
             PageManager.Navigate(new TicketAnalysis());
-            CurrentPage.Text = "Аналитика продаж";
         }
 
         public void MovieAnalysisOpen()
         {
             PageManager.Navigate(new MovieAnalysis());
-            CurrentPage.Text = "Аналитика сеансов";
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

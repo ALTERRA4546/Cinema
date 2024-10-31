@@ -61,45 +61,17 @@ namespace Cinema
             {
                 sessionCashierDataList.Clear();
 
-                /*var sessionCashierData = (from session in dataBase.Session
-                                          join
-                                          movie in dataBase.Movie on session.IDMovie equals movie.IDMovie into movieGroup
-                                          from movie in movieGroup.DefaultIfEmpty()
-                                          join
-                                          movieGenre in dataBase.MovieGenre on movie.IDMovie equals movieGenre.IDMovie into movieGenreGroup
-                                          from movieGenre in movieGenreGroup.DefaultIfEmpty()
-                                          join
-                                          actorsInMovies in dataBase.ActorsInMovies on movie.IDMovie equals actorsInMovies.IDMovie into actorsInMoviesGroup
-                                          from actorsInMovies in actorsInMoviesGroup.DefaultIfEmpty()
-                                          join
-                                          actors in dataBase.Actor on actorsInMovies.IDActor equals actors.IDActor into actorsGroup
-                                          from actors in actorsGroup.DefaultIfEmpty()
-                                          join
-                                          genre in dataBase.Genre on movieGenre.IDGenre equals genre.IDGenre into genreGroup
-                                          from genre in genreGroup.DefaultIfEmpty()
-                                          join
-                                          country in dataBase.Country on movie.IDCountry equals country.IDCountry into countryGroup
-                                          from country in countryGroup.DefaultIfEmpty()
-                                          join
-                                          ticket in dataBase.Ticket on session.IDSession equals ticket.IDTicket into ticketGroup
-                                          from ticket in ticketGroup.DefaultIfEmpty()
-                                          where ((findLine == null || movie.Title.Contains(findLine) || genre.Title.Contains(findLine) || movie.YearOfPublication.ToString().Contains(findLine) || movie.Description.Contains(findLine) || country.Title.Contains(findLine)) && (findDate.SelectedDate == null || session.DateAndTimeSession == findDate.SelectedDate.Value) && (session.DateAndTimeSession >= DateTime.Now) && (session.IDMovie == TransmittedData.idSelectedCashierMovie))
-                                          select new
-                                          {
-                                              session.IDSession,
-                                              movie.IDMovie,
-                                              movie.Cover,
-                                              movieTitle = movie.Title,
-                                              movieGenere = genre.Title,
-                                              movie.YearOfPublication,
-                                              movie.Timing,
-                                              movie.AgeRating,
-                                              movieCountry = country.Title,
-                                              movieActors = actors.Surname + " " + actors.Name + " " + actors.Patronymic + " " + actors.Nickname,
-                                              session.DateAndTimeSession,
-                                              TicketID = ticket == null ? -1 : ticket.IDTicket,
-                                              session.TicketPrice
-                                          }).ToList();*/
+                DatePicker endDate = new DatePicker();
+                endDate.SelectedDate = null;
+
+                if (findDate.SelectedDate != null)
+                {
+                    endDate.SelectedDate = findDate.SelectedDate.Value.AddDays(1);
+                }
+                else
+                {
+                    endDate.SelectedDate = null;
+                }
 
                 var sessionCashierData = (from session in dataBase.Session
                                    join
@@ -123,7 +95,7 @@ namespace Cinema
                                    join
                                    ticket in dataBase.Ticket on session.IDSession equals ticket.IDSession into ticketGroup
                                    from ticket in ticketGroup.DefaultIfEmpty()
-                                   where ((findLine == null || movie.Title.Contains(findLine) || genre.Title.Contains(findLine) || movie.YearOfPublication.ToString().Contains(findLine) || movie.Description.Contains(findLine) || country.Title.Contains(findLine)) && (findDate.SelectedDate == null || session.DateAndTimeSession == findDate.SelectedDate.Value) && (session.DateAndTimeSession >= DateTime.Now) && (session.IDMovie == TransmittedData.idSelectedCashierMovie))
+                                   where ((findLine == null || movie.Title.Contains(findLine) || genre.Title.Contains(findLine) || movie.YearOfPublication.ToString().Contains(findLine) || movie.Description.Contains(findLine) || country.Title.Contains(findLine)) && ((findDate.SelectedDate == null && endDate.SelectedDate == null) || (session.DateAndTimeSession >= findDate.SelectedDate.Value && session.DateAndTimeSession <= endDate.SelectedDate.Value)) && (session.DateAndTimeSession >= DateTime.Now) && (session.IDMovie == TransmittedData.idSelectedCashierMovie))
                                    select new
                                    {
                                        session.IDSession,

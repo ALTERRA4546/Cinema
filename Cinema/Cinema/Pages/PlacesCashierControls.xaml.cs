@@ -80,6 +80,7 @@ namespace Cinema
                             button.Width = 18;
                             button.Height = 18;
                             button.FontSize = 10;
+                            button.Background = Brushes.White;
                             button.Margin = new Thickness(0, 0, 5, 0);
                             button.Click += HallButton_Click;
 
@@ -184,7 +185,7 @@ namespace Cinema
             {
                 if (selectedRowPlaceButton != null)
                 {
-                    selectedRowPlaceButton.Background = (Brush)(new BrushConverter().ConvertFrom("#FFDDDDDD"));
+                    selectedRowPlaceButton.Background = Brushes.White;
                     selectedRowPlaceButton.Foreground = Brushes.Black;
                     selectedRowPlaceButton.BorderBrush = (Brush)(new BrushConverter().ConvertFrom("#FF707070"));
                 }
@@ -196,9 +197,9 @@ namespace Cinema
                     selectedRowNumber = int.Parse(match.Groups[1].Value)+1;
                     selectedPlaceNumber = int.Parse(match.Groups[2].Value);
 
-                    clickedButton.Background = Brushes.DeepSkyBlue;
-                    clickedButton.Foreground = Brushes.White;
-                    clickedButton.BorderBrush = Brushes.White;
+                    clickedButton.Background = Brushes.Aqua;
+                    clickedButton.Foreground = Brushes.Black;
+                    clickedButton.BorderBrush = Brushes.Black;
                     selectedRowPlaceButton = clickedButton;
                 }
 
@@ -235,7 +236,7 @@ namespace Cinema
             SelectedPlaceChange();
         }
 
-        private void PrintTicket(int selectedTicket)
+        private async Task PrintTicket(int selectedTicket)
         {
             using (var dataBase = new CinemaEntities())
             {
@@ -336,7 +337,7 @@ namespace Cinema
 
                     MessageBox.Show("Место на сеанс зарезервировано", "Готово", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                    PrintTicket(newTicket.IDTicket);
+                    Task.Run(()=> PrintTicket(newTicket.IDTicket));
 
                     selectedRowPlaceButton.Background = (Brush)(new BrushConverter().ConvertFrom("#FFDDDDDD"));
                     selectedRowPlaceButton.BorderBrush = (Brush)(new BrushConverter().ConvertFrom("#FF707070"));

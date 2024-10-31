@@ -276,7 +276,7 @@ namespace Cinema
                     dataBase.SaveChanges();
                 }
 
-                MessageBox.Show("Данные сохранены","Готово",MessageBoxButton.OK,MessageBoxImage.Information);
+                MessageBox.Show("Данные были сохранены","Готово",MessageBoxButton.OK,MessageBoxImage.Information);
                 this.Close();
             }
         }
