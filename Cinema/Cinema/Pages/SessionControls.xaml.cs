@@ -1,21 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity.Core.Objects;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using static Cinema.Authorization;
-using static Cinema.MovieControls;
 
 namespace Cinema
 {
@@ -30,8 +21,8 @@ namespace Cinema
         }
 
         public class SessionData
-        { 
-            public int sessionID {  get; set; }
+        {
+            public int sessionID { get; set; }
             public BitmapImage sessionMovieCover { get; set; }
             public string sessionMovieTitle { get; set; }
             public string sessionMovieGenre { get; set; }
@@ -40,220 +31,286 @@ namespace Cinema
             public string sessionMovieAgeRating { get; set; }
             public string sessionMovieCountry { get; set; }
             public string sessionActors { get; set; }
-            public string sessionDateSessionStart {  get; set; }
-            public string sessionTimeSessionStart {  get; set; }
+            public string sessionDateSessionStart { get; set; }
+            public string sessionTimeSessionStart { get; set; }
             public string sessionTicketPrice { get; set; }
         }
 
-        List <SessionData> sessionDataList = new List<SessionData> ();
+        List<SessionData> sessionDataList = new List<SessionData>();
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            SessionList.ItemsSource = sessionDataList;
+            try
+            {
+                SessionList.ItemsSource = sessionDataList;
 
-            LoadData(null, FindSessionData);
+                LoadData(null, FindSessionData);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void LoadData(string findLine, DatePicker findDate)
         {
-            using (var dataBase = new CinemaEntities())
+            try
             {
-                sessionDataList.Clear();
-
-                DatePicker endDate = new DatePicker();
-                endDate.SelectedDate = null;
-
-                if (findDate.SelectedDate != null)
+                using (var dataBase = new CinemaEntities())
                 {
-                    endDate.SelectedDate = findDate.SelectedDate.Value.AddDays(1);
-                }
-                else
-                {
+                    sessionDataList.Clear();
+
+                    DatePicker endDate = new DatePicker();
                     endDate.SelectedDate = null;
-                }
 
-                var sessionData = (from session in dataBase.Session
-                                join
-                                movie in dataBase.Movie on session.IDMovie equals movie.IDMovie into movieGroup
-                                from movie in movieGroup.DefaultIfEmpty()
-                                join
-                                actorsInMovies in dataBase.ActorsInMovies on movie.IDMovie equals actorsInMovies.IDMovie into actorsInMoviesGroup
-                                from actorsInMovie in actorsInMoviesGroup.DefaultIfEmpty()
-                                join
-                                actors in dataBase.Actor on actorsInMovie.IDActor equals actors.IDActor into actorsGroup
-                                from actors in actorsGroup.DefaultIfEmpty()
-                                join
-                                movieGenre in dataBase.MovieGenre on movie.IDMovie equals movieGenre.IDMovie into movieGenereGroup
-                                from movieGenere in movieGenereGroup.DefaultIfEmpty()
-                                join
-                                genre in dataBase.Genre on movieGenere.IDGenre equals genre.IDGenre into genereGroup
-                                from genere in genereGroup.DefaultIfEmpty()
-                                join
-                                country in dataBase.Country on movie.IDCountry equals country.IDCountry into countryGroup
-                                from country in countryGroup.DefaultIfEmpty()
-                                where ((findLine == null || movie.Title.Contains(findLine) || genere.Title.Contains(findLine) || movie.YearOfPublication.ToString().Contains(findLine) || movie.Description.Contains(findLine) || country.Title.Contains(findLine)) && ((findDate.SelectedDate == null && endDate.SelectedDate == null) || (session.DateAndTimeSession >= findDate.SelectedDate.Value && session.DateAndTimeSession <= endDate.SelectedDate.Value)))
-                                select new
-                                {
-                                    session.IDSession,
-                                    movie.Cover,
-                                    movieTitle = movie.Title,
-                                    movieGenere = genere.Title,
-                                    movieActors = actors.Surname + " " + actors.Name + " " + actors.Patronymic + " " + actors.Nickname,
-                                    movie.YearOfPublication,
-                                    movie.Timing,
-                                    movie.AgeRating,
-                                    movieCountry = country.Title,
-                                    session.DateAndTimeSession,
-                                    session.TicketPrice
-                                }).ToList();
-
-                var groupedSessionData = sessionData.GroupBy(m => m.IDSession)
-                    .Select(g => new
+                    if (findDate.SelectedDate != null)
                     {
-                        g.Key,
-                        genres = g.Select(m => m.movieGenere).Distinct(),
-                        actors = g.Select(m => m.movieActors).Distinct(),
-                    }).ToList();
-
-                var result = groupedSessionData.Select(g =>
-                {
-                    var session = sessionData.FirstOrDefault(m => m.IDSession == g.Key);
-                    return new
-                    {
-                        session.IDSession,
-                        session.Cover,
-                        session.movieTitle,
-                        sessionMovieGenres = g.genres,
-                        session.YearOfPublication,
-                        session.Timing,
-                        session.AgeRating,
-                        session.movieCountry,
-                        session.DateAndTimeSession,
-                        session.TicketPrice,
-                        movieActors = g.actors,
-                    };
-                }).ToList();
-
-                foreach (var sessionLine in result)
-                {
-                    SessionData sessionDataClass = new SessionData();
-
-                    sessionDataClass.sessionID = sessionLine.IDSession;
-
-                    if (sessionLine.Cover != null)
-                    {
-                        BitmapImage cover = new BitmapImage();
-
-                        cover.BeginInit();
-                        cover.StreamSource = new MemoryStream(sessionLine.Cover);
-                        cover.EndInit();
-
-                        sessionDataClass.sessionMovieCover = cover;
+                        endDate.SelectedDate = findDate.SelectedDate.Value.AddDays(1);
                     }
                     else
                     {
-                        sessionDataClass.sessionMovieCover = new BitmapImage(new Uri("pack://application:,,,/Resource/NoImage.png", UriKind.Absolute));
+                        endDate.SelectedDate = null;
                     }
 
-                    sessionDataClass.sessionMovieTitle = sessionLine.movieTitle;
+                    var sessionData = (from session in dataBase.Session
+                                       join
+                                       movie in dataBase.Movie on session.IDMovie equals movie.IDMovie into movieGroup
+                                       from movie in movieGroup.DefaultIfEmpty()
+                                       join
+                                       actorsInMovies in dataBase.ActorsInMovies on movie.IDMovie equals actorsInMovies.IDMovie into actorsInMoviesGroup
+                                       from actorsInMovie in actorsInMoviesGroup.DefaultIfEmpty()
+                                       join
+                                       actors in dataBase.Actor on actorsInMovie.IDActor equals actors.IDActor into actorsGroup
+                                       from actors in actorsGroup.DefaultIfEmpty()
+                                       join
+                                       movieGenre in dataBase.MovieGenre on movie.IDMovie equals movieGenre.IDMovie into movieGenereGroup
+                                       from movieGenere in movieGenereGroup.DefaultIfEmpty()
+                                       join
+                                       genre in dataBase.Genre on movieGenere.IDGenre equals genre.IDGenre into genereGroup
+                                       from genere in genereGroup.DefaultIfEmpty()
+                                       join
+                                       country in dataBase.Country on movie.IDCountry equals country.IDCountry into countryGroup
+                                       from country in countryGroup.DefaultIfEmpty()
+                                       where ((findLine == null || movie.Title.Contains(findLine) || genere.Title.Contains(findLine) || movie.YearOfPublication.ToString().Contains(findLine) || movie.Description.Contains(findLine) || country.Title.Contains(findLine)) && ((findDate.SelectedDate == null && endDate.SelectedDate == null) || (session.DateAndTimeSession >= findDate.SelectedDate.Value && session.DateAndTimeSession <= endDate.SelectedDate.Value)))
+                                       select new
+                                       {
+                                           session.IDSession,
+                                           movie.Cover,
+                                           movieTitle = movie.Title,
+                                           movieGenere = genere.Title,
+                                           movieActors = actors.Surname + " " + actors.Name + " " + actors.Patronymic + " " + actors.Nickname,
+                                           movie.YearOfPublication,
+                                           movie.Timing,
+                                           movie.AgeRating,
+                                           movieCountry = country.Title,
+                                           session.DateAndTimeSession,
+                                           session.TicketPrice
+                                       }).ToList();
 
-                    string sessionMovieGenereTemp = "";
-                    int movieGenresCounterTemp = 1;
-                    foreach (var genere in sessionLine.sessionMovieGenres)
-                    {
-                        if (movieGenresCounterTemp != sessionLine.sessionMovieGenres.Count())
-                            sessionMovieGenereTemp += genere + ", ";
-                        else
-                            sessionMovieGenereTemp += genere;
-
-                        movieGenresCounterTemp++;
-                    }
-                    sessionDataClass.sessionMovieGenre = sessionMovieGenereTemp;
-
-                    string movieActorTemp = "";
-                    int movieActorCounterTemp = 1;
-                    foreach (var actor in sessionLine.movieActors)
-                    {
-                        if (movieActorCounterTemp != sessionLine.movieActors.Count())
+                    var groupedSessionData = sessionData.GroupBy(m => m.IDSession)
+                        .Select(g => new
                         {
-                            movieActorTemp += actor + ", ";
+                            g.Key,
+                            genres = g.Select(m => m.movieGenere).Distinct(),
+                            actors = g.Select(m => m.movieActors).Distinct(),
+                        }).ToList();
+
+                    var result = groupedSessionData.Select(g =>
+                    {
+                        var session = sessionData.FirstOrDefault(m => m.IDSession == g.Key);
+                        return new
+                        {
+                            session.IDSession,
+                            session.Cover,
+                            session.movieTitle,
+                            sessionMovieGenres = g.genres,
+                            session.YearOfPublication,
+                            session.Timing,
+                            session.AgeRating,
+                            session.movieCountry,
+                            session.DateAndTimeSession,
+                            session.TicketPrice,
+                            movieActors = g.actors,
+                        };
+                    }).ToList();
+
+                    foreach (var sessionLine in result)
+                    {
+                        SessionData sessionDataClass = new SessionData();
+
+                        sessionDataClass.sessionID = sessionLine.IDSession;
+
+                        if (sessionLine.Cover != null)
+                        {
+                            BitmapImage cover = new BitmapImage();
+
+                            cover.BeginInit();
+                            cover.StreamSource = new MemoryStream(sessionLine.Cover);
+                            cover.EndInit();
+
+                            sessionDataClass.sessionMovieCover = cover;
                         }
                         else
                         {
-                            movieActorTemp += actor;
+                            sessionDataClass.sessionMovieCover = new BitmapImage(new Uri("pack://application:,,,/Resource/NoImage.png", UriKind.Absolute));
                         }
 
-                        movieActorCounterTemp++;
+                        sessionDataClass.sessionMovieTitle = sessionLine.movieTitle;
+
+                        string sessionMovieGenereTemp = "";
+                        int movieGenresCounterTemp = 1;
+                        foreach (var genere in sessionLine.sessionMovieGenres)
+                        {
+                            if (movieGenresCounterTemp != sessionLine.sessionMovieGenres.Count())
+                                sessionMovieGenereTemp += genere + ", ";
+                            else
+                                sessionMovieGenereTemp += genere;
+
+                            movieGenresCounterTemp++;
+                        }
+                        sessionDataClass.sessionMovieGenre = sessionMovieGenereTemp;
+
+                        string movieActorTemp = "";
+                        int movieActorCounterTemp = 1;
+                        foreach (var actor in sessionLine.movieActors)
+                        {
+                            if (movieActorCounterTemp != sessionLine.movieActors.Count())
+                            {
+                                movieActorTemp += actor + ", ";
+                            }
+                            else
+                            {
+                                movieActorTemp += actor;
+                            }
+
+                            movieActorCounterTemp++;
+                        }
+                        sessionDataClass.sessionActors = movieActorTemp;
+
+                        sessionDataClass.sessionMovieYearOfPublication = sessionLine.YearOfPublication;
+                        sessionDataClass.sessionMovieTiming = sessionLine.Timing;
+                        sessionDataClass.sessionMovieAgeRating = sessionLine.AgeRating + "+";
+                        sessionDataClass.sessionMovieCountry = sessionLine.movieCountry;
+                        sessionDataClass.sessionDateSessionStart = sessionLine.DateAndTimeSession.ToString().Split(' ')[0];
+                        sessionDataClass.sessionTimeSessionStart = sessionLine.DateAndTimeSession.ToString().Split(' ')[1];
+                        sessionDataClass.sessionTicketPrice = sessionLine.TicketPrice.ToString().Remove(sessionLine.TicketPrice.ToString().Length - 2, 2) + " руб.";
+
+                        sessionDataList.Add(sessionDataClass);
                     }
-                    sessionDataClass.sessionActors = movieActorTemp;
 
-                    sessionDataClass.sessionMovieYearOfPublication = sessionLine.YearOfPublication;
-                    sessionDataClass.sessionMovieTiming = sessionLine.Timing;
-                    sessionDataClass.sessionMovieAgeRating = sessionLine.AgeRating + "+";
-                    sessionDataClass.sessionMovieCountry = sessionLine.movieCountry;
-                    sessionDataClass.sessionDateSessionStart = sessionLine.DateAndTimeSession.ToString().Split(' ')[0];
-                    sessionDataClass.sessionTimeSessionStart = sessionLine.DateAndTimeSession.ToString().Split(' ')[1];
-                    sessionDataClass.sessionTicketPrice = sessionLine.TicketPrice.ToString().Remove(sessionLine.TicketPrice.ToString().Length-2,2) + " руб.";
+                    var fullSessionData = dataBase.Session.ToList();
+                    FindCounterData.Text = result.Count() + "/" + fullSessionData.Count();
 
-                    sessionDataList.Add(sessionDataClass);
+                    SessionList.Items.Refresh();
                 }
-
-                var fullSessionData = dataBase.Session.ToList();
-                FindCounterData.Text = result.Count() + "/" + fullSessionData.Count();
-
-                SessionList.Items.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            SessionCodeGrid.Width = 0;
-            SessionCoverGrid.Width = ActualWidth - ActualWidth * 0.8;
-            SessionInfoGird.Width = ActualWidth - ActualWidth * 0.6;
-            SessionInformationSeasonGrid.Width = ActualWidth - ActualWidth * 0.8;
-            SessionPriceGrid.Width = ActualWidth - ActualWidth * 0.8;
-            SessionList.Height = ActualHeight - 35;
+            try
+            {
+                SessionCodeGrid.Width = 0;
+                SessionCoverGrid.Width = ActualWidth - ActualWidth * 0.8;
+                SessionInfoGird.Width = ActualWidth - ActualWidth * 0.6;
+                SessionInformationSeasonGrid.Width = ActualWidth - ActualWidth * 0.8;
+                SessionPriceGrid.Width = ActualWidth - ActualWidth * 0.8;
+                SessionList.Height = ActualHeight - 35;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void FindData_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (FindDateChecker.IsChecked == false)
+            try
             {
-                FindSessionData.SelectedDate = null;
+                if (FindDateChecker.IsChecked == false)
+                {
+                    FindSessionData.SelectedDate = null;
+                }
+                LoadData(FindData.Text, FindSessionData);
             }
-            LoadData(FindData.Text, FindSessionData);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void FindDateChecker_Click(object sender, RoutedEventArgs e)
         {
-            if (FindDateChecker.IsChecked == false)
+            try
             {
-                FindSessionData.IsEnabled = false;
-                FindSessionData.SelectedDate = null;
+                if (FindDateChecker.IsChecked == false)
+                {
+                    FindSessionData.IsEnabled = false;
+                    FindSessionData.SelectedDate = null;
+                }
+                else
+                {
+                    FindSessionData.IsEnabled = true;
+                    FindSessionData.SelectedDate = DateTime.Now.Date;
+                }
+                LoadData(FindData.Text, FindSessionData);
             }
-            else
+            catch (Exception ex)
             {
-                FindSessionData.IsEnabled = true;
-                FindSessionData.SelectedDate = DateTime.Now.Date;
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            LoadData(FindData.Text, FindSessionData);
         }
 
         private void FindSessionData_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (FindDateChecker.IsChecked == false)
+            try
             {
-                FindSessionData.SelectedDate = null;
+                if (FindDateChecker.IsChecked == false)
+                {
+                    FindSessionData.SelectedDate = null;
+                }
+                LoadData(FindData.Text, FindSessionData);
             }
-            LoadData(FindData.Text, FindSessionData);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void SessionList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var selectedSession = SessionList.SelectedItem as SessionData;
-            if (selectedSession != null)
+            try
             {
-                TransmittedData.idSelectedSession = selectedSession.sessionID;
+                var selectedSession = SessionList.SelectedItem as SessionData;
+                if (selectedSession != null)
+                {
+                    TransmittedData.idSelectedSession = selectedSession.sessionID;
+
+                    AddOrEditSession addOrEditSession = new AddOrEditSession();
+                    addOrEditSession.ShowDialog();
+
+                    if (FindDateChecker.IsChecked == false)
+                    {
+                        FindSessionData.SelectedDate = null;
+                    }
+                    LoadData(FindData.Text, FindSessionData);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void AddSession_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                TransmittedData.idSelectedSession = -1;
 
                 AddOrEditSession addOrEditSession = new AddOrEditSession();
                 addOrEditSession.ShowDialog();
@@ -264,53 +321,50 @@ namespace Cinema
                 }
                 LoadData(FindData.Text, FindSessionData);
             }
-        }
-
-        private void AddSession_Click(object sender, RoutedEventArgs e)
-        {
-            TransmittedData.idSelectedSession = -1;
-
-            AddOrEditSession addOrEditSession = new AddOrEditSession();
-            addOrEditSession.ShowDialog();
-
-            if (FindDateChecker.IsChecked == false)
+            catch (Exception ex)
             {
-                FindSessionData.SelectedDate = null;
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            LoadData(FindData.Text, FindSessionData);
         }
 
         private void RemoveSession_Click(object sender, RoutedEventArgs e)
         {
-            var selectedSession = SessionList.SelectedItem as SessionData;
-            if (selectedSession != null)
+            try
             {
-                if (MessageBox.Show("Вы действительно хотите удалить данный сеанс?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                var selectedSession = SessionList.SelectedItem as SessionData;
+                if (selectedSession != null)
                 {
-                    using (var dataBase = new CinemaEntities())
+                    if (MessageBox.Show("Вы действительно хотите удалить данный сеанс?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                     {
-                        var removeSession = dataBase.Session.Where(w => w.IDSession == selectedSession.sessionID).FirstOrDefault();
-                        var removeTicket = dataBase.Ticket.Where(w => w.IDSession == selectedSession.sessionID).ToList();
-
-                        if (removeTicket.Count > 0)
+                        using (var dataBase = new CinemaEntities())
                         {
-                            if (MessageBox.Show("Удаляемый сеанс присутсвует в билетах. Вы действительно хотите его удалить?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
-                                return;
+                            var removeSession = dataBase.Session.Where(w => w.IDSession == selectedSession.sessionID).FirstOrDefault();
+                            var removeTicket = dataBase.Ticket.Where(w => w.IDSession == selectedSession.sessionID).ToList();
+
+                            if (removeTicket.Count > 0)
+                            {
+                                if (MessageBox.Show("Удаляемый сеанс присутсвует в билетах. Вы действительно хотите его удалить?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                                    return;
+                            }
+
+                            dataBase.Ticket.RemoveRange(removeTicket);
+                            dataBase.Session.Remove(removeSession);
+
+                            dataBase.SaveChanges();
+                            MessageBox.Show("Данные были удаленны", "Готово", MessageBoxButton.OK, MessageBoxImage.Information);
                         }
 
-                        dataBase.Ticket.RemoveRange(removeTicket);
-                        dataBase.Session.Remove(removeSession);
-
-                        dataBase.SaveChanges();
-                        MessageBox.Show("Данные были удаленны", "Готово", MessageBoxButton.OK, MessageBoxImage.Information);
+                        if (FindDateChecker.IsChecked == false)
+                        {
+                            FindSessionData.SelectedDate = null;
+                        }
+                        LoadData(FindData.Text, FindSessionData);
                     }
-
-                    if (FindDateChecker.IsChecked == false)
-                    {
-                        FindSessionData.SelectedDate = null;
-                    }
-                    LoadData(FindData.Text, FindSessionData);
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

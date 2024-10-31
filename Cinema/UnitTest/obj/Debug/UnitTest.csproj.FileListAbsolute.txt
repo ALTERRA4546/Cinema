@@ -1,2 +1,0 @@
-C:\Users\King Night\source\repos\Cinema\UnitTest\obj\Debug\UnitTest.csproj.AssemblyReference.cache
-C:\Users\King Night\source\repos\Cinema\UnitTest\obj\Debug\UnitTest.csproj.CoreCompileInputs.cache

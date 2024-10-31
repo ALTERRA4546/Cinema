@@ -1,19 +1,22 @@
 ﻿
 
-FC:\Users\King Night\source\repos\Cinema\Cinema\AddOrEditActor.xaml;;
-FC:\Users\King Night\source\repos\Cinema\Cinema\AddOrEditEmployee.xaml;;
-FC:\Users\King Night\source\repos\Cinema\Cinema\AddOrEditGenre.xaml;;
-FC:\Users\King Night\source\repos\Cinema\Cinema\AddOrEditMovie.xaml;;
-FC:\Users\King Night\source\repos\Cinema\Cinema\AddOrEditSession.xaml;;
-FC:\Users\King Night\source\repos\Cinema\Cinema\Authorization.xaml;;
-FC:\Users\King Night\source\repos\Cinema\Cinema\CashierPanel.xaml;;
-FC:\Users\King Night\source\repos\Cinema\Cinema\DirectorsPanel.xaml;;
-FC:\Users\King Night\source\repos\Cinema\Cinema\EmployeeControls.xaml;;
-FC:\Users\King Night\source\repos\Cinema\Cinema\MovieAnalysis.xaml;;
-FC:\Users\King Night\source\repos\Cinema\Cinema\MovieCashierControls.xaml;;
-FC:\Users\King Night\source\repos\Cinema\Cinema\MovieControls.xaml;;
-FC:\Users\King Night\source\repos\Cinema\Cinema\PlacesCashierControls.xaml;;
-FC:\Users\King Night\source\repos\Cinema\Cinema\SessionCashierControls.xaml;;
-FC:\Users\King Night\source\repos\Cinema\Cinema\SessionControls.xaml;;
-FC:\Users\King Night\source\repos\Cinema\Cinema\TicketAnalysis.xaml;;
+FC:\Users\King Night\Desktop\Cinema\Cinema\Windows\AdminPanel.xaml;;
+FC:\Users\King Night\Desktop\Cinema\Cinema\Pages\SettingsControls.xaml;;
+FC:\Users\King Night\Desktop\Cinema\Cinema\Windows\AddOrEditActor.xaml;;
+FC:\Users\King Night\Desktop\Cinema\Cinema\Windows\AddOrEditEmployee.xaml;;
+FC:\Users\King Night\Desktop\Cinema\Cinema\Windows\AddOrEditGenre.xaml;;
+FC:\Users\King Night\Desktop\Cinema\Cinema\Windows\AddOrEditMovie.xaml;;
+FC:\Users\King Night\Desktop\Cinema\Cinema\Windows\AddOrEditSession.xaml;;
+FC:\Users\King Night\Desktop\Cinema\Cinema\Windows\Authorization.xaml;;
+FC:\Users\King Night\Desktop\Cinema\Cinema\Windows\BookerPanel.xaml;;
+FC:\Users\King Night\Desktop\Cinema\Cinema\Windows\CashierPanel.xaml;;
+FC:\Users\King Night\Desktop\Cinema\Cinema\Windows\DirectorsPanel.xaml;;
+FC:\Users\King Night\Desktop\Cinema\Cinema\Pages\EmployeeControls.xaml;;
+FC:\Users\King Night\Desktop\Cinema\Cinema\Pages\MovieAnalysis.xaml;;
+FC:\Users\King Night\Desktop\Cinema\Cinema\Pages\MovieCashierControls.xaml;;
+FC:\Users\King Night\Desktop\Cinema\Cinema\Pages\MovieControls.xaml;;
+FC:\Users\King Night\Desktop\Cinema\Cinema\Pages\PlacesCashierControls.xaml;;
+FC:\Users\King Night\Desktop\Cinema\Cinema\Pages\SessionCashierControls.xaml;;
+FC:\Users\King Night\Desktop\Cinema\Cinema\Pages\SessionControls.xaml;;
+FC:\Users\King Night\Desktop\Cinema\Cinema\Pages\TicketAnalysis.xaml;;
 

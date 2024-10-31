@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\
+C:\Users\King Night\Desktop\Cinema\Cinema\obj\Debug\
 Cinema
 none
 false
 DEBUG;TRACE
-C:\Users\King Night\source\repos\Cinema\Cinema\App.xaml
+C:\Users\King Night\Desktop\Cinema\Cinema\App.xaml
 19-1997564002
 2-1957146511
 381143693462
-211621346526
+211280871774
 Windows\AdminPanel.xaml;Pages\SettingsControls.xaml;Windows\AddOrEditActor.xaml;Windows\AddOrEditEmployee.xaml;Windows\AddOrEditGenre.xaml;Windows\AddOrEditMovie.xaml;Windows\AddOrEditSession.xaml;Windows\Authorization.xaml;Windows\BookerPanel.xaml;Windows\CashierPanel.xaml;Windows\DirectorsPanel.xaml;Pages\EmployeeControls.xaml;Pages\MovieAnalysis.xaml;Pages\MovieCashierControls.xaml;Pages\MovieControls.xaml;Pages\PlacesCashierControls.xaml;Pages\SessionCashierControls.xaml;Pages\SessionControls.xaml;Pages\TicketAnalysis.xaml;
 
-True
+False
 

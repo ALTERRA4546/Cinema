@@ -1,16 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using static Cinema.Authorization;
 
 namespace Cinema
@@ -32,46 +22,60 @@ namespace Cinema
 
         private void LoadData()
         {
-            if (TransmittedData.idSelectedGenre != -1)
+            try
             {
-                using (var dataBase = new CinemaEntities())
+                if (TransmittedData.idSelectedGenre != -1)
                 {
-                    var genreData = dataBase.Genre.Where(w => w.IDGenre == TransmittedData.idSelectedGenre).FirstOrDefault();
+                    using (var dataBase = new CinemaEntities())
+                    {
+                        var genreData = dataBase.Genre.Where(w => w.IDGenre == TransmittedData.idSelectedGenre).FirstOrDefault();
 
-                    GenreTitle.Text = genreData.Title;
+                        GenreTitle.Text = genreData.Title;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            if (GenreTitle.Text == "")
+            try
             {
-                MessageBox.Show("Данные не были заполнены", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
+                if (GenreTitle.Text == "")
+                {
+                    MessageBox.Show("Данные не были заполнены", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                using (var dataBase = new CinemaEntities())
+                {
+                    if (TransmittedData.idSelectedGenre != -1)
+                    {
+                        var genreData = dataBase.Genre.Where(w => w.IDGenre == TransmittedData.idSelectedGenre).FirstOrDefault();
+
+                        genreData.Title = GenreTitle.Text;
+
+                        dataBase.SaveChanges();
+                    }
+                    else
+                    {
+                        var newGenreData = new Genre();
+
+                        newGenreData.Title = GenreTitle.Text;
+
+                        dataBase.Genre.Add(newGenreData);
+                        dataBase.SaveChanges();
+                    }
+
+                    this.Close();
+                }
             }
-
-            using (var dataBase = new CinemaEntities())
+            catch (Exception ex)
             {
-                if (TransmittedData.idSelectedGenre != -1)
-                {
-                    var genreData = dataBase.Genre.Where(w => w.IDGenre == TransmittedData.idSelectedGenre).FirstOrDefault();
-
-                    genreData.Title = GenreTitle.Text;
-
-                    dataBase.SaveChanges();
-                }
-                else
-                {
-                    var newGenreData = new Genre();
-
-                    newGenreData.Title = GenreTitle.Text;
-
-                    dataBase.Genre.Add(newGenreData);
-                    dataBase.SaveChanges();
-                }
-
-                this.Close();
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

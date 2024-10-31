@@ -1,17 +1,7 @@
-﻿using Cinema.Pages;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using static Cinema.Authorization;
 
 namespace Cinema
@@ -33,16 +23,23 @@ namespace Cinema
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            linearGradientBrush.StartPoint = new Point(0.5, 0);
-            linearGradientBrush.EndPoint = new Point(0.5, 1);
-            linearGradientBrush.Opacity = 0.3;
-            linearGradientBrush.GradientStops.Add(new GradientStop(Colors.Blue, 0.0));
-            linearGradientBrush.GradientStops.Add(new GradientStop(Colors.Aqua, 0.35));
+            try
+            {
+                linearGradientBrush.StartPoint = new Point(0.5, 0);
+                linearGradientBrush.EndPoint = new Point(0.5, 1);
+                linearGradientBrush.Opacity = 0.3;
+                linearGradientBrush.GradientStops.Add(new GradientStop(Colors.Blue, 0.0));
+                linearGradientBrush.GradientStops.Add(new GradientStop(Colors.Aqua, 0.35));
 
-            MoviePageOpen();
+                MoviePageOpen();
 
-            currentSelectedButton = MainPage;
-            currentSelectedButton.Background = linearGradientBrush;
+                currentSelectedButton = MainPage;
+                currentSelectedButton.Background = linearGradientBrush;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void SelectedPage_Click(object sender, RoutedEventArgs e)
@@ -52,61 +49,103 @@ namespace Cinema
 
         private void SelectedBackPage_Click(object sender, RoutedEventArgs e)
         {
-            Page currentPage = PageManager.Content as Page;
+            try
+            {
+                Page currentPage = PageManager.Content as Page;
 
-            if (currentPage.GetType().Name == "PlacesCashierControls")
-            {
-                SessionPageOpen();
+                if (currentPage.GetType().Name == "PlacesCashierControls")
+                {
+                    SessionPageOpen();
+                }
+                else
+                    if (currentPage.GetType().Name == "SessionCashierControls")
+                {
+                    MoviePageOpen();
+                }
             }
-            else
-                if (currentPage.GetType().Name == "SessionCashierControls")
+            catch (Exception ex)
             {
-                MoviePageOpen();
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         public void MoviePageOpen()
         {
-            PageManager.Navigate(new MovieCashierControls());
+            try
+            {
+                PageManager.Navigate(new MovieCashierControls());
 
-            GoBack.Background = Brushes.Transparent;
-            MainPage.Background = linearGradientBrush;
-            GoBack.Content = "";
+                GoBack.Background = Brushes.Transparent;
+                MainPage.Background = linearGradientBrush;
+                GoBack.Content = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         public void SessionPageOpen()
         {
-            PageManager.Navigate(new SessionCashierControls());
+            try
+            {
+                PageManager.Navigate(new SessionCashierControls());
 
-            MainPage.Background = Brushes.Transparent;
-            GoBack.Background = linearGradientBrush;
-            GoBack.Content = "Фильмы";
+                MainPage.Background = Brushes.Transparent;
+                GoBack.Background = linearGradientBrush;
+                GoBack.Content = "Фильмы";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         public void PlacesPageOpen()
         {
-            PageManager.Navigate(new PlacesCashierControls());
-            GoBack.Content = "Сеансы";
+            try
+            {
+                PageManager.Navigate(new PlacesCashierControls());
+                GoBack.Content = "Сеансы";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
-            exitMode = true;
+            try
+            {
+                exitMode = true;
 
-            TransmittedData.idSelectedCashierMovie = 0;
-            TransmittedData.idSelectedCashierSession = 0;
+                TransmittedData.idSelectedCashierMovie = 0;
+                TransmittedData.idSelectedCashierSession = 0;
 
-            Authorization authorization = new Authorization();
-            authorization.Show();
+                Authorization authorization = new Authorization();
+                authorization.Show();
 
-            this.Close();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (!exitMode)
+            try
             {
-                Application.Current.Shutdown();
+                if (!exitMode)
+                {
+                    Application.Current.Shutdown();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

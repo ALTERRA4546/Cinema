@@ -1,6 +1,4 @@
 ﻿using System.Reflection;
-using System.Resources;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Windows;
 
@@ -8,7 +6,7 @@ using System.Windows;
 // набор атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
 [assembly: AssemblyTitle("Cinema")]
-[assembly: AssemblyDescription("Программа проедназначена для введения учета продаж билетов")]
+[assembly: AssemblyDescription("Программа предназначена для автоматизации продажи билетов")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("ALTERRA")]
 [assembly: AssemblyProduct("Cinema")]
@@ -51,5 +49,5 @@ using System.Windows;
 // Можно задать все значения или принять номера сборки и редакции по умолчанию 
 // используя "*", как показано ниже:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.9.5.0")]
-[assembly: AssemblyFileVersion("0.9.5.0")]
+[assembly: AssemblyVersion("0.7.1.0")]
+[assembly: AssemblyFileVersion("0.7.1.0")]

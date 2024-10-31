@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Release\
+C:\Users\King Night\Desktop\Cinema\Cinema\obj\Release\
 Cinema
 none
 false
 TRACE
-C:\Users\King Night\source\repos\Cinema\Cinema\App.xaml
-16-654856278
+C:\Users\King Night\Desktop\Cinema\Cinema\App.xaml
+19-1997564002
 2-1957146511
-341367658593
-18-1729495929
-AddOrEditActor.xaml;AddOrEditEmployee.xaml;AddOrEditGenre.xaml;AddOrEditMovie.xaml;AddOrEditSession.xaml;Authorization.xaml;CashierPanel.xaml;DirectorsPanel.xaml;EmployeeControls.xaml;MovieAnalysis.xaml;MovieCashierControls.xaml;MovieControls.xaml;PlacesCashierControls.xaml;SessionCashierControls.xaml;SessionControls.xaml;TicketAnalysis.xaml;
+37-1120193508
+211280871774
+Windows\AdminPanel.xaml;Pages\SettingsControls.xaml;Windows\AddOrEditActor.xaml;Windows\AddOrEditEmployee.xaml;Windows\AddOrEditGenre.xaml;Windows\AddOrEditMovie.xaml;Windows\AddOrEditSession.xaml;Windows\Authorization.xaml;Windows\BookerPanel.xaml;Windows\CashierPanel.xaml;Windows\DirectorsPanel.xaml;Pages\EmployeeControls.xaml;Pages\MovieAnalysis.xaml;Pages\MovieCashierControls.xaml;Pages\MovieControls.xaml;Pages\PlacesCashierControls.xaml;Pages\SessionCashierControls.xaml;Pages\SessionControls.xaml;Pages\TicketAnalysis.xaml;
 
-True
+False
 

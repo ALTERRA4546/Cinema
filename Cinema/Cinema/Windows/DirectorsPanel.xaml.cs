@@ -1,19 +1,7 @@
-﻿using Cinema.Pages;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using static Cinema.Authorization;
 
 namespace Cinema
@@ -34,74 +22,115 @@ namespace Cinema
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            linearGradientBrush.StartPoint = new Point(0.5, 0);
-            linearGradientBrush.EndPoint = new Point(0.5, 1);
-            linearGradientBrush.Opacity = 0.3;
-            linearGradientBrush.GradientStops.Add(new GradientStop(Colors.Blue, 0.0));
-            linearGradientBrush.GradientStops.Add(new GradientStop(Colors.Aqua, 0.35));
+            try
+            {
+                linearGradientBrush.StartPoint = new Point(0.5, 0);
+                linearGradientBrush.EndPoint = new Point(0.5, 1);
+                linearGradientBrush.Opacity = 0.3;
+                linearGradientBrush.GradientStops.Add(new GradientStop(Colors.Blue, 0.0));
+                linearGradientBrush.GradientStops.Add(new GradientStop(Colors.Aqua, 0.35));
 
-            PageManager.Navigate(new EmployeeControls());
+                PageManager.Navigate(new EmployeeControls());
 
-            currentSelectedButton = EmployeePage;
-            currentSelectedButton.Background = linearGradientBrush;
-            
+                currentSelectedButton = EmployeePage;
+                currentSelectedButton.Background = linearGradientBrush;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void SelectedPage_Click(object sender, RoutedEventArgs e)
         {
-            if (currentSelectedButton != null)
+            try
             {
-                currentSelectedButton.Background = Brushes.Transparent;
+                if (currentSelectedButton != null)
+                {
+                    currentSelectedButton.Background = Brushes.Transparent;
+                }
+
+                currentSelectedButton = sender as Button;
+
+                currentSelectedButton.Background = linearGradientBrush;
+
+                switch (currentSelectedButton.Name)
+                {
+                    case "EmployeePage":
+                        PageManager.Navigate(new EmployeeControls());
+                        break;
+
+                    case "TicketPage":
+                        TicketAnalysisOpen();
+                        break;
+                }
             }
-
-            currentSelectedButton = sender as Button;
-
-            currentSelectedButton.Background = linearGradientBrush;
-
-            switch (currentSelectedButton.Name)
+            catch (Exception ex)
             {
-                case "EmployeePage":
-                    PageManager.Navigate(new EmployeeControls());
-                    break;
-
-                case "TicketPage":
-                    TicketAnalysisOpen();
-                    break;
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
-            exitMode = true;
+            try
+            {
+                exitMode = true;
 
-            TransmittedData.idEmployee = 0;
-            TransmittedData.idSelectedMovie = 0;
-            TransmittedData.idSelectedGenre = 0;
-            TransmittedData.idSelectedActor = 0;
-            TransmittedData.idSelectedSession = 0;
-            TransmittedData.idSelectedEmployee = 0;
+                TransmittedData.idEmployee = 0;
+                TransmittedData.idSelectedMovie = 0;
+                TransmittedData.idSelectedGenre = 0;
+                TransmittedData.idSelectedActor = 0;
+                TransmittedData.idSelectedSession = 0;
+                TransmittedData.idSelectedEmployee = 0;
 
-            Authorization authorization = new Authorization();
-            authorization.Show();
+                Authorization authorization = new Authorization();
+                authorization.Show();
 
-            this.Close();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         public void TicketAnalysisOpen()
         {
-            PageManager.Navigate(new TicketAnalysis());
+            try
+            {
+                PageManager.Navigate(new TicketAnalysis());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         public void MovieAnalysisOpen()
         {
-            PageManager.Navigate(new MovieAnalysis());
+            try
+            {
+                PageManager.Navigate(new MovieAnalysis());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (!exitMode)
+            try
             {
-                Application.Current.Shutdown();
+                if (!exitMode)
+                {
+                    Application.Current.Shutdown();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }
