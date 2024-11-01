@@ -124,3 +124,7 @@ C:\Users\King Night\Desktop\Cinema\Cinema\obj\Debug\Cinema.csproj.CoreCompileInp
 C:\Users\King Night\Desktop\Cinema\Cinema\obj\Debug\Cinema.csproj.Up2Date
 C:\Users\King Night\Desktop\Cinema\Cinema\obj\Debug\Cinema.exe
 C:\Users\King Night\Desktop\Cinema\Cinema\obj\Debug\Cinema.pdb
+C:\Users\King Night\Desktop\Cinema\Cinema\bin\Debug\Cinema.exe.manifest
+C:\Users\King Night\Desktop\Cinema\Cinema\bin\Debug\Cinema.application
+C:\Users\King Night\Desktop\Cinema\Cinema\obj\Debug\Cinema.exe.manifest
+C:\Users\King Night\Desktop\Cinema\Cinema\obj\Debug\Cinema.application

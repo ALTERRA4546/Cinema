@@ -30,7 +30,7 @@
         </StackPanel>
 
         <Grid VerticalAlignment="Bottom">
-            <Label Content="Pre-release v0.7.1" HorizontalAlignment="Left"/>
+            <Label Content="Pre-release v0.7.5" HorizontalAlignment="Left"/>
             <Label Content="Early access" HorizontalAlignment="Right"/>
         </Grid>
 

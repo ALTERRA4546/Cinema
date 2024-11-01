@@ -186,7 +186,12 @@ namespace Cinema
                                                 session in dataBase.Session on movie.IDMovie equals session.IDMovie into sessionGroup
                                                 from session in sessionGroup.DefaultIfEmpty()
                                                 where (session.DateAndTimeSession >= DateTime.Now)
-                                                select movie).ToList();
+                                                group movie by movie.Title into groupedMovies
+                                                select new
+                                                {
+                                                    MovieTitle = groupedMovies.Key,
+                                                    TotalSessions = groupedMovies.Count()
+                                                }).ToList();
 
                     FindCounterData.Text = result.Count() + "/" + fullMovieCashierData.Count();
 

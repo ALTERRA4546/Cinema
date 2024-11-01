@@ -20,7 +20,7 @@
                     </Grid>
                     <Grid Margin="0,0,0,10">
                         <Label Content="Страна производства:" FontSize="16"/>
-                        <ComboBox x:Name="MovieCountry" HorizontalAlignment="Left" Margin="200,0,0,0" Width="350" FontSize="16" Background="White"/>
+                        <ComboBox x:Name="MovieCountry" HorizontalAlignment="Left" Margin="200,0,0,0" Width="350" SelectedIndex="0" FontSize="16" Background="White"/>
                     </Grid>
                     <Grid Margin="0,0,0,10">
                         <Label Content="Год публикации:" FontSize="16"/>

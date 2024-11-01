@@ -16,5 +16,5 @@ C:\Users\King Night\Desktop\Cinema\Cinema\App.xaml
 211280871774
 Windows\AdminPanel.xaml;Pages\SettingsControls.xaml;Windows\AddOrEditActor.xaml;Windows\AddOrEditEmployee.xaml;Windows\AddOrEditGenre.xaml;Windows\AddOrEditMovie.xaml;Windows\AddOrEditSession.xaml;Windows\Authorization.xaml;Windows\BookerPanel.xaml;Windows\CashierPanel.xaml;Windows\DirectorsPanel.xaml;Pages\EmployeeControls.xaml;Pages\MovieAnalysis.xaml;Pages\MovieCashierControls.xaml;Pages\MovieControls.xaml;Pages\PlacesCashierControls.xaml;Pages\SessionCashierControls.xaml;Pages\SessionControls.xaml;Pages\TicketAnalysis.xaml;
 
-False
+True
 

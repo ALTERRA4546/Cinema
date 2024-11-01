@@ -55,14 +55,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cinema.exe" size="434176">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cinema.exe" size="474112">
       <assemblyIdentity name="Cinema" version="0.7.1.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>VT+6/6rM5wtJM1344MzQlQKPxonI/Hr7CzcEiVtgocw=</dsig:DigestValue>
+        <dsig:DigestValue>XCTvUS1vWgQWOKAN5cXRFT2EBreqM0OoQdoiYHcGHlg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

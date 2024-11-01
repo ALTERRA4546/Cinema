@@ -415,19 +415,35 @@ namespace Cinema
             {
                 if (MovieGenreGrid.SelectedIndex >= 0)
                 {
-                    using (var dataBase = new CinemaEntities())
+                    if (MessageBox.Show("Вы действительно хотите удалить выбранный жанр?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                     {
-                        DataGridRow row = (DataGridRow)MovieGenreGrid.ItemContainerGenerator.ContainerFromIndex(MovieGenreGrid.SelectedIndex) as DataGridRow;
-                        DataGridCell cell = MovieGenreGrid.Columns[0].GetCellContent(row).Parent as DataGridCell;
-                        int selectedGenre = Convert.ToInt32(((TextBlock)cell.Content).Text);
-                        var removeGenre = dataBase.Genre.Where(w => w.IDGenre == selectedGenre).FirstOrDefault();
-                        var removeMovieGenre = dataBase.MovieGenre.Where(w => w.IDGenre == selectedGenre).ToList();
-
-                        if (removeMovieGenre.Count != 0)
+                        using (var dataBase = new CinemaEntities())
                         {
-                            if (MessageBox.Show("Удаляемый жанр используеться в фильмах. Вы действительно хотите его удалить?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                            DataGridRow row = (DataGridRow)MovieGenreGrid.ItemContainerGenerator.ContainerFromIndex(MovieGenreGrid.SelectedIndex) as DataGridRow;
+                            DataGridCell cell = MovieGenreGrid.Columns[0].GetCellContent(row).Parent as DataGridCell;
+                            int selectedGenre = Convert.ToInt32(((TextBlock)cell.Content).Text);
+                            var removeGenre = dataBase.Genre.Where(w => w.IDGenre == selectedGenre).FirstOrDefault();
+                            var removeMovieGenre = dataBase.MovieGenre.Where(w => w.IDGenre == selectedGenre).ToList();
+
+                            if (removeMovieGenre.Count != 0)
                             {
-                                dataBase.MovieGenre.RemoveRange(removeMovieGenre);
+                                if (MessageBox.Show("Удаляемый жанр используеться в фильмах. Вы действительно хотите его удалить?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                                {
+                                    dataBase.MovieGenre.RemoveRange(removeMovieGenre);
+                                    dataBase.Genre.Remove(removeGenre);
+
+                                    dataBase.SaveChanges();
+
+                                    MessageBox.Show("Жанр был удален", "Готово", MessageBoxButton.OK, MessageBoxImage.Information);
+                                    LoadGridData();
+                                }
+                                else
+                                {
+                                    return;
+                                }
+                            }
+                            else
+                            {
                                 dataBase.Genre.Remove(removeGenre);
 
                                 dataBase.SaveChanges();
@@ -435,19 +451,6 @@ namespace Cinema
                                 MessageBox.Show("Жанр был удален", "Готово", MessageBoxButton.OK, MessageBoxImage.Information);
                                 LoadGridData();
                             }
-                            else
-                            {
-                                return;
-                            }
-                        }
-                        else
-                        {
-                            dataBase.Genre.Remove(removeGenre);
-
-                            dataBase.SaveChanges();
-
-                            MessageBox.Show("Жанр был удален", "Готово", MessageBoxButton.OK, MessageBoxImage.Information);
-                            LoadGridData();
                         }
                     }
                 }
@@ -510,19 +513,35 @@ namespace Cinema
             {
                 if (MovieActorGrid.SelectedIndex >= 0)
                 {
-                    using (var dataBase = new CinemaEntities())
+                    if (MessageBox.Show("Вы действительно хотите удалить выбранный жанр?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                     {
-                        DataGridRow row = (DataGridRow)MovieActorGrid.ItemContainerGenerator.ContainerFromIndex(MovieActorGrid.SelectedIndex) as DataGridRow;
-                        DataGridCell cell = MovieActorGrid.Columns[0].GetCellContent(row).Parent as DataGridCell;
-                        int selectedActor = Convert.ToInt32(((TextBlock)cell.Content).Text);
-                        var removeActor = dataBase.Actor.Where(w => w.IDActor == selectedActor).FirstOrDefault();
-                        var removeActorInMovie = dataBase.ActorsInMovies.Where(w => w.IDActor == selectedActor).ToList();
-
-                        if (removeActorInMovie.Count != 0)
+                        using (var dataBase = new CinemaEntities())
                         {
-                            if (MessageBox.Show("Удаляемый актер присутствует в других фильмах. Вы действительно хотите его удалить?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                            DataGridRow row = (DataGridRow)MovieActorGrid.ItemContainerGenerator.ContainerFromIndex(MovieActorGrid.SelectedIndex) as DataGridRow;
+                            DataGridCell cell = MovieActorGrid.Columns[0].GetCellContent(row).Parent as DataGridCell;
+                            int selectedActor = Convert.ToInt32(((TextBlock)cell.Content).Text);
+                            var removeActor = dataBase.Actor.Where(w => w.IDActor == selectedActor).FirstOrDefault();
+                            var removeActorInMovie = dataBase.ActorsInMovies.Where(w => w.IDActor == selectedActor).ToList();
+
+                            if (removeActorInMovie.Count != 0)
                             {
-                                dataBase.ActorsInMovies.RemoveRange(removeActorInMovie);
+                                if (MessageBox.Show("Удаляемый актер присутствует в других фильмах. Вы действительно хотите его удалить?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                                {
+                                    dataBase.ActorsInMovies.RemoveRange(removeActorInMovie);
+                                    dataBase.Actor.Remove(removeActor);
+
+                                    dataBase.SaveChanges();
+
+                                    MessageBox.Show("Актер был удален", "Готово", MessageBoxButton.OK, MessageBoxImage.Information);
+                                    LoadGridData();
+                                }
+                                else
+                                {
+                                    return;
+                                }
+                            }
+                            else
+                            {
                                 dataBase.Actor.Remove(removeActor);
 
                                 dataBase.SaveChanges();
@@ -530,19 +549,6 @@ namespace Cinema
                                 MessageBox.Show("Жанр был удален", "Готово", MessageBoxButton.OK, MessageBoxImage.Information);
                                 LoadGridData();
                             }
-                            else
-                            {
-                                return;
-                            }
-                        }
-                        else
-                        {
-                            dataBase.Actor.Remove(removeActor);
-
-                            dataBase.SaveChanges();
-
-                            MessageBox.Show("Жанр был удален", "Готово", MessageBoxButton.OK, MessageBoxImage.Information);
-                            LoadGridData();
                         }
                     }
                 }
