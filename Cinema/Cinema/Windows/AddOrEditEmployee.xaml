@@ -5,59 +5,60 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cinema"
         mc:Ignorable="d"
-        Title="Сотрудник" Height="530" Width="500" Loaded="Window_Loaded" ResizeMode="NoResize">
-    <Grid>
+        Title="Сотрудник" Height="530" Width="500" Loaded="Window_Loaded" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+
+    <Grid Style="{DynamicResource MainColorStyle}">
         <StackPanel>
             <Grid>
-                <Rectangle Fill="Aqua" Height="35"/>
-                <TextBlock Text="СОТРУДНИК" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold"/>
+                <Rectangle Style="{DynamicResource SecondColorRectangleStyle}"/>
+                <TextBlock Text="СОТРУДНИК" Style="{DynamicResource TitleTextBlockStyle}"/>
             </Grid>
             <Grid HorizontalAlignment="Center" Margin="10">
                 <StackPanel>
                     <Grid Margin="0,0,0,10">
-                        <Label Content="Фамилия:" FontSize="16"/>
-                        <TextBox x:Name="EmployeeSurname" HorizontalAlignment="Left" Margin="100,0,0,0" Width="350" FontSize="16"/>
+                        <Label Content="Фамилия:" Style="{DynamicResource MainLableStyle}"/>
+                        <TextBox x:Name="EmployeeSurname" HorizontalAlignment="Left" Margin="100,0,0,0" Width="350" Style="{DynamicResource MainTextBoxStyle}"/>
                     </Grid>
                     <Grid Margin="0,0,0,10">
-                        <Label Content="Имя:" FontSize="16"/>
-                        <TextBox x:Name="EmployeeName" HorizontalAlignment="Left" Margin="100,0,0,0" Width="350" FontSize="16"/>
+                        <Label Content="Имя:" Style="{DynamicResource MainLableStyle}"/>
+                        <TextBox x:Name="EmployeeName" HorizontalAlignment="Left" Margin="100,0,0,0" Width="350" Style="{DynamicResource MainTextBoxStyle}"/>
                     </Grid>
                     <Grid Margin="0,0,0,10">
-                        <Label Content="Отчество:" FontSize="16"/>
-                        <TextBox x:Name="EmployeePatronymic" HorizontalAlignment="Left" Margin="100,0,0,0" Width="350" FontSize="16"/>
+                        <Label Content="Отчество:" Style="{DynamicResource MainLableStyle}"/>
+                        <TextBox x:Name="EmployeePatronymic" HorizontalAlignment="Left" Margin="100,0,0,0" Width="350" Style="{DynamicResource MainTextBoxStyle}"/>
                     </Grid>
                     <Grid Margin="0,0,0,10">
-                        <Label Content="Телефон:" FontSize="16"/>
-                        <TextBox x:Name="EmployeePhone" HorizontalAlignment="Left" Margin="100,0,0,0" Width="350" FontSize="16"/>
+                        <Label Content="Телефон:" Style="{DynamicResource MainLableStyle}"/>
+                        <TextBox x:Name="EmployeePhone" HorizontalAlignment="Left" Margin="100,0,0,0" Width="350" Style="{DynamicResource MainTextBoxStyle}"/>
                     </Grid>
                     <Grid Margin="0,0,0,10">
-                        <Label Content="Эл. Почта:" FontSize="16"/>
-                        <TextBox x:Name="EmployeeEmail" HorizontalAlignment="Left" Margin="100,0,0,0" Width="350" FontSize="16"/>
+                        <Label Content="Эл. Почта:" Style="{DynamicResource MainLableStyle}"/>
+                        <TextBox x:Name="EmployeeEmail" HorizontalAlignment="Left" Margin="100,0,0,0" Width="350" Style="{DynamicResource MainTextBoxStyle}"/>
                     </Grid>
                     <Grid Margin="0,0,0,10">
-                        <Label Content="Должность:" FontSize="16"/>
-                        <ComboBox x:Name="EmployeeRole" HorizontalAlignment="Left" Margin="100,0,0,0" Width="350" FontSize="16" SelectedIndex="0"/>
+                        <Label Content="Должность:" Style="{DynamicResource MainLableStyle}"/>
+                        <ComboBox x:Name="EmployeeRole" Margin="100,0,0,0" Width="350" Style="{DynamicResource MainComboBoxStyle}" ItemContainerStyle="{DynamicResource MainSelectedComboBoxStyle}"/>
                     </Grid>
                     <Grid Margin="0,0,0,10">
-                        <Label Content="Логин:" FontSize="16"/>
-                        <TextBox x:Name="EmployeeLoggin" HorizontalAlignment="Left" Margin="100,0,0,0" Width="350" FontSize="16"/>
+                        <Label Content="Логин:" Style="{DynamicResource MainLableStyle}"/>
+                        <TextBox x:Name="EmployeeLoggin" HorizontalAlignment="Left" Margin="100,0,0,0" Width="350" Style="{DynamicResource MainTextBoxStyle}"/>
                     </Grid>
                     <Grid Margin="0,0,0,10">
-                        <Label Content="Пароль:" FontSize="16"/>
-                        <TextBox x:Name="EmployeePassword" HorizontalAlignment="Left" Margin="100,0,0,0" Width="350" FontSize="16"/>
+                        <Label Content="Пароль:" Style="{DynamicResource MainLableStyle}"/>
+                        <TextBox x:Name="EmployeePassword" HorizontalAlignment="Left" Margin="100,0,0,0" Width="350" Style="{DynamicResource MainTextBoxStyle}"/>
                     </Grid>
                     <Grid Margin="0,0,0,10">
                         <StackPanel>
                             <Grid>
-                                <Label Content="Фотография:" FontSize="16"/>
-                                <Image x:Name="EmployeePhoto" HorizontalAlignment="Left" Margin="170,0,0,0" Width="200" Height="200" Visibility="Collapsed"/>
+                                <Label Content="Фотография:" Style="{DynamicResource MainLableStyle}"/>
+                                <Image x:Name="EmployeePhoto" HorizontalAlignment="Left" Margin="170,0,0,5" Width="200" Height="200" Visibility="Collapsed"/>
                             </Grid>
-                            <Button x:Name="LoadPhoto" HorizontalAlignment="Left" Margin="170,0,0,0" Content="Загрузить" Width="200" FontSize="16" Background="White" Click="LoadPhoto_Click"/>
+                            <Button x:Name="LoadPhoto" HorizontalAlignment="Left" Margin="170,0,0,0" Content="Загрузить" Width="200" Style="{DynamicResource MainButtonStyle}" Click="LoadPhoto_Click"/>
                         </StackPanel>
                     </Grid>
                 </StackPanel>
             </Grid>
-            <Button x:Name="Save" Margin="0,0,0,0" Content="Сохранить" Width="450" FontSize="16" Background="White" Click="Save_Click"/>
+            <Button x:Name="Save" Margin="0,0,0,0" Content="Сохранить" Width="450" Style="{DynamicResource MainButtonStyle}" Click="Save_Click"/>
         </StackPanel>
     </Grid>
 </Window>

@@ -1,5 +1,6 @@
 ﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
+using QRCoder;
 using System;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Diagnostics;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Xml.Linq;
 using static Cinema.Authorization;
 
 namespace Cinema
@@ -282,6 +284,7 @@ namespace Cinema
                                           ticket.IDTicket,
                                           ticket.RowNumber,
                                           ticket.PlaceNumber,
+                                          ticket.DateTimeBooking,
                                           movie = movie.Title,
                                           session.DateAndTimeSession,
                                           employee.Surname,
@@ -292,39 +295,56 @@ namespace Cinema
 
                     string tempFilePath = Path.GetTempFileName() + ".pdf";
 
-                    Document doc = new Document();
-                    PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream($@"{tempFilePath}", FileMode.Create));
+                    string qrCodeText = $"{ticketData.IDTicket}|{ticketData.movie}|{ticketData.DateAndTimeSession}|{ticketData.Surname} {ticketData.Name} {ticketData.Patronymic}|{Math.Round(ticketData.TicketPrice,2)}";
+                    QRCodeGenerator qrGenerator = new QRCodeGenerator();
+                    QRCodeData qrCodeData = qrGenerator.CreateQrCode(qrCodeText, QRCodeGenerator.ECCLevel.Q);
+                    QRCode qrCode = new QRCode(qrCodeData);
+                    using (System.Drawing.Bitmap qrCodeBitmap = qrCode.GetGraphic(20, System.Drawing.Color.Black, System.Drawing.Color.White, null))
+                    {
+                        using (MemoryStream ms = new MemoryStream())
+                        {
+                            qrCodeBitmap.Save(ms, System.Drawing.Imaging.ImageFormat.Png); // Сохраняем в PNG
+                            byte[] qrCodeBytes = ms.ToArray();
 
-                    BaseFont baseFont = BaseFont.CreateFont("C:\\Windows\\Fonts\\arial.ttf", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
-                    Font font = new Font(baseFont, 16);
+                            Document doc = new Document();
+                            PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream($@"{tempFilePath}", FileMode.Create));
 
-                    BaseFont baseFontHead = BaseFont.CreateFont("C:\\Windows\\Fonts\\arial.ttf", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
-                    Font fontHead = new Font(baseFont, 20, Font.BOLD);
+                            BaseFont baseFont = BaseFont.CreateFont("C:\\Windows\\Fonts\\arial.ttf", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+                            Font font = new Font(baseFont, 16);
 
-                    doc.Open();
+                            BaseFont baseFontHead = BaseFont.CreateFont("C:\\Windows\\Fonts\\arial.ttf", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+                            Font fontHead = new Font(baseFont, 20, Font.BOLD);
 
-                    Paragraph mainParagraph = new Paragraph("Билет", fontHead);
-                    mainParagraph.Alignment = Element.ALIGN_CENTER;
-                    Paragraph paragraph = new Paragraph("Номер билета: " + ticketData.IDTicket, font);
-                    Paragraph paragraph1 = new Paragraph("Фильм: " + ticketData.movie, font);
-                    Paragraph paragraph2 = new Paragraph("Ряд: " + ticketData.RowNumber, font);
-                    Paragraph paragraph3 = new Paragraph("Место: " + ticketData.PlaceNumber, font);
-                    Paragraph paragraph4 = new Paragraph("Дата и время начала сеанса: " + ticketData.DateAndTimeSession, font);
-                    Paragraph paragraph5 = new Paragraph("Кассир: " + ticketData.Surname + " " + ticketData.Name + " " + ticketData.Patronymic, font);
-                    Paragraph paragraph6 = new Paragraph("Дата продажи: " + DateTime.Now, font);
-                    Paragraph paragraph7 = new Paragraph("Цена: " + ticketData.TicketPrice.ToString().Remove(ticketData.TicketPrice.ToString().Length - 2, 2) + " Руб.", font);
+                            doc.Open();
 
-                    doc.Add(mainParagraph);
-                    doc.Add(paragraph);
-                    doc.Add(paragraph1);
-                    doc.Add(paragraph2);
-                    doc.Add(paragraph3);
-                    doc.Add(paragraph4);
-                    doc.Add(paragraph5);
-                    doc.Add(paragraph6);
-                    doc.Add(paragraph7);
+                            Paragraph mainParagraph = new Paragraph("Билет", fontHead);
+                            mainParagraph.Alignment = Element.ALIGN_CENTER;
+                            Paragraph paragraph = new Paragraph("Номер билета: " + ticketData.IDTicket, font);
+                            Paragraph paragraph1 = new Paragraph("Фильм: " + ticketData.movie, font);
+                            Paragraph paragraph2 = new Paragraph("Ряд: " + ticketData.RowNumber, font);
+                            Paragraph paragraph3 = new Paragraph("Место: " + ticketData.PlaceNumber, font);
+                            Paragraph paragraph4 = new Paragraph("Дата и время начала сеанса: " + ticketData.DateAndTimeSession, font);
+                            Paragraph paragraph5 = new Paragraph("Кассир: " + ticketData.Surname + " " + ticketData.Name + " " + ticketData.Patronymic, font);
+                            Paragraph paragraph6 = new Paragraph("Дата продажи: " + ticketData.DateTimeBooking, font);
+                            Paragraph paragraph7 = new Paragraph("Цена: " + ticketData.TicketPrice.ToString().Remove(ticketData.TicketPrice.ToString().Length - 2, 2) + " Руб.", font);
 
-                    doc.Close();
+                            doc.Add(mainParagraph);
+                            doc.Add(paragraph);
+                            doc.Add(paragraph1);
+                            doc.Add(paragraph2);
+                            doc.Add(paragraph3);
+                            doc.Add(paragraph4);
+                            doc.Add(paragraph5);
+                            doc.Add(paragraph6);
+                            doc.Add(paragraph7);
+
+                            iTextSharp.text.Image image = iTextSharp.text.Image.GetInstance(qrCodeBytes);
+                            image.ScaleToFit(200, 200);
+                            doc.Add(image);
+
+                            doc.Close();
+                        }
+                    }
 
                     Process.Start(tempFilePath);
                 }
@@ -355,6 +375,7 @@ namespace Cinema
                         newTicket.RowNumber = selectedRowNumber;
                         newTicket.PlaceNumber = selectedPlaceNumber;
                         newTicket.IDEmployee = TransmittedData.idEmployee;
+                        newTicket.DateTimeBooking = DateTime.Now;
 
                         dataBase.Ticket.Add(newTicket);
                         dataBase.SaveChanges();

@@ -5,34 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cinema"
         mc:Ignorable="d"
-        Title="Панель менеджера" Height="550" Width="1050" MinHeight="550" MinWidth="1050" Loaded="Window_Loaded" Closing="Window_Closing">
-    <Window.Resources>
-        <Style TargetType="{x:Type Button}">
-            <Setter Property="Focusable" Value="False"/>
-            <Setter Property="IsTabStop" Value="False"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
-                            <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Window.Resources>
+        Title="Панель менеджера" Height="550" Width="1050" MinHeight="550" MinWidth="1050" Loaded="Window_Loaded" Closing="Window_Closing" WindowStartupLocation="CenterScreen">
 
-    <Grid>
+    <Grid Style="{DynamicResource MainColorStyle}">
         <Grid VerticalAlignment="Top">
-            <WrapPanel Background="Aqua" Height="25">
-                <Button x:Name="MoviePage" Content="Фильмы" Width="150" FontSize="16" BorderBrush="Transparent" Background="Transparent" Click="SelectedPage_Click"/>
-                <Button x:Name="SessionPage" Content="Сеансы" Width="150" FontSize="16" BorderBrush="Transparent" Background="Transparent" Click="SelectedPage_Click"/>
-                <Button x:Name="TicketPage" Content="Продажи" Width="150" FontSize="16" BorderBrush="Transparent" Background="Transparent" Click="SelectedPage_Click"/>
+            <WrapPanel Style="{DynamicResource SecondColorWrapPanelStyle}">
+                <Button x:Name="MoviePage" Content="Фильмы" Style="{DynamicResource TabOffButtonStyle}" Click="SelectedPage_Click"/>
+                <Button x:Name="SessionPage" Content="Сеансы" Style="{DynamicResource TabOffButtonStyle}" Click="SelectedPage_Click"/>
+                <Button x:Name="TicketPage" Content="Продажи" Style="{DynamicResource TabOffButtonStyle}" Click="SelectedPage_Click"/>
             </WrapPanel>
             <WrapPanel HorizontalAlignment="Right">
-                <Button x:Name="Exit" Margin="0,0,10,0" Content="Выйти" Width="60" FontSize="16" BorderBrush="Transparent" Background="Transparent" Click="Exit_Click"/>
+                <Button x:Name="Help" Content="Справка" Width="100" Style="{DynamicResource TabHelpButtonStyle}" Click="Help_Click"/>
+                <Button x:Name="Exit" Content="Выйти" Width="100" Style="{DynamicResource TabExitButtonStyle}" Click="Exit_Click"/>
             </WrapPanel>
         </Grid>
         <Frame x:Name="PageManager" Content="MainFrame" Margin="0,25,0,0" NavigationUIVisibility="Hidden"  Background="White"/>

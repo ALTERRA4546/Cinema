@@ -105,6 +105,7 @@
     <Property Name="RowNumber" Type="int" Nullable="false" />
     <Property Name="PlaceNumber" Type="int" Nullable="false" />
     <Property Name="IDEmployee" Type="int" Nullable="false" />
+    <Property Name="DateTimeBooking" Type="datetime" Nullable="false" />
   </EntityType>
   <Association Name="FK_ActorsInMovies_Actor">
     <End Role="Actor" Type="Self.Actor" Multiplicity="1" />

@@ -8,18 +8,18 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="EmployeeControls" Loaded="Page_Loaded" SizeChanged="Page_SizeChanged">
 
-    <Grid>
+    <Grid Style="{DynamicResource MainColorStyle}">
         <StackPanel>
-            <Grid Background="Aqua" Height="35">
+            <Grid Style="{DynamicResource SecondColorStyle}">
                 <WrapPanel Margin="10,0,0,0" VerticalAlignment="Center">
-                    <Button x:Name="AddEmployee" Content="Добавить" HorizontalAlignment="Left" Width="120" FontSize="16" Background="White" Click="AddEmployee_Click"/>
-                    <Button x:Name="RemoveEmployee" Content="Удалить" HorizontalAlignment="Left" Width="120" FontSize="16" Background="White" Click="RemoveEmployee_Click"/>
-                    <Rectangle Margin="10,0,10,0" Fill="Black" Height="25" Width="2" Opacity="0.2"/>
-                    <TextBlock Text="Поиск:" Margin="0,0,10,0" FontSize="16"/>
-                    <TextBox x:Name="FindData" Margin="0,0,10,0" Width="200" FontSize="16" TextChanged="FindData_TextChanged"/>
-                    <Rectangle Margin="10,0,10,0" Fill="Black" Height="25" Width="2" Opacity="0.2"/>
-                    <TextBlock Text="Найдено: " FontSize="16"/>
-                    <TextBlock x:Name="FindCounterData" Text="0/0" FontSize="16"/>
+                    <Button x:Name="AddEmployee" Margin="0,0,5,0" Content="Добавить" HorizontalAlignment="Left" Width="120" Style="{DynamicResource TabControlButtonStyle}" Click="AddEmployee_Click"/>
+                    <Button x:Name="RemoveEmployee" Content="Удалить" HorizontalAlignment="Left" Width="120" Style="{DynamicResource TabControlButtonStyle}" Click="RemoveEmployee_Click"/>
+                    <Rectangle Margin="10,0,10,0" Style="{DynamicResource SecondColorSeparatorsRectangleStyle}"/>
+                    <TextBlock Text="Поиск:" Margin="0,0,10,0" Style="{DynamicResource MainTextBlockStyle}"/>
+                    <TextBox x:Name="FindData" Margin="0,0,10,0" Width="200" Style="{DynamicResource MainTextBoxStyle}" TextChanged="FindData_TextChanged"/>
+                    <Rectangle Margin="10,0,10,0" Style="{DynamicResource SecondColorSeparatorsRectangleStyle}"/>
+                    <TextBlock Text="Найдено: " Style="{DynamicResource MainTextBlockStyle}"/>
+                    <TextBlock x:Name="FindCounterData" Text="0/0" Style="{DynamicResource MainTextBlockStyle}"/>
                 </WrapPanel>
             </Grid>
             <ListView x:Name="EmployeeList" Height="400" d:ItemsSource="{d:SampleData ItemCount=2}" ScrollViewer.CanContentScroll="False" MouseDoubleClick="EmployeeList_MouseDoubleClick">
@@ -31,15 +31,15 @@
                 <ListView.View>
                     <GridView>
                         <GridViewColumn x:Name="EmployeeCodeGrid">
-                            <Label Content="Код сотрудника" FontSize="16"/>
+                            <Label Content="Код сотрудника" Style="{DynamicResource MainLableStyle}"/>
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Label Content="{Binding employeeID}" HorizontalAlignment="Center"  FontSize="16"/>
+                                    <Label Content="{Binding employeeID}" HorizontalAlignment="Center"  Style="{DynamicResource MainLableStyle}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
                         <GridViewColumn x:Name="ImageGrid">
-                            <Label Content="Фотография" FontSize="16"/>
+                            <Label Content="Фотография" Style="{DynamicResource MainLableStyle}"/>
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <Image Source="{Binding employeePhoto}" MaxHeight="400" HorizontalAlignment="Center"/>
@@ -47,43 +47,43 @@
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
                         <GridViewColumn x:Name="EmployeeInfoGrid">
-                            <Label Content="Информация о сотруднике" FontSize="16"/>
+                            <Label Content="Информация о сотруднике" Style="{DynamicResource MainLableStyle}"/>
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel>
                                         <WrapPanel>
-                                            <Label Content="{Binding employeeSurname}" FontSize="16"/>
-                                            <Label Content="{Binding employeeName}" FontSize="16"/>
-                                            <Label Content="{Binding employeePatronymic}" FontSize="16"/>
+                                            <Label Content="{Binding employeeSurname}" Style="{DynamicResource MainLableStyle}"/>
+                                            <Label Content="{Binding employeeName}" Style="{DynamicResource MainLableStyle}"/>
+                                            <Label Content="{Binding employeePatronymic}" Style="{DynamicResource MainLableStyle}"/>
                                         </WrapPanel>
                                         <WrapPanel>
-                                            <Label Content="Телефон:" FontSize="16"/>
-                                            <Label Content="{Binding employeePhone}" FontSize="16"/>
+                                            <Label Content="Телефон:" Style="{DynamicResource MainLableStyle}"/>
+                                            <Label Content="{Binding employeePhone}" Style="{DynamicResource MainLableStyle}"/>
                                         </WrapPanel>
                                         <WrapPanel>
-                                            <Label Content="Почта:" FontSize="16"/>
-                                            <Label Content="{Binding employeeEmail}" FontSize="16"/>
+                                            <Label Content="Почта:" Style="{DynamicResource MainLableStyle}"/>
+                                            <Label Content="{Binding employeeEmail}" Style="{DynamicResource MainLableStyle}"/>
                                         </WrapPanel>
                                         <WrapPanel>
-                                            <Label Content="Должность:" FontSize="16"/>
-                                            <Label Content="{Binding employeeRole}" FontSize="16"/>
+                                            <Label Content="Должность:" Style="{DynamicResource MainLableStyle}"/>
+                                            <Label Content="{Binding employeeRole}" Style="{DynamicResource MainLableStyle}"/>
                                         </WrapPanel>
                                     </StackPanel>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
                         <GridViewColumn x:Name="AuthorizationGrid">
-                            <Label Content="Данные авторизации" FontSize="16"/>
+                            <Label Content="Данные авторизации" Style="{DynamicResource MainLableStyle}"/>
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel>
                                         <WrapPanel>
-                                            <Label Content="Логин:" FontSize="16"/>
-                                            <Label Content="{Binding employeeLogin}" FontSize="16"/>
+                                            <Label Content="Логин:" Style="{DynamicResource MainLableStyle}"/>
+                                            <Label Content="{Binding employeeLogin}" Style="{DynamicResource MainLableStyle}"/>
                                         </WrapPanel>
                                         <WrapPanel>
-                                            <Label Content="Пароль:" FontSize="16"/>
-                                            <Label Content="{Binding employeePassword}" FontSize="16"/>
+                                            <Label Content="Пароль:" Style="{DynamicResource MainLableStyle}"/>
+                                            <Label Content="{Binding employeePassword}" Style="{DynamicResource MainLableStyle}"/>
                                         </WrapPanel>
                                     </StackPanel>
                                 </DataTemplate>

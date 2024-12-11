@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -18,22 +20,15 @@ namespace Cinema
 
         public bool exitMode;
         public Button currentSelectedButton;
-        public LinearGradientBrush linearGradientBrush = new LinearGradientBrush();
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             try
             {
-                linearGradientBrush.StartPoint = new Point(0.5, 0);
-                linearGradientBrush.EndPoint = new Point(0.5, 1);
-                linearGradientBrush.Opacity = 0.3;
-                linearGradientBrush.GradientStops.Add(new GradientStop(Colors.Blue, 0.0));
-                linearGradientBrush.GradientStops.Add(new GradientStop(Colors.Aqua, 0.35));
-
                 PageManager.Navigate(new MovieControls());
 
                 currentSelectedButton = MoviePage;
-                currentSelectedButton.Background = linearGradientBrush;
+                currentSelectedButton.Style = (Style)Application.Current.Resources["TabOnButtonStyle"];
             }
             catch (Exception ex)
             {
@@ -47,12 +42,12 @@ namespace Cinema
             {
                 if (currentSelectedButton != null)
                 {
-                    currentSelectedButton.Background = Brushes.Transparent;
+                    currentSelectedButton.Style = (Style)Application.Current.Resources["TabOffButtonStyle"];
                 }
 
                 currentSelectedButton = sender as Button;
 
-                currentSelectedButton.Background = linearGradientBrush;
+                currentSelectedButton.Style = (Style)Application.Current.Resources["TabOnButtonStyle"];
 
                 switch (currentSelectedButton.Name)
                 {
@@ -136,6 +131,27 @@ namespace Cinema
                 {
                     Application.Current.Shutdown();
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void Help_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Uri resourceUri = new Uri("pack://application:,,,/Resource/HelpDocument.pdf", UriKind.Absolute);
+
+                Stream resourceStream = Application.GetResourceStream(resourceUri)?.Stream;
+                string tempFileName = Path.GetTempFileName() + ".pdf";
+                using (FileStream fileStream = new FileStream(tempFileName, FileMode.Create, FileAccess.Write))
+                {
+                    resourceStream.CopyTo(fileStream);
+                }
+
+                Process.Start(new ProcessStartInfo(tempFileName) { UseShellExecute = true });
             }
             catch (Exception ex)
             {

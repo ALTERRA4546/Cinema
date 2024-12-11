@@ -1,66 +1,3 @@
-C:\Users\King Night\source\repos\Cinema\Cinema\bin\Debug\Cinema.exe.config
-C:\Users\King Night\source\repos\Cinema\Cinema\bin\Debug\Cinema.exe
-C:\Users\King Night\source\repos\Cinema\Cinema\bin\Debug\Cinema.pdb
-C:\Users\King Night\source\repos\Cinema\Cinema\bin\Debug\BouncyCastle.Cryptography.dll
-C:\Users\King Night\source\repos\Cinema\Cinema\bin\Debug\EntityFramework.dll
-C:\Users\King Night\source\repos\Cinema\Cinema\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\King Night\source\repos\Cinema\Cinema\bin\Debug\itextsharp.dll
-C:\Users\King Night\source\repos\Cinema\Cinema\bin\Debug\BouncyCastle.Cryptography.xml
-C:\Users\King Night\source\repos\Cinema\Cinema\bin\Debug\EntityFramework.xml
-C:\Users\King Night\source\repos\Cinema\Cinema\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\King Night\source\repos\Cinema\Cinema\bin\Debug\itextsharp.xml
-C:\Users\King Night\source\repos\Cinema\Cinema\bin\Debug\ru\EntityFramework.resources.dll
-C:\Users\King Night\source\repos\Cinema\Cinema\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Cinema.csproj.AssemblyReference.cache
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\AdminPanel.g.cs
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\SettingsControls.g.cs
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\AddOrEditActor.g.cs
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\AddOrEditEmployee.g.cs
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\AddOrEditGenre.g.cs
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\AddOrEditMovie.g.cs
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\AddOrEditSession.g.cs
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\Authorization.g.cs
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\BookerPanel.g.cs
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\CashierPanel.g.cs
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\DirectorsPanel.g.cs
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\EmployeeControls.g.cs
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\MovieAnalysis.g.cs
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\MovieCashierControls.g.cs
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\MovieControls.g.cs
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\PlacesCashierControls.g.cs
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\SessionCashierControls.g.cs
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\SessionControls.g.cs
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\TicketAnalysis.g.cs
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\App.g.cs
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Cinema_Content.g.cs
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Cinema_MarkupCompile.cache
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Cinema_MarkupCompile.lref
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\AdminPanel.baml
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\SettingsControls.baml
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\AddOrEditActor.baml
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\AddOrEditEmployee.baml
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\AddOrEditGenre.baml
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\AddOrEditMovie.baml
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\AddOrEditSession.baml
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\Authorization.baml
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\BookerPanel.baml
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\CashierPanel.baml
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\DirectorsPanel.baml
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\EmployeeControls.baml
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\MovieAnalysis.baml
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\MovieCashierControls.baml
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\MovieControls.baml
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\PlacesCashierControls.baml
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\SessionCashierControls.baml
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\SessionControls.baml
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\TicketAnalysis.baml
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Cinema.g.resources
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Cinema.Properties.Resources.resources
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Cinema.csproj.GenerateResource.cache
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Cinema.csproj.CoreCompileInputs.cache
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Cinema.csproj.Up2Date
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Cinema.exe
-C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Cinema.pdb
 C:\Users\King Night\Desktop\Cinema\Cinema\bin\Debug\Cinema.exe.config
 C:\Users\King Night\Desktop\Cinema\Cinema\bin\Debug\Cinema.exe
 C:\Users\King Night\Desktop\Cinema\Cinema\bin\Debug\Cinema.pdb
@@ -128,3 +65,146 @@ C:\Users\King Night\Desktop\Cinema\Cinema\bin\Debug\Cinema.exe.manifest
 C:\Users\King Night\Desktop\Cinema\Cinema\bin\Debug\Cinema.application
 C:\Users\King Night\Desktop\Cinema\Cinema\obj\Debug\Cinema.exe.manifest
 C:\Users\King Night\Desktop\Cinema\Cinema\obj\Debug\Cinema.application
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\bin\Debug\Cinema.exe.config
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\bin\Debug\Cinema.exe.manifest
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\bin\Debug\Cinema.application
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\bin\Debug\Cinema.exe
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\bin\Debug\Cinema.pdb
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\bin\Debug\EntityFramework.dll
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\bin\Debug\itextsharp.dll
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\bin\Debug\EntityFramework.xml
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\bin\Debug\itextsharp.xml
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Cinema.csproj.AssemblyReference.cache
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Windows\AdminPanel.g.cs
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Pages\SettingsControls.g.cs
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Windows\AddOrEditActor.g.cs
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Windows\AddOrEditEmployee.g.cs
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Windows\AddOrEditGenre.g.cs
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Windows\AddOrEditMovie.g.cs
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Windows\AddOrEditSession.g.cs
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Windows\Authorization.g.cs
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Windows\BookerPanel.g.cs
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Windows\CashierPanel.g.cs
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Windows\DirectorsPanel.g.cs
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Pages\EmployeeControls.g.cs
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Pages\MovieAnalysis.g.cs
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Pages\MovieCashierControls.g.cs
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Pages\MovieControls.g.cs
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Pages\PlacesCashierControls.g.cs
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Pages\SessionCashierControls.g.cs
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Pages\SessionControls.g.cs
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Pages\TicketAnalysis.g.cs
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\App.g.cs
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Cinema_Content.g.cs
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Cinema_MarkupCompile.cache
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Cinema_MarkupCompile.lref
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Windows\AdminPanel.baml
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Pages\SettingsControls.baml
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Windows\AddOrEditActor.baml
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Windows\AddOrEditEmployee.baml
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Windows\AddOrEditGenre.baml
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Windows\AddOrEditMovie.baml
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Windows\AddOrEditSession.baml
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Windows\Authorization.baml
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Windows\BookerPanel.baml
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Windows\CashierPanel.baml
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Windows\DirectorsPanel.baml
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Pages\EmployeeControls.baml
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Pages\MovieAnalysis.baml
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Pages\MovieCashierControls.baml
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Pages\MovieControls.baml
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Pages\PlacesCashierControls.baml
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Pages\SessionCashierControls.baml
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Pages\SessionControls.baml
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Pages\TicketAnalysis.baml
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Cinema.g.resources
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Cinema.Properties.Resources.resources
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Cinema.csproj.GenerateResource.cache
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Cinema.csproj.CoreCompileInputs.cache
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Cinema.exe.manifest
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Cinema.application
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Cinema.csproj.Up2Date
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Cinema.exe
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Cinema.pdb
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\Style\Light.baml
+C:\Users\King Night\Documents\Информатика 2024\Курсовая\Cinema\Cinema\obj\Debug\App.baml
+C:\Users\King Night\source\repos\Cinema\Cinema\bin\Debug\Cinema.exe.config
+C:\Users\King Night\source\repos\Cinema\Cinema\bin\Debug\Cinema.exe.manifest
+C:\Users\King Night\source\repos\Cinema\Cinema\bin\Debug\Cinema.application
+C:\Users\King Night\source\repos\Cinema\Cinema\bin\Debug\Cinema.exe
+C:\Users\King Night\source\repos\Cinema\Cinema\bin\Debug\Cinema.pdb
+C:\Users\King Night\source\repos\Cinema\Cinema\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\King Night\source\repos\Cinema\Cinema\bin\Debug\EntityFramework.dll
+C:\Users\King Night\source\repos\Cinema\Cinema\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\King Night\source\repos\Cinema\Cinema\bin\Debug\itextsharp.dll
+C:\Users\King Night\source\repos\Cinema\Cinema\bin\Debug\QRCoder.dll
+C:\Users\King Night\source\repos\Cinema\Cinema\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\King Night\source\repos\Cinema\Cinema\bin\Debug\EntityFramework.xml
+C:\Users\King Night\source\repos\Cinema\Cinema\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\King Night\source\repos\Cinema\Cinema\bin\Debug\itextsharp.xml
+C:\Users\King Night\source\repos\Cinema\Cinema\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\King Night\source\repos\Cinema\Cinema\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Cinema.csproj.AssemblyReference.cache
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Style\Light.baml
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\BackUpControls.g.cs
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\CurrentMovieCashierControls.g.cs
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\AdminPanel.g.cs
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\SettingsControls.g.cs
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\AddOrEditActor.g.cs
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\AddOrEditEmployee.g.cs
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\AddOrEditGenre.g.cs
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\AddOrEditMovie.g.cs
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\AddOrEditSession.g.cs
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\Authorization.g.cs
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\BookerPanel.g.cs
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\CashierPanel.g.cs
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\DirectorsPanel.g.cs
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\EmployeeControls.g.cs
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\MovieAnalysis.g.cs
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\MovieCashierControls.g.cs
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\MovieControls.g.cs
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\PlacesCashierControls.g.cs
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\SessionCashierControls.g.cs
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\SessionControls.g.cs
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\TicketAnalysis.g.cs
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\App.g.cs
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Cinema_Content.g.cs
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Cinema_MarkupCompile.cache
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Cinema_MarkupCompile.lref
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\App.baml
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\BackUpControls.baml
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\CurrentMovieCashierControls.baml
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\AdminPanel.baml
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\SettingsControls.baml
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\AddOrEditActor.baml
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\AddOrEditEmployee.baml
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\AddOrEditGenre.baml
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\AddOrEditMovie.baml
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\AddOrEditSession.baml
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\Authorization.baml
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\BookerPanel.baml
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\CashierPanel.baml
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Windows\DirectorsPanel.baml
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\EmployeeControls.baml
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\MovieAnalysis.baml
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\MovieCashierControls.baml
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\MovieControls.baml
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\PlacesCashierControls.baml
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\SessionCashierControls.baml
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\SessionControls.baml
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Pages\TicketAnalysis.baml
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Cinema.g.resources
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Cinema.Properties.Resources.resources
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Cinema.csproj.GenerateResource.cache
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Cinema.csproj.CoreCompileInputs.cache
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Cinema.exe.manifest
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Cinema.application
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Cinema.csproj.Up2Date
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Cinema.exe
+C:\Users\King Night\source\repos\Cinema\Cinema\obj\Debug\Cinema.pdb

@@ -110,6 +110,7 @@
           <Property Name="RowNumber" Type="int" Nullable="false" />
           <Property Name="PlaceNumber" Type="int" Nullable="false" />
           <Property Name="IDEmployee" Type="int" Nullable="false" />
+          <Property Name="DateTimeBooking" Type="datetime" Nullable="false" />
         </EntityType>
         <Association Name="FK_ActorsInMovies_Actor">
           <End Role="Actor" Type="Self.Actor" Multiplicity="1" />
@@ -442,6 +443,7 @@
           <Property Name="RowNumber" Type="Int32" Nullable="false" />
           <Property Name="PlaceNumber" Type="Int32" Nullable="false" />
           <Property Name="IDEmployee" Type="Int32" Nullable="false" />
+          <Property Name="DateTimeBooking" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Employee" Relationship="CinemaModel.FK_Ticket_Employee" FromRole="Ticket" ToRole="Employee" />
           <NavigationProperty Name="Session" Relationship="CinemaModel.FK_Ticket_Session" FromRole="Ticket" ToRole="Session" />
         </EntityType>
@@ -668,6 +670,7 @@
           <EntitySetMapping Name="Ticket">
             <EntityTypeMapping TypeName="CinemaModel.Ticket">
               <MappingFragment StoreEntitySet="Ticket">
+                <ScalarProperty Name="DateTimeBooking" ColumnName="DateTimeBooking" />
                 <ScalarProperty Name="IDEmployee" ColumnName="IDEmployee" />
                 <ScalarProperty Name="PlaceNumber" ColumnName="PlaceNumber" />
                 <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />

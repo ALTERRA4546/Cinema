@@ -8,23 +8,23 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="TicketAnalysis" SizeChanged="Page_SizeChanged" Loaded="Page_Loaded">
 
-    <Grid Background="White">
+    <Grid Style="{DynamicResource MainColorStyle}">
         <StackPanel>
-            <Grid Background="Aqua" Height="35">
+            <Grid Style="{DynamicResource SecondColorStyle}">
                 <WrapPanel Margin="10,0,0,0" VerticalAlignment="Center">
-                    <Button x:Name="GoBackPage" Content="Назад" Width="80" FontSize="16" Background="White" Click="GoBackPage_Click"/>
-                    <Rectangle Margin="10,0,10,0" Fill="Black" Height="25" Width="2" Opacity="0.2"/>
-                    <CheckBox x:Name="FindDateChecker" Margin="0,4,5,0" Click="FindDateChecker_Click"/>
-                    <TextBlock Text="С:" Margin="0,0,10,0" FontSize="16"/>
-                    <DatePicker x:Name="BeginDate" Margin="0,0,10,0"  FontSize="12" IsEnabled="False" SelectedDateChanged="FindDate_SelectedDateChanged"/>
-                    <TextBlock Text="по" Margin="0,0,10,0" FontSize="16"/>
-                    <DatePicker x:Name="EndDate" FontSize="12" IsEnabled="False" SelectedDateChanged="FindDate_SelectedDateChanged"/>
-                    <Rectangle Margin="10,0,10,0" Fill="Black" Height="25" Width="2" Opacity="0.2"/>
-                    <TextBlock Text="Найдено: " FontSize="16"/>
-                    <TextBlock x:Name="FindCounterData" Text="0/0" FontSize="16"/>
+                    <Button x:Name="GoBackPage" Content="Назад" Width="80" Style="{DynamicResource TabControlButtonStyle}" Click="GoBackPage_Click"/>
+                    <Rectangle Margin="10,0,10,0" Fill="Black" Style="{DynamicResource SecondColorSeparatorsRectangleStyle}"/>
+                    <CheckBox x:Name="FindDateChecker" Margin="0,4,5,0" Style="{DynamicResource MainCheckBoxStyle}" Click="FindDateChecker_Click"/>
+                    <TextBlock Text="С:" Margin="0,0,10,0" Style="{DynamicResource MainTextBlockStyle}"/>
+                    <DatePicker x:Name="BeginDate" Margin="0,0,10,0" Style="{DynamicResource SecondDatePickerStyle}" SelectedDateChanged="FindDate_SelectedDateChanged"/>
+                    <TextBlock Text="по" Margin="0,0,10,0" Style="{DynamicResource MainTextBlockStyle}"/>
+                    <DatePicker x:Name="EndDate" Style="{DynamicResource SecondDatePickerStyle}" SelectedDateChanged="FindDate_SelectedDateChanged"/>
+                    <Rectangle Margin="10,0,10,0" Style="{DynamicResource SecondColorSeparatorsRectangleStyle}"/>
+                    <TextBlock Text="Найдено: " Style="{DynamicResource MainTextBlockStyle}"/>
+                    <TextBlock x:Name="FindCounterData" Text="0/0" Style="{DynamicResource MainTextBlockStyle}"/>
                 </WrapPanel>
                 <WrapPanel Margin="0,0,10,0" HorizontalAlignment="Right" VerticalAlignment="Center">
-                <Button x:Name="Print" Content="Печать отчета" FontSize="16" Width="120" Background="White" Click="Print_Click"/>
+                    <Button x:Name="Print" Content="Печать отчета" Width="120" Style="{DynamicResource TabControlButtonStyle}" Click="Print_Click"/>
             </WrapPanel>
             </Grid>
 
@@ -37,42 +37,46 @@
                 <ListView.View>
                     <GridView>
                         <GridViewColumn x:Name="SessionCodeGrid">
-                            <Label Content="Код сессии" FontSize="16"/>
+                            <Label Content="Код сессии" Style="{DynamicResource MainLableStyle}"/>
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Label Content="{Binding idSession}" HorizontalAlignment="Center"  FontSize="16"/>
+                                    <Label Content="{Binding idSession}" HorizontalAlignment="Center" Style="{DynamicResource MainLableStyle}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
                         <GridViewColumn x:Name="SessionInformationGrid">
-                            <Label Content="Информация" FontSize="16"/>
+                            <Label Content="Информация" Style="{DynamicResource MainLableStyle}"/>
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel>
                                         <WrapPanel>
-                                            <Label Content="Дата сеанса:" FontSize="16"/>
-                                            <Label Content="{Binding dateSession}" FontSize="16"/>
+                                            <Label Content="Дата сеанса:" Style="{DynamicResource MainLableStyle}"/>
+                                            <Label Content="{Binding dateSession}" Style="{DynamicResource MainLableStyle}"/>
                                         </WrapPanel>
                                         <WrapPanel>
-                                            <Label Content="Время сеанса:" FontSize="16"/>
-                                            <Label Content="{Binding timeSession}" FontSize="16"/>
+                                            <Label Content="Время сеанса:" Style="{DynamicResource MainLableStyle}"/>
+                                            <Label Content="{Binding timeSession}" Style="{DynamicResource MainLableStyle}"/>
                                         </WrapPanel>
                                     </StackPanel>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
                         <GridViewColumn x:Name="AnalyticsGrid">
-                            <Label Content="Аналитика продаж" FontSize="16"/>
+                            <Label Content="Аналитика продаж" Style="{DynamicResource MainLableStyle}"/>
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel>
                                         <WrapPanel>
-                                            <Label Content="Количество проданных билетов:" FontSize="16"/>
-                                            <Label Content="{Binding ticketCountSession}" FontSize="16"/>
+                                            <Label Content="Количество проданных билетов:" Style="{DynamicResource MainLableStyle}"/>
+                                            <Label Content="{Binding ticketCountSession}" Style="{DynamicResource MainLableStyle}"/>
                                         </WrapPanel>
                                         <WrapPanel>
-                                            <Label Content="Суммарные сборы:" FontSize="16"/>
-                                            <Label Content="{Binding ticketSummarySession}" FontSize="16"/>
+                                            <Label Content="Цена билета:" Style="{DynamicResource MainLableStyle}"/>
+                                            <Label Content="{Binding ticketPrice}" Style="{DynamicResource MainLableStyle}"/>
+                                        </WrapPanel>
+                                        <WrapPanel>
+                                            <Label Content="Суммарные сборы:" Style="{DynamicResource MainLableStyle}"/>
+                                            <Label Content="{Binding ticketSummarySession}" Style="{DynamicResource MainLableStyle}"/>
                                         </WrapPanel>
                                     </StackPanel>
                                 </DataTemplate>

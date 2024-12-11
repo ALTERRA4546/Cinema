@@ -546,7 +546,7 @@ namespace Cinema
 
                                 dataBase.SaveChanges();
 
-                                MessageBox.Show("Жанр был удален", "Готово", MessageBoxButton.OK, MessageBoxImage.Information);
+                                MessageBox.Show("Актер был удален", "Готово", MessageBoxButton.OK, MessageBoxImage.Information);
                                 LoadGridData();
                             }
                         }

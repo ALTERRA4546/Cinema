@@ -28,6 +28,7 @@ namespace Cinema
             public string dateSession { get; set; }
             public string timeSession { get; set; }
             public string ticketCountSession { get; set; }
+            public string ticketPrice { get; set; }
             public string ticketSummarySession { get; set; }
         }
 
@@ -64,7 +65,7 @@ namespace Cinema
                                        {
                                            session.IDSession,
                                            session.DateAndTimeSession,
-                                           ticket.IDTicket,
+                                           TicketID = ticket == null ? 0 : ticket.IDTicket,
                                            session.TicketPrice,
                                        }).ToList();
 
@@ -83,20 +84,32 @@ namespace Cinema
                         {
                             session.IDSession,
                             session.DateAndTimeSession,
+                            session.TicketPrice,
                             g.TicketCount,
                             g.TotalCost
                         };
                     }).ToList();
 
-                    foreach (var sessionList in result)
+                    foreach (var sessionLine in result)
                     {
                         SessionDataAnalysis sessionDataAnalysisClass = new SessionDataAnalysis();
 
-                        sessionDataAnalysisClass.idSession = sessionList.IDSession;
-                        sessionDataAnalysisClass.dateSession = sessionList.DateAndTimeSession.ToString().Split(' ')[0];
-                        sessionDataAnalysisClass.timeSession = sessionList.DateAndTimeSession.ToString().Split(' ')[1];
-                        sessionDataAnalysisClass.ticketCountSession = sessionList.TicketCount.ToString();
-                        sessionDataAnalysisClass.ticketSummarySession = sessionList.TotalCost.ToString().Remove(sessionList.TotalCost.ToString().Length - 2, 2) + " руб.";
+                        sessionDataAnalysisClass.idSession = sessionLine.IDSession;
+                        sessionDataAnalysisClass.dateSession = sessionLine.DateAndTimeSession.ToString().Split(' ')[0];
+                        sessionDataAnalysisClass.timeSession = sessionLine.DateAndTimeSession.ToString().Split(' ')[1];
+                        sessionDataAnalysisClass.ticketPrice = sessionLine.TicketPrice.ToString().Remove(sessionLine.TicketPrice.ToString().Length - 2, 2) + " руб."; ;
+
+                        if (sessionLine.TicketCount == 1)
+                        {
+                            var ticketCount = dataBase.Ticket.Where(w => w.IDSession == sessionLine.IDSession).Count();
+                            sessionDataAnalysisClass.ticketCountSession = ticketCount.ToString();
+                            sessionDataAnalysisClass.ticketSummarySession = (sessionLine.TicketPrice * ticketCount).ToString().Remove((sessionLine.TicketPrice * ticketCount).ToString().Length - 2, 2) + " руб.";
+                        }
+                        else
+                        {
+                            sessionDataAnalysisClass.ticketCountSession = sessionLine.TicketCount.ToString();
+                            sessionDataAnalysisClass.ticketSummarySession = sessionLine.TotalCost.ToString().Remove(sessionLine.TotalCost.ToString().Length - 2, 2) + " руб.";
+                        }
 
                         sessionDataAnalysesList.Add(sessionDataAnalysisClass);
                     }

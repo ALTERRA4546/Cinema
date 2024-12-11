@@ -170,6 +170,7 @@
     <Property Name="RowNumber" Type="Int32" Nullable="false" />
     <Property Name="PlaceNumber" Type="Int32" Nullable="false" />
     <Property Name="IDEmployee" Type="Int32" Nullable="false" />
+    <Property Name="DateTimeBooking" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="Employee" Relationship="CinemaModel.FK_Ticket_Employee" FromRole="Ticket" ToRole="Employee" />
     <NavigationProperty Name="Session" Relationship="CinemaModel.FK_Ticket_Session" FromRole="Ticket" ToRole="Session" />
   </EntityType>

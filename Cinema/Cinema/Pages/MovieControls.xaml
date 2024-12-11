@@ -8,18 +8,18 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MovieControls" SizeChanged="Page_SizeChanged" Loaded="Page_Loaded">
 
-    <Grid Background="White">
+    <Grid Style="{DynamicResource MainColorStyle}">
         <StackPanel>
-            <Grid Background="Aqua" Height="35">
+            <Grid Style="{DynamicResource SecondColorStyle}">
                 <WrapPanel Margin="10,0,0,0" VerticalAlignment="Center">
-                    <Button x:Name="AddMovie" Content="Добавить" HorizontalAlignment="Left" Width="120" FontSize="16" Background="White" Click="AddMovie_Click"/>
-                    <Button x:Name="RemoveMovie" Content="Удалить" HorizontalAlignment="Left" Width="120" FontSize="16" Background="White" Click="RemoveMovie_Click"/>
-                    <Rectangle Margin="10,0,10,0" Fill="Black" Height="25" Width="2" Opacity="0.2"/>
-                    <TextBlock Text="Поиск:" Margin="0,0,10,0" FontSize="16"/>
-                    <TextBox x:Name="FindData" Width="200" FontSize="16" TextChanged="FindData_TextChanged"/>
-                    <Rectangle Margin="10,0,10,0" Fill="Black" Height="25" Width="2" Opacity="0.2"/>
-                    <TextBlock Text="Найдено: " FontSize="16"/>
-                    <TextBlock x:Name="FindCounterData" Text="0/0" FontSize="16"/>
+                    <Button x:Name="AddMovie" Margin="0,0,5,0" Content="Добавить" HorizontalAlignment="Left" Width="120" Style="{DynamicResource TabControlButtonStyle}" Click="AddMovie_Click"/>
+                    <Button x:Name="RemoveMovie" Content="Удалить" HorizontalAlignment="Left" Width="120" Style="{DynamicResource TabControlButtonStyle}" Click="RemoveMovie_Click"/>
+                    <Rectangle Margin="10,0,10,0" Style="{DynamicResource SecondColorSeparatorsRectangleStyle}"/>
+                    <TextBlock Text="Поиск:" Margin="0,0,10,0" Style="{DynamicResource MainTextBlockStyle}"/>
+                    <TextBox x:Name="FindData" Width="200" Style="{DynamicResource MainTextBoxStyle}" TextChanged="FindData_TextChanged"/>
+                    <Rectangle Margin="10,0,10,0" Style="{DynamicResource SecondColorSeparatorsRectangleStyle}"/>
+                    <TextBlock Text="Найдено: " Style="{DynamicResource MainTextBlockStyle}"/>
+                    <TextBlock x:Name="FindCounterData" Text="0/0" Style="{DynamicResource MainTextBlockStyle}"/>
                 </WrapPanel>
             </Grid>
 
@@ -32,15 +32,15 @@
                 <ListView.View>
                     <GridView>
                         <GridViewColumn x:Name="MovieCodeGrid">
-                            <Label Content="Код фильма" FontSize="16"/>
+                            <Label Content="Код фильма" Style="{DynamicResource MainLableStyle}"/>
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Label Content="{Binding movieID}" HorizontalAlignment="Center"  FontSize="16"/>
+                                    <Label Content="{Binding movieID}" HorizontalAlignment="Center" Style="{DynamicResource MainLableStyle}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
                         <GridViewColumn x:Name="ImageGrid">
-                            <Label Content="Постер" FontSize="16"/>
+                            <Label Content="Постер" Style="{DynamicResource MainLableStyle}"/>
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <Image Source="{Binding movieCover}" MaxHeight="400" HorizontalAlignment="Center"/>
@@ -48,44 +48,44 @@
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
                         <GridViewColumn x:Name="MovieInfoGrid">
-                            <Label Content="Информация о фильме" FontSize="16"/>
+                            <Label Content="Информация о фильме" Style="{DynamicResource MainLableStyle}"/>
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel>
-                                        <Label Content="{Binding movieTitle}" FontSize="16"/>
+                                        <Label Content="{Binding movieTitle}" Style="{DynamicResource MainLableStyle}"/>
                                         <WrapPanel>
-                                            <Label Content="Жанр(ы):" FontSize="16"/>
-                                            <Label Content="{Binding movieGenre}" FontSize="16"/>
+                                            <Label Content="Жанр(ы):" Style="{DynamicResource MainLableStyle}"/>
+                                            <Label Content="{Binding movieGenre}" Style="{DynamicResource MainLableStyle}"/>
                                         </WrapPanel>
                                         <WrapPanel>
-                                            <Label Content="Год публикации:" FontSize="16"/>
-                                            <Label Content="{Binding movieYearOfPublication}" FontSize="16"/>
+                                            <Label Content="Год публикации:" Style="{DynamicResource MainLableStyle}"/>
+                                            <Label Content="{Binding movieYearOfPublication}" Style="{DynamicResource MainLableStyle}"/>
                                         </WrapPanel>
                                         <WrapPanel>
-                                            <Label Content="Хронометраж:" FontSize="16"/>
-                                            <Label Content="{Binding movieTiming}" FontSize="16"/>
+                                            <Label Content="Хронометраж:" Style="{DynamicResource MainLableStyle}"/>
+                                            <Label Content="{Binding movieTiming}" Style="{DynamicResource MainLableStyle}"/>
                                         </WrapPanel>
                                         <WrapPanel>
-                                            <Label Content="Возрастной рейтинг:" FontSize="16"/>
-                                            <Label Content="{Binding movieAgeRating}" FontSize="16"/>
+                                            <Label Content="Возрастной рейтинг:" Style="{DynamicResource MainLableStyle}"/>
+                                            <Label Content="{Binding movieAgeRating}" Style="{DynamicResource MainLableStyle}"/>
                                         </WrapPanel>
                                         <WrapPanel>
-                                            <Label Content="Страна:" FontSize="16"/>
-                                            <Label Content="{Binding movieCountry}" FontSize="16"/>
+                                            <Label Content="Страна:" Style="{DynamicResource MainLableStyle}"/>
+                                            <Label Content="{Binding movieCountry}" Style="{DynamicResource MainLableStyle}"/>
                                         </WrapPanel>
                                         <WrapPanel>
-                                            <Label Content="Актеры:" FontSize="16"/>
-                                            <TextBlock Text="{Binding movieActors}" Margin="5,0,0,0" VerticalAlignment="Center" TextWrapping="Wrap" Foreground="Black" FontSize="16"/>
+                                            <Label Content="Актеры:" Style="{DynamicResource MainLableStyle}"/>
+                                            <TextBlock Text="{Binding movieActors}" Margin="5,0,0,0" VerticalAlignment="Center" TextWrapping="Wrap" Style="{DynamicResource MainTextBlockStyle}"/>
                                         </WrapPanel>
                                     </StackPanel>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
                         <GridViewColumn x:Name="DescriptionGrid">
-                            <Label Content="Описание" FontSize="16"/>
+                            <Label Content="Описание" Style="{DynamicResource MainLableStyle}"/>
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding movieDescription}" TextWrapping="Wrap" Foreground="Black" FontSize="14"/>
+                                    <TextBlock Text="{Binding movieDescription}" TextWrapping="Wrap" Style="{DynamicResource MainTextBlockStyle}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>

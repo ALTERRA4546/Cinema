@@ -8,22 +8,22 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SessionControls" SizeChanged="Page_SizeChanged" Loaded="Page_Loaded">
 
-    <Grid Background="White">
+    <Grid Style="{DynamicResource MainColorStyle}">
         <StackPanel>
-            <Grid Background="Aqua" Height="35">
+            <Grid Style="{DynamicResource SecondColorStyle}">
                 <WrapPanel Margin="10,0,10,0" VerticalAlignment="Center">
-                    <Button x:Name="AddSession" Content="Добавить" HorizontalAlignment="Center" Width="120" FontSize="16" Background="White" Click="AddSession_Click"/>
-                    <Button x:Name="RemoveSession" Content="Удалить" HorizontalAlignment="Left" Width="120" FontSize="16" Background="White" Click="RemoveSession_Click"/>
-                    <Rectangle Margin="10,0,10,0" Fill="Black" Height="25" Width="2" Opacity="0.2"/>
-                    <TextBlock Text="Поиск:" Margin="0,0,10,0" FontSize="16"/>
-                    <TextBox x:Name="FindData" Width="200" FontSize="16" TextChanged="FindData_TextChanged"/>
-                    <Rectangle Margin="10,0,10,0" Fill="Black" Height="25" Width="2" Opacity="0.2"/>
-                    <CheckBox x:Name="FindDateChecker" Margin="0,4,5,0" Click="FindDateChecker_Click"/>
-                    <TextBlock Text="Дата сеанса:" Margin="0,0,10,0" FontSize="16"/>
-                    <DatePicker x:Name="FindSessionData" FontSize="12" SelectedDateChanged="FindSessionData_SelectedDateChanged" IsEnabled="False"/>
-                    <Rectangle Margin="10,0,10,0" Fill="Black" Height="25" Width="2" Opacity="0.2"/>
-                    <TextBlock Text="Найдено: " FontSize="16"/>
-                    <TextBlock x:Name="FindCounterData" Text="0/0" FontSize="16"/>
+                    <Button x:Name="AddSession" Margin="0,0,5,0" Content="Добавить" HorizontalAlignment="Center" Width="120" Style="{DynamicResource TabControlButtonStyle}" Click="AddSession_Click"/>
+                    <Button x:Name="RemoveSession" Content="Удалить" HorizontalAlignment="Left" Width="120" Style="{DynamicResource TabControlButtonStyle}" Click="RemoveSession_Click"/>
+                    <Rectangle Margin="10,0,10,0" Style="{DynamicResource SecondColorSeparatorsRectangleStyle}"/>
+                    <TextBlock Text="Поиск:" Margin="0,0,10,0" Style="{DynamicResource MainTextBlockStyle}"/>
+                    <TextBox x:Name="FindData" Width="200" Style="{DynamicResource MainTextBoxStyle}" TextChanged="FindData_TextChanged"/>
+                    <Rectangle Margin="10,0,10,0" Style="{DynamicResource SecondColorSeparatorsRectangleStyle}"/>
+                    <CheckBox x:Name="FindDateChecker" Margin="0,4,5,0" Style="{DynamicResource MainCheckBoxStyle}" Click="FindDateChecker_Click"/>
+                    <TextBlock Text="Дата сеанса:" Margin="0,0,10,0" Style="{DynamicResource MainTextBlockStyle}"/>
+                    <DatePicker x:Name="FindSessionData" Style="{DynamicResource SecondDatePickerStyle}" SelectedDateChanged="FindSessionData_SelectedDateChanged"/>
+                    <Rectangle Margin="10,0,10,0" Style="{DynamicResource SecondColorSeparatorsRectangleStyle}"/>
+                    <TextBlock Text="Найдено: " Style="{DynamicResource MainTextBlockStyle}"/>
+                    <TextBlock x:Name="FindCounterData" Text="0/0" Style="{DynamicResource MainTextBlockStyle}"/>
                 </WrapPanel>
             </Grid>
 
@@ -36,15 +36,15 @@
                 <ListView.View>
                     <GridView>
                         <GridViewColumn x:Name="SessionCodeGrid">
-                            <Label Content="Код сессии" FontSize="16"/>
+                            <Label Content="Код сессии" Style="{DynamicResource MainLableStyle}"/>
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Label Content="{Binding sessionID}" HorizontalAlignment="Center"  FontSize="16"/>
+                                    <Label Content="{Binding sessionID}" HorizontalAlignment="Center" Style="{DynamicResource MainLableStyle}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
                         <GridViewColumn x:Name="SessionCoverGrid">
-                            <Label Content="Постер" FontSize="16"/>
+                            <Label Content="Постер" Style="{DynamicResource MainLableStyle}"/>
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <Image Source="{Binding sessionMovieCover}" MaxHeight="400" HorizontalAlignment="Center"/>
@@ -52,61 +52,61 @@
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
                         <GridViewColumn x:Name="SessionInfoGird">
-                            <Label Content="Информация о фильме" FontSize="16"/>
+                            <Label Content="Информация о фильме" Style="{DynamicResource MainLableStyle}"/>
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel>
-                                        <Label Content="{Binding sessionMovieTitle}" FontSize="16"/>
+                                        <Label Content="{Binding sessionMovieTitle}" Style="{DynamicResource MainLableStyle}"/>
                                         <WrapPanel>
-                                            <Label Content="Жанр(ы):" FontSize="16"/>
-                                            <Label Content="{Binding sessionMovieGenre}" FontSize="16"/>
+                                            <Label Content="Жанр(ы):" Style="{DynamicResource MainLableStyle}"/>
+                                            <Label Content="{Binding sessionMovieGenre}" Style="{DynamicResource MainLableStyle}"/>
                                         </WrapPanel>
                                         <WrapPanel>
-                                            <Label Content="Год публикации:" FontSize="16"/>
-                                            <Label Content="{Binding sessionMovieYearOfPublication}" FontSize="16"/>
+                                            <Label Content="Год публикации:" Style="{DynamicResource MainLableStyle}"/>
+                                            <Label Content="{Binding sessionMovieYearOfPublication}" Style="{DynamicResource MainLableStyle}"/>
                                         </WrapPanel>
                                         <WrapPanel>
-                                            <Label Content="Хронометраж:" FontSize="16"/>
-                                            <Label Content="{Binding sessionMovieTiming}" FontSize="16"/>
+                                            <Label Content="Хронометраж:" Style="{DynamicResource MainLableStyle}"/>
+                                            <Label Content="{Binding sessionMovieTiming}" Style="{DynamicResource MainLableStyle}"/>
                                         </WrapPanel>
                                         <WrapPanel>
-                                            <Label Content="Возрастной рейтинг:" FontSize="16"/>
-                                            <Label Content="{Binding sessionMovieAgeRating}" FontSize="16"/>
+                                            <Label Content="Возрастной рейтинг:" Style="{DynamicResource MainLableStyle}"/>
+                                            <Label Content="{Binding sessionMovieAgeRating}" Style="{DynamicResource MainLableStyle}"/>
                                         </WrapPanel>
                                         <WrapPanel>
-                                            <Label Content="Страна:" FontSize="16"/>
-                                            <Label Content="{Binding sessionMovieCountry}" FontSize="16"/>
+                                            <Label Content="Страна:" Style="{DynamicResource MainLableStyle}"/>
+                                            <Label Content="{Binding sessionMovieCountry}" Style="{DynamicResource MainLableStyle}"/>
                                         </WrapPanel>
                                         <WrapPanel>
-                                            <Label Content="Актеры:" FontSize="16"/>
-                                            <TextBlock Text="{Binding sessionActors}" Margin="5,0,0,0" VerticalAlignment="Center" TextWrapping="Wrap" Foreground="Black" FontSize="16"/>
+                                            <Label Content="Актеры:" Style="{DynamicResource MainLableStyle}"/>
+                                            <TextBlock Text="{Binding sessionActors}" Margin="5,0,0,0" VerticalAlignment="Center" TextWrapping="Wrap" Style="{DynamicResource MainTextBlockStyle}"/>
                                         </WrapPanel>
                                     </StackPanel>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
                         <GridViewColumn x:Name="SessionInformationSeasonGrid">
-                            <Label Content="Информация" FontSize="16"/>
+                            <Label Content="Информация" Style="{DynamicResource MainLableStyle}"/>
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel>
                                         <WrapPanel>
-                                            <Label Content="Дата начала сеанса:" FontSize="16"/>
-                                            <Label Content="{Binding sessionDateSessionStart}" FontSize="16"/>
+                                            <Label Content="Дата начала сеанса:" Style="{DynamicResource MainLableStyle}"/>
+                                            <Label Content="{Binding sessionDateSessionStart}" Style="{DynamicResource MainLableStyle}"/>
                                         </WrapPanel>
                                         <WrapPanel>
-                                            <Label Content="Время начала сеанса:" FontSize="16"/>
-                                            <Label Content="{Binding sessionTimeSessionStart}" FontSize="16"/>
+                                            <Label Content="Время начала сеанса:" Style="{DynamicResource MainLableStyle}"/>
+                                            <Label Content="{Binding sessionTimeSessionStart}" Style="{DynamicResource MainLableStyle}"/>
                                         </WrapPanel>
                                     </StackPanel>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
                         <GridViewColumn x:Name="SessionPriceGrid">
-                            <Label Content="Цена билета" FontSize="16"/>
+                            <Label Content="Цена билета" Style="{DynamicResource MainLableStyle}"/>
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Label Content="{Binding sessionTicketPrice}" FontSize="16"/>
+                                    <Label Content="{Binding sessionTicketPrice}" Style="{DynamicResource MainLableStyle}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>

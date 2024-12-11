@@ -8,29 +8,29 @@
       d:DesignHeight="550" d:DesignWidth="1050"
       Title="PlacesCashierControls" Background="White" Loaded="Page_Loaded" SizeChanged="Page_SizeChanged">
 
-    <Grid>
+    <Grid Style="{DynamicResource MainColorStyle}">
         <StackPanel x:Name="Hall" Margin="0,0,198,0" VerticalAlignment="Center" HorizontalAlignment="Center" SizeChanged="Hall_SizeChanged"/>
             <Grid VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10,0,0,0" Width="200">
-            <Rectangle Fill="Aqua" Opacity="0.4" />
+            <Rectangle Style="{DynamicResource SecondColorRectanglePlaceStyle}" Opacity="0.5"/>
             <StackPanel>
-                <TextBlock Text="Бронирование билета" Margin="0,10,0,0" TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"/>
+                <TextBlock Text="Бронирование билета" Margin="0,10,0,0" TextWrapping="Wrap" Style="{DynamicResource TitleTextBlockStyle}"/>
                 <StackPanel>
-                    <Label Content="Ряд" HorizontalAlignment="Center" FontSize="18"/>
-                    <Label x:Name="SelectedRow" Content="Нет" HorizontalAlignment="Center" FontSize="18"/>
+                    <Label Content="Ряд" HorizontalAlignment="Center" Style="{DynamicResource MainLableStyle}"/>
+                    <Label x:Name="SelectedRow" Content="Нет" HorizontalAlignment="Center" Style="{DynamicResource MainLableStyle}"/>
                 </StackPanel>
                 <StackPanel>
-                    <Label Content="Место" HorizontalAlignment="Center" FontSize="18"/>
-                    <Label x:Name="SelectedPlace" Content="Нет" HorizontalAlignment="Center" FontSize="18"/>
+                    <Label Content="Место" HorizontalAlignment="Center" Style="{DynamicResource MainLableStyle}"/>
+                    <Label x:Name="SelectedPlace" Content="Нет" HorizontalAlignment="Center" Style="{DynamicResource MainLableStyle}"/>
                 </StackPanel>
                 <StackPanel>
-                    <Label Content="Цена билета" HorizontalAlignment="Center" FontSize="18"/>
-                    <Label x:Name="TicketPrice" Content="" HorizontalAlignment="Center" FontSize="18"/>
+                    <Label Content="Цена билета" HorizontalAlignment="Center" Style="{DynamicResource MainLableStyle}"/>
+                    <Label x:Name="TicketPrice" Content="" HorizontalAlignment="Center" Style="{DynamicResource MainLableStyle}"/>
                 </StackPanel>
                 <StackPanel>
-                    <Label Content="Дата и время сеанса" HorizontalAlignment="Center" FontSize="18"/>
-                    <Label x:Name="DateTimeSession" Content="" HorizontalAlignment="Center" FontSize="18"/>
+                    <Label Content="Дата и время сеанса" HorizontalAlignment="Center" Style="{DynamicResource MainLableStyle}"/>
+                    <Label x:Name="DateTimeSession" Content="" HorizontalAlignment="Center" Style="{DynamicResource MainLableStyle}"/>
                 </StackPanel>
-                <Button x:Name="BookingTicket" Margin="10,0,10,10" Content="Забронировать" FontSize="16" Background="White" Click="BookingTicket_Click"/>
+                <Button x:Name="BookingTicket" Margin="10,0,10,10" Content="Забронировать" Style="{DynamicResource TabControlButtonStyle}" Click="BookingTicket_Click"/>
             </StackPanel>
         </Grid>
     </Grid>

@@ -5,34 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cinema"
         mc:Ignorable="d"
-        Title="Сеанс" Height="300" Width="520" Loaded="Window_Loaded" ResizeMode="NoResize">
-    <Grid>
+        Title="Сеанс" Height="300" Width="520" Loaded="Window_Loaded" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid Style="{DynamicResource MainColorStyle}">
         <StackPanel>
             <Grid>
-                <Rectangle Fill="Aqua" Height="35"/>
-                <TextBlock Text="СЕАНС" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold"/>
+                <Rectangle Style="{DynamicResource SecondColorRectangleStyle}"/>
+                <TextBlock Text="СЕАНС" Style="{DynamicResource TitleTextBlockStyle}"/>
             </Grid>
             <Grid HorizontalAlignment="Center" Margin="10">
                 <StackPanel>
                     <Grid Margin="0,0,0,10">
-                        <Label Content="Фильм:" FontSize="16"/>
-                        <ComboBox x:Name="SessionMovie" HorizontalAlignment="Left" Margin="120,0,0,0" Width="350" Background="White" FontSize="16" SelectedIndex="0"/>
+                        <Label Content="Фильм:" Style="{DynamicResource MainLableStyle}"/>
+                        <ComboBox x:Name="SessionMovie" HorizontalAlignment="Left" Margin="120,0,0,0" Width="350" Style="{DynamicResource MainComboBoxStyle}" ItemContainerStyle="{DynamicResource MainSelectedComboBoxStyle}"/>
                     </Grid>
                     <Grid Margin="0,0,0,10">
-                        <Label Content="Дата сеанса:" FontSize="16"/>
-                        <DatePicker x:Name="SessionDate" HorizontalAlignment="Left" Margin="120,0,0,0" Width="350" FontSize="16"/>
+                        <Label Content="Дата сеанса:" Style="{DynamicResource MainLableStyle}"/>
+                        <DatePicker x:Name="SessionDate" HorizontalAlignment="Left" Margin="120,0,0,0" Width="350" Style="{DynamicResource MainDatePickerStyle}"/>
                     </Grid>
                     <Grid Margin="0,0,0,10">
-                        <Label Content="Время сеанса:" FontSize="16"/>
-                        <TextBox x:Name="SessionTime" HorizontalAlignment="Left" Margin="120,0,0,0" Width="350" FontSize="16"/>
+                        <Label Content="Время сеанса:" Style="{DynamicResource MainLableStyle}"/>
+                        <TextBox x:Name="SessionTime" HorizontalAlignment="Left" Margin="120,0,0,0" Width="350" Style="{DynamicResource MainTextBoxStyle}"/>
                     </Grid>
                     <Grid Margin="0,0,0,10">
-                        <Label Content="Цена билета:" FontSize="16"/>
-                        <TextBox x:Name="SessionTicketPrice" HorizontalAlignment="Left" Margin="120,0,0,0" Width="350" FontSize="16"/>
+                        <Label Content="Цена билета:" Style="{DynamicResource MainLableStyle}"/>
+                        <TextBox x:Name="SessionTicketPrice" HorizontalAlignment="Left" Margin="120,0,0,0" Width="350" Style="{DynamicResource MainTextBoxStyle}"/>
                     </Grid>
                 </StackPanel>
             </Grid>
-            <Button x:Name="Save" Margin="0,0,0,0" Content="Сохранить" Width="470" FontSize="16" Background="White" Click="Save_Click"/>
+            <Button x:Name="Save" Margin="0,0,0,0" Content="Сохранить" Width="470" Style="{DynamicResource MainButtonStyle}" Click="Save_Click"/>
         </StackPanel>
     </Grid>
 </Window>

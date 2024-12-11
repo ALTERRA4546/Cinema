@@ -19,6 +19,7 @@ namespace Cinema
         public int RowNumber { get; set; }
         public int PlaceNumber { get; set; }
         public int IDEmployee { get; set; }
+        public System.DateTime DateTimeBooking { get; set; }
     
         public virtual Employee Employee { get; set; }
         public virtual Session Session { get; set; }

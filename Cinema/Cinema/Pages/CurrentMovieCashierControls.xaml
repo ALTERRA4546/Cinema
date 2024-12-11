@@ -1,0 +1,94 @@
+﻿<Page x:Class="Cinema.Pages.CurrentMovieCashierControls"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Cinema.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MovieCashierControls" SizeChanged="Page_SizeChanged" Loaded="Page_Loaded">
+
+    <Grid Style="{DynamicResource MainColorStyle}">
+        <StackPanel>
+            <Grid Style="{DynamicResource SecondColorStyle}">
+                <WrapPanel Margin="10,0,10,0" VerticalAlignment="Center">
+                    <TextBlock Text="Поиск:" Margin="0,0,10,0" Style="{DynamicResource MainTextBlockStyle}"/>
+                    <TextBox x:Name="FindData" Width="200" Style="{DynamicResource MainTextBoxStyle}" TextChanged="FindData_TextChanged"/>
+                    <Rectangle Margin="10,0,10,0" Style="{DynamicResource SecondColorSeparatorsRectangleStyle}"/>
+                    <TextBlock Text="Найдено: " Style="{DynamicResource MainTextBlockStyle}"/>
+                    <TextBlock x:Name="FindCounterData" Text="0/0" Style="{DynamicResource MainTextBlockStyle}"/>
+                </WrapPanel>
+            </Grid>
+
+            <ListView x:Name="MovieCashierList" Height="400" d:ItemsSource="{d:SampleData ItemCount=2}" ScrollViewer.CanContentScroll="False" MouseDoubleClick="MovieCashierList_MouseDoubleClick">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn x:Name="MovieCodeGrid">
+                            <Label Content="Код фильма" Style="{DynamicResource MainLableStyle}"/>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Label Content="{Binding movieCashierID}" HorizontalAlignment="Center" Style="{DynamicResource MainLableStyle}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn x:Name="ImageGrid">
+                            <Label Content="Постер" Style="{DynamicResource MainLableStyle}"/>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding movieCashierCover}" MaxHeight="400" HorizontalAlignment="Center"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn x:Name="MovieInfoGrid">
+                            <Label Content="Информация о фильме" Style="{DynamicResource MainLableStyle}"/>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <Label Content="{Binding movieCashierTitle}" Style="{DynamicResource MainLableStyle}"/>
+                                        <WrapPanel>
+                                            <Label Content="Жанр(ы):" Style="{DynamicResource MainLableStyle}"/>
+                                            <Label Content="{Binding movieCashierGenre}" Style="{DynamicResource MainLableStyle}"/>
+                                        </WrapPanel>
+                                        <WrapPanel>
+                                            <Label Content="Год публикации:" Style="{DynamicResource MainLableStyle}"/>
+                                            <Label Content="{Binding movieCashierYearOfPublication}" Style="{DynamicResource MainLableStyle}"/>
+                                        </WrapPanel>
+                                        <WrapPanel>
+                                            <Label Content="Хронометраж:" Style="{DynamicResource MainLableStyle}"/>
+                                            <Label Content="{Binding movieCashierTiming}" Style="{DynamicResource MainLableStyle}"/>
+                                        </WrapPanel>
+                                        <WrapPanel>
+                                            <Label Content="Возрастной рейтинг:" Style="{DynamicResource MainLableStyle}"/>
+                                            <Label Content="{Binding movieCashierAgeRating}" Style="{DynamicResource MainLableStyle}"/>
+                                        </WrapPanel>
+                                        <WrapPanel>
+                                            <Label Content="Страна:" Style="{DynamicResource MainLableStyle}"/>
+                                            <Label Content="{Binding movieCashierCountry}" Style="{DynamicResource MainLableStyle}"/>
+                                        </WrapPanel>
+                                        <WrapPanel>
+                                            <Label Content="Актеры:" Style="{DynamicResource MainLableStyle}"/>
+                                            <TextBlock Text="{Binding movieCashierActors}" Margin="5,0,0,0" VerticalAlignment="Center" TextWrapping="Wrap" Style="{DynamicResource MainTextBlockStyle}"/>
+                                        </WrapPanel>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn x:Name="DescriptionGrid">
+                            <Label Content="Описание" Style="{DynamicResource MainLableStyle}"/>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock x:Name="DescriptionText" Text="{Binding movieCashierDescription}" TextWrapping="Wrap" Style="{DynamicResource MainTextBlockStyle}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+    </Grid>
+</Page>

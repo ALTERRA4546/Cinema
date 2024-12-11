@@ -8,21 +8,21 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SettingsControls" SizeChanged="Page_SizeChanged">
 
-    <Grid Background="White">
+    <Grid Style="{DynamicResource MainColorStyle}">
         <StackPanel x:Name="Hall" Margin="0,0,198,0" VerticalAlignment="Center" HorizontalAlignment="Center" SizeChanged="Hall_SizeChanged"/>
         <Grid VerticalAlignment="Center" HorizontalAlignment="Right" Width="200">
-            <Rectangle Fill="Aqua" Opacity="0.4"/>
+            <Rectangle Style="{DynamicResource SecondColorRectanglePlaceStyle}"/>
             <StackPanel>
-                <TextBlock Margin="0,10,0,0" Text="Настройка зала" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"/>
+                <TextBlock Margin="0,10,0,0" Text="Настройка зала" Style="{DynamicResource TitleTextBlockStyle}"/>
                 <Grid Margin="0,0,0,10" HorizontalAlignment="Center">
-                    <Label Content="Ряды" FontSize="16"/>
-                    <ComboBox x:Name="SelectedRowHall" Margin="70,0,0,0" HorizontalAlignment="Left" FontSize="16" Width="100" SelectedIndex="0" Background="White" SelectionChanged="SelectedRowHall_SelectionChanged"/>
+                    <Label Content="Ряды" Style="{DynamicResource MainLableStyle}"/>
+                    <ComboBox x:Name="SelectedRowHall" Margin="70,0,0,0" HorizontalAlignment="Left" Width="100" Style="{DynamicResource MainComboBoxStyle}" ItemContainerStyle="{DynamicResource MainSelectedComboBoxStyle}" SelectionChanged="SelectedRowHall_SelectionChanged"/>
                 </Grid>
                 <Grid Margin="0,0,0,10" HorizontalAlignment="Center">
                     <Label Content="Места" FontSize="16"/>
-                    <ComboBox x:Name="SelectedPlaceHall" Margin="70,0,0,0" HorizontalAlignment="Left" FontSize="16" Width="100" SelectedIndex="0" Background="White" SelectionChanged="SelectedPlaceHall_SelectionChanged"/>
+                    <ComboBox x:Name="SelectedPlaceHall" Margin="70,0,0,0" HorizontalAlignment="Left" Width="100" Style="{DynamicResource MainComboBoxStyle}" ItemContainerStyle="{DynamicResource MainSelectedComboBoxStyle}" SelectionChanged="SelectedPlaceHall_SelectionChanged"/>
                 </Grid>
-                <Button x:Name="SaveHallSettings" Content="Сохранить" Margin="10,0,10,10" FontSize="16" Background="White" Click="SaveHallSettings_Click"/>
+                <Button x:Name="SaveHallSettings" Content="Сохранить" Margin="10,0,10,10" Style="{DynamicResource TabControlButtonStyle}" Click="SaveHallSettings_Click"/>
             </StackPanel>
         </Grid>
     </Grid>

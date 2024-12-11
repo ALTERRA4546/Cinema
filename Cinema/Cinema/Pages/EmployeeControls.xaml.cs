@@ -185,6 +185,13 @@ namespace Cinema
             try
             {
                 var selectedEmployee = EmployeeList.SelectedItem as EmployeeData;
+
+                if (selectedEmployee.employeeID == TransmittedData.idEmployee)
+                {
+                    MessageBox.Show("Вы не можете удалить свою же учетную запись", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
                 if (selectedEmployee != null)
                 {
                     if (MessageBox.Show("Вы действительно хотите удалить данного сотрудника?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)

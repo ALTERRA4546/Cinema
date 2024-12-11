@@ -5,22 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cinema"
         mc:Ignorable="d"
-        Title="Жанр" Height="180" Width="500" ResizeMode="NoResize" Loaded="Window_Loaded">
-    <Grid>
+        Title="Жанр" Height="180" Width="500" ResizeMode="NoResize" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+    <Grid Style="{DynamicResource MainColorStyle}">
         <StackPanel>
             <Grid>
-                <Rectangle Fill="Aqua" Height="35"/>
-                <TextBlock Text="ЖАНР" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold"/>
+                <Rectangle Style="{DynamicResource SecondColorRectangleStyle}"/>
+                <TextBlock Text="ЖАНР" Style="{DynamicResource TitleTextBlockStyle}"/>
             </Grid>
             <Grid HorizontalAlignment="Center" Margin="10">
                 <StackPanel>
                     <Grid Margin="0,0,0,10">
-                        <Label Content="Название:" FontSize="16"/>
-                        <TextBox x:Name="GenreTitle" HorizontalAlignment="Left" Margin="100,0,0,0" Width="350" FontSize="16"/>
+                        <Label Content="Название:" Style="{DynamicResource MainLableStyle}"/>
+                        <TextBox x:Name="GenreTitle" HorizontalAlignment="Left" Margin="100,0,0,0" Width="350" Style="{DynamicResource MainTextBoxStyle}"/>
                     </Grid>
                 </StackPanel>
             </Grid>
-            <Button x:Name="Save" Margin="0,0,0,0" Content="Сохранить" Width="450" FontSize="16" Background="White" Click="Save_Click"/>
+            <Button x:Name="Save" Margin="0,0,0,0" Content="Сохранить" Width="450" Style="{DynamicResource MainButtonStyle}" Click="Save_Click"/>
         </StackPanel>
     </Grid>
 </Window>

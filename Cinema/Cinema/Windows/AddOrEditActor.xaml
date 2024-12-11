@@ -5,43 +5,43 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Cinema"
         mc:Ignorable="d"
-        Title="Актер" Height="370" Width="500" Loaded="Window_Loaded" ResizeMode="NoResize">
-    <Grid>
+        Title="Актер" Height="370" Width="500" Loaded="Window_Loaded" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid Style="{DynamicResource MainColorStyle}">
         <StackPanel>
             <Grid>
-                <Rectangle Fill="Aqua" Height="35"/>
-                <TextBlock Text="АКТЕР" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold"/>
+                <Rectangle Style="{DynamicResource SecondColorRectangleStyle}"/>
+                <TextBlock Text="АКТЕР" Style="{DynamicResource TitleTextBlockStyle}"/>
             </Grid>
             <Grid HorizontalAlignment="Center" Margin="10">
                 <StackPanel>
                     <Grid Margin="0,0,0,10">
-                        <Label Content="Фамилия:" FontSize="16"/>
-                        <TextBox x:Name="ActorSurname" HorizontalAlignment="Left" Margin="100,0,0,0" Width="350" FontSize="16"/>
+                        <Label Content="Фамилия:" Style="{DynamicResource MainLableStyle}"/>
+                        <TextBox x:Name="ActorSurname" HorizontalAlignment="Left" Margin="100,0,0,0" Width="350" Style="{DynamicResource MainTextBoxStyle}"/>
                     </Grid>
                     <Grid Margin="0,0,0,10">
-                        <Label Content="Имя:" FontSize="16"/>
-                        <TextBox x:Name="ActorName" HorizontalAlignment="Left" Margin="100,0,0,0" Width="350" FontSize="16"/>
+                        <Label Content="Имя:" Style="{DynamicResource MainLableStyle}"/>
+                        <TextBox x:Name="ActorName" HorizontalAlignment="Left" Margin="100,0,0,0" Width="350" Style="{DynamicResource MainTextBoxStyle}"/>
                     </Grid>
                     <Grid Margin="0,0,0,10">
-                        <Label Content="Отчество:" FontSize="16"/>
-                        <TextBox x:Name="ActorPatronymic" HorizontalAlignment="Left" Margin="100,0,0,0" Width="350" FontSize="16"/>
+                        <Label Content="Отчество:" Style="{DynamicResource MainLableStyle}"/>
+                            <TextBox x:Name="ActorPatronymic" HorizontalAlignment="Left" Margin="100,0,0,0" Width="350" Style="{DynamicResource MainTextBoxStyle}"/>
                     </Grid>
                     <Grid Margin="0,0,0,10">
-                        <Label Content="Прозвище:" FontSize="16"/>
-                        <TextBox x:Name="ActorNickname" HorizontalAlignment="Left" Margin="100,0,0,0" Width="350" FontSize="16"/>
+                        <Label Content="Прозвище:" Style="{DynamicResource MainLableStyle}"/>
+                                <TextBox x:Name="ActorNickname" HorizontalAlignment="Left" Margin="100,0,0,0" Width="350" Style="{DynamicResource MainTextBoxStyle}"/>
                     </Grid>
                     <Grid Margin="0,0,0,10">
                         <StackPanel>
                             <Grid>
-                                <Label Content="Фотография:" FontSize="16"/>
-                                <Image x:Name="ActorPhoto" HorizontalAlignment="Left" Margin="170,0,0,0" Width="200" Height="200" Visibility="Collapsed"/>
+                                <Label Content="Фотография:" Style="{DynamicResource MainLableStyle}"/>
+                                <Image x:Name="ActorPhoto" HorizontalAlignment="Left" Margin="170,0,0,5" Width="200" Height="200" Visibility="Collapsed"/>
                             </Grid>
-                            <Button x:Name="LoadPhoto" HorizontalAlignment="Left" Margin="170,0,0,0" Content="Загрузить" Width="200" FontSize="16" Background="White" Click="LoadPhoto_Click"/>
+                            <Button x:Name="LoadPhoto" HorizontalAlignment="Left" Margin="170,0,0,0" Content="Загрузить" Width="200" Style="{DynamicResource MainButtonStyle}" Click="LoadPhoto_Click"/>
                         </StackPanel>
                     </Grid>
                 </StackPanel>
             </Grid>
-            <Button x:Name="Save" Margin="0,0,0,0" Content="Сохранить" Width="450" FontSize="16" Background="White" Click="Save_Click"/>
+            <Button x:Name="Save" Margin="0,0,0,0" Content="Сохранить" Width="450" Style="{DynamicResource MainButtonStyle}" Click="Save_Click"/>
         </StackPanel>
     </Grid>
 </Window>

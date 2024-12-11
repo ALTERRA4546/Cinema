@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Cinema.Pages;
+using System;
+using System.Diagnostics;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -19,22 +22,15 @@ namespace Cinema
         public bool exitMode;
         public Button currentSelectedButton;
         public string currentSelectedPage;
-        public LinearGradientBrush linearGradientBrush = new LinearGradientBrush();
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             try
             {
-                linearGradientBrush.StartPoint = new Point(0.5, 0);
-                linearGradientBrush.EndPoint = new Point(0.5, 1);
-                linearGradientBrush.Opacity = 0.3;
-                linearGradientBrush.GradientStops.Add(new GradientStop(Colors.Blue, 0.0));
-                linearGradientBrush.GradientStops.Add(new GradientStop(Colors.Aqua, 0.35));
-
                 MoviePageOpen();
 
                 currentSelectedButton = MainPage;
-                currentSelectedButton.Background = linearGradientBrush;
+                currentSelectedButton.Style = (Style)Application.Current.Resources["TabOnButtonStyle"];
             }
             catch (Exception ex)
             {
@@ -44,7 +40,32 @@ namespace Cinema
 
         private void SelectedPage_Click(object sender, RoutedEventArgs e)
         {
-            MoviePageOpen();
+            try
+            {
+                if (currentSelectedButton != null)
+                {
+                    currentSelectedButton.Style = (Style)Application.Current.Resources["TabOffButtonStyle"];
+                }
+
+                currentSelectedButton = sender as Button;
+
+                currentSelectedButton.Style = (Style)Application.Current.Resources["TabOnButtonStyle"];
+
+                switch (currentSelectedButton.Name)
+                {
+                    case "CurrentMoviesPage":
+                        CurrentMoviesPageOpen();
+                        break;
+
+                    case "MainPage":
+                        MoviePageOpen();
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }         
         }
 
         private void SelectedBackPage_Click(object sender, RoutedEventArgs e)
@@ -69,14 +90,32 @@ namespace Cinema
             }
         }
 
+        public void CurrentMoviesPageOpen()
+        {
+            try
+            {
+                PageManager.Navigate(new CurrentMovieCashierControls());
+
+                GoBack.Style = (Style)Application.Current.Resources["TabOffButtonStyle"];
+                CurrentMoviesPage.Style = (Style)Application.Current.Resources["TabOnButtonStyle"];
+                currentSelectedButton = CurrentMoviesPage;
+                GoBack.Content = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
         public void MoviePageOpen()
         {
             try
             {
                 PageManager.Navigate(new MovieCashierControls());
 
-                GoBack.Background = Brushes.Transparent;
-                MainPage.Background = linearGradientBrush;
+                GoBack.Style = (Style)Application.Current.Resources["TabOffButtonStyle"];
+                MainPage.Style = (Style)Application.Current.Resources["TabOnButtonStyle"];
+                currentSelectedButton = MainPage;
                 GoBack.Content = "";
             }
             catch (Exception ex)
@@ -91,8 +130,10 @@ namespace Cinema
             {
                 PageManager.Navigate(new SessionCashierControls());
 
-                MainPage.Background = Brushes.Transparent;
-                GoBack.Background = linearGradientBrush;
+                MainPage.Style = (Style)Application.Current.Resources["TabOffButtonStyle"];
+                CurrentMoviesPage.Style = (Style)Application.Current.Resources["TabOffButtonStyle"];
+                GoBack.Style = (Style)Application.Current.Resources["TabOnButtonStyle"];
+                currentSelectedButton = GoBack;
                 GoBack.Content = "Фильмы";
             }
             catch (Exception ex)
@@ -142,6 +183,27 @@ namespace Cinema
                 {
                     Application.Current.Shutdown();
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void Help_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Uri resourceUri = new Uri("pack://application:,,,/Resource/HelpDocument.pdf", UriKind.Absolute);
+
+                Stream resourceStream = Application.GetResourceStream(resourceUri)?.Stream;
+                string tempFileName = Path.GetTempFileName() + ".pdf";
+                using (FileStream fileStream = new FileStream(tempFileName, FileMode.Create, FileAccess.Write))
+                {
+                    resourceStream.CopyTo(fileStream);
+                }
+
+                Process.Start(new ProcessStartInfo(tempFileName) { UseShellExecute = true });
             }
             catch (Exception ex)
             {
