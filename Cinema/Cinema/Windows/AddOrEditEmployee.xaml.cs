@@ -113,7 +113,10 @@ namespace Cinema
         {
             try
             {
-                string phonePattern = @"^\+7\(\d{3}\)\d{3}-\d{2}-\d{2}$";
+                string phonePattern = @"^\+7\(\d{3}\)\d{3}-\d{2}-\d{2}$"; 
+                string mailPattern = @"^[a-zA-Z0-9._%+-]+@mail\.ru$";
+                string gmailPattern = @"^[a-zA-Z0-9._%+-]+@gmail\.com$";
+                string yandexMailPattern = @"^[a-zA-Z0-9._%+-]+@yandex\.ru$";
 
                 if (EmployeeSurname.Text == "" && EmployeeName.Text == "" || EmployeePatronymic.Text == "" || EmployeeLoggin.Text == "" || EmployeePassword.Text == "" || EmployeeRole.SelectedIndex < 0)
                 {
@@ -126,6 +129,12 @@ namespace Cinema
                     MessageBox.Show("Номер телефона заполняеться в формате +7(999)999-99-99", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
+
+                if (!Regex.IsMatch(EmployeeEmail.Text, mailPattern) && !Regex.IsMatch(EmployeeEmail.Text, gmailPattern) && !Regex.IsMatch(EmployeeEmail.Text, yandexMailPattern))
+                {
+                    MessageBox.Show("Почта должна содержать доменный адрес (@mail.ru / @gmail.com / @yandex.ru)", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }    
 
                 using (var dataBase = new CinemaEntities())
                 {
