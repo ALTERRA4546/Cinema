@@ -17,7 +17,14 @@ namespace Cinema
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            LoadData();
+            try
+            {
+                LoadData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void LoadData()
@@ -59,6 +66,8 @@ namespace Cinema
                         genreData.Title = GenreTitle.Text;
 
                         dataBase.SaveChanges();
+
+                        MessageBox.Show("Данные сохранены", "Готово", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                     else
                     {
@@ -68,6 +77,8 @@ namespace Cinema
 
                         dataBase.Genre.Add(newGenreData);
                         dataBase.SaveChanges();
+
+                        MessageBox.Show("Данные сохранены", "Готово", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
 
                     this.Close();

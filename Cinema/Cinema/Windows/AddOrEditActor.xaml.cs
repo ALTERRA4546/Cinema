@@ -22,8 +22,15 @@ namespace Cinema
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            ActorPhoto.Visibility = Visibility.Collapsed;
-            LoadData();
+            try
+            {
+                ActorPhoto.Visibility = Visibility.Collapsed;
+                LoadData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void LoadData()
@@ -110,6 +117,8 @@ namespace Cinema
                         }
 
                         dataBase.SaveChanges();
+
+                        MessageBox.Show("Данные сохранены", "Готово", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                     else
                     {
@@ -127,6 +136,8 @@ namespace Cinema
 
                         dataBase.Actor.Add(newActorData);
                         dataBase.SaveChanges();
+
+                        MessageBox.Show("Данные сохранены", "Готово", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
 
                     this.Close();

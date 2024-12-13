@@ -232,7 +232,14 @@ namespace Cinema.Pages
 
         private void FindData_TextChanged(object sender, TextChangedEventArgs e)
         {
-            LoadData(FindData.Text);
+            try
+            {
+                LoadData(FindData.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void MovieCashierList_MouseDoubleClick(object sender, MouseButtonEventArgs e)

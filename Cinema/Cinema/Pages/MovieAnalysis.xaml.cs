@@ -194,7 +194,14 @@ namespace Cinema
 
         private void FindDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            LoadData(BeginDate, EndDate);
+            try
+            {
+                LoadData(BeginDate, EndDate);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void Print_Click(object sender, RoutedEventArgs e)

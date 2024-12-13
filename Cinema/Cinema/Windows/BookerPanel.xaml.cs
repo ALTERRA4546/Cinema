@@ -96,7 +96,14 @@ namespace Cinema
 
         public void TicketPage_Click(object sender, RoutedEventArgs e)
         {
-            TicketAnalysisOpen();
+            try
+            {
+                TicketAnalysisOpen();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         public void TicketAnalysisOpen()

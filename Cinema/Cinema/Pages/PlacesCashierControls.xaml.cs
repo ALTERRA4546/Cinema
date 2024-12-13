@@ -142,12 +142,26 @@ namespace Cinema
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            ResizeWindows();
+            try
+            {
+                ResizeWindows();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void Hall_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            ResizeWindows();
+            try
+            {
+                ResizeWindows();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void ResizeWindows()

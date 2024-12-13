@@ -20,12 +20,7 @@
                 </WrapPanel>
             </Grid>
 
-            <ListView x:Name="MovieCashierList" Height="400" d:ItemsSource="{d:SampleData ItemCount=2}" ScrollViewer.CanContentScroll="False" MouseDoubleClick="MovieCashierList_MouseDoubleClick">
-                <ListView.ItemContainerStyle>
-                    <Style TargetType="ListViewItem">
-                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                    </Style>
-                </ListView.ItemContainerStyle>
+            <ListView x:Name="MovieCashierList" Height="400" d:ItemsSource="{d:SampleData ItemCount=2}" ScrollViewer.CanContentScroll="False" ItemContainerStyle="{DynamicResource MainListViewItem}" MouseDoubleClick="MovieCashierList_MouseDoubleClick">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn x:Name="MovieCodeGrid">

@@ -61,7 +61,12 @@
                                     <Button x:Name="ClearGenre" Content="X" Height="31.28" Style="{DynamicResource MainClearButtonStyle}" Click="ClearGenre_Click"/>
                                 </WrapPanel>
                             </Grid>
-                            <DataGrid x:Name="MovieGenreGrid" Height="120" Margin="0,0,0,10" d:ItemsSource="{d:SampleData ItemCount=5}" Style="{DynamicResource MainDataGridStyle}" MouseDoubleClick="MovieGenreGrid_MouseDoubleClick"/>
+                            <DataGrid x:Name="MovieGenreGrid" Height="120" Margin="0,0,0,10" AutoGenerateColumns="False" d:ItemsSource="{d:SampleData ItemCount=5}" IsReadOnly="True" Style="{DynamicResource MainDataGridStyle}" MouseDoubleClick="MovieGenreGrid_MouseDoubleClick">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Код жанра" Binding="{Binding idGenre}" MaxWidth="0"/>
+                                    <DataGridTextColumn Header="Жанр" Binding="{Binding genreTitle}" />
+                                </DataGrid.Columns>
+                            </DataGrid>
                             <WrapPanel HorizontalAlignment="Center">
                                 <Button x:Name="AddGenre" Margin="0,0,5,0" Content="Добавить" Width="160" Style="{DynamicResource MainButtonStyle}" Click="AddGenre_Click"/>
                                 <Button x:Name="EditGenre" Margin="0,0,5,0" Content="Редактировать" Width="160" Style="{DynamicResource MainButtonStyle}" Click="EditGenre_Click"/>
@@ -78,7 +83,15 @@
                                     <Button x:Name="ClearActor" Content="X" Height="31.28" Style="{DynamicResource MainClearButtonStyle}" Click="ClearActor_Click"/>
                                 </WrapPanel>
                             </Grid>
-                            <DataGrid x:Name="MovieActorGrid" Height="120" Margin="0,0,0,10" ColumnWidth="*" d:ItemsSource="{d:SampleData ItemCount=5}" Background="White" MouseDoubleClick="MovieActorGrid_MouseDoubleClick"/>
+                            <DataGrid x:Name="MovieActorGrid" Height="120" Margin="0,0,0,10" ColumnWidth="*" AutoGenerateColumns="False" d:ItemsSource="{d:SampleData ItemCount=5}" IsReadOnly="True" Background="White" MouseDoubleClick="MovieActorGrid_MouseDoubleClick">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Код актера" Binding="{Binding idActor}" MaxWidth="0"/>
+                                    <DataGridTextColumn Header="Фамилия" Binding="{Binding actorSurename}" />
+                                    <DataGridTextColumn Header="Имя" Binding="{Binding actorName}" />
+                                    <DataGridTextColumn Header="Отчество" Binding="{Binding actorPatronymic}" />
+                                    <DataGridTextColumn Header="Прозвище" Binding="{Binding actorNickname}" />
+                                </DataGrid.Columns>
+                            </DataGrid>
                             <WrapPanel HorizontalAlignment="Center">
                                 <Button x:Name="AddActor" Margin="0,0,5,0" Content="Добавить" Width="160" Style="{DynamicResource MainButtonStyle}" Click="AddActor_Click"/>
                                 <Button x:Name="EditActor" Margin="0,0,5,0" Content="Редактировать" Width="160" Style="{DynamicResource MainButtonStyle}" Click="EditActor_Click"/>

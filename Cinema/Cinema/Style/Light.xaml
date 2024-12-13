@@ -260,4 +260,11 @@
 
     <Style x:Key="MainCheckBoxStyle" TargetType="CheckBox">
     </Style>
+
+    <Style x:Key="MainListViewItem" TargetType="ListViewItem">
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="BorderThickness" Value="0,1,0,0"/>
+        <Setter Property="BorderBrush" Value="LightGray"/>
+        <Setter Property="Margin" Value="0"/>
+    </Style>
 </ResourceDictionary>

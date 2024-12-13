@@ -27,12 +27,7 @@
                 </WrapPanel>
             </Grid>
 
-            <ListView x:Name="SessionList" Height="400" d:ItemsSource="{d:SampleData ItemCount=2}" ScrollViewer.CanContentScroll="False" MouseDoubleClick="SessionList_MouseDoubleClick">
-                <ListView.ItemContainerStyle>
-                    <Style TargetType="ListViewItem">
-                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                    </Style>
-                </ListView.ItemContainerStyle>
+            <ListView x:Name="SessionList" Height="400" d:ItemsSource="{d:SampleData ItemCount=2}" ScrollViewer.CanContentScroll="False" ItemContainerStyle="{DynamicResource MainListViewItem}" MouseDoubleClick="SessionList_MouseDoubleClick">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn x:Name="SessionCodeGrid">

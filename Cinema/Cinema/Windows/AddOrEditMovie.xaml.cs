@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -27,9 +28,34 @@ namespace Cinema
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            LoadGridData();
-            LoadUserData();
+            try
+            {
+                LoadGridData();
+                LoadUserData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
+
+        public class GenreData
+        { 
+            public int idGenre { get; set; }
+            public string genreTitle { get;set; }
+        }
+
+        public class ActorData
+        { 
+            public int idActor { get; set; }
+            public string actorSurename { get; set; }
+            public string actorName { get; set; }
+            public string actorPatronymic { get; set; }
+            public string actorNickname { get; set; }
+        }
+
+        List<GenreData> genreDataList = new List<GenreData>();
+        List<ActorData> actorDataList = new List<ActorData>();
 
         private void LoadGridData()
         {
@@ -37,11 +63,40 @@ namespace Cinema
             {
                 using (var dataBase = new CinemaEntities())
                 {
+                    genreDataList.Clear();
+                    actorDataList.Clear();
+
                     var genreAllData = dataBase.Genre.Select(s => new { s.IDGenre, s.Title }).ToList();
                     var actorAllData = dataBase.Actor.Select(s => new { s.IDActor, s.Surname, s.Name, s.Patronymic, s.Nickname }).ToList();
 
-                    MovieGenreGrid.ItemsSource = genreAllData;
-                    MovieActorGrid.ItemsSource = actorAllData;
+                    foreach (var genreLine in genreAllData)
+                    { 
+                        GenreData genreData = new GenreData();
+
+                        genreData.idGenre = genreLine.IDGenre;
+                        genreData.genreTitle = genreLine.Title;
+
+                        genreDataList.Add(genreData);
+                    }
+
+                    foreach (var actorLine in actorAllData)
+                    {
+                        ActorData actorData = new ActorData();
+
+                        actorData.idActor = actorLine.IDActor;
+                        actorData.actorSurename = actorLine.Surname;
+                        actorData.actorName = actorLine.Name;
+                        actorData.actorPatronymic = actorLine.Patronymic;
+                        actorData.actorNickname = actorLine.Nickname;
+
+                        actorDataList.Add(actorData);
+                    }
+
+                    MovieGenreGrid.ItemsSource = genreDataList;
+                    MovieActorGrid.ItemsSource = actorDataList;
+
+                    MovieGenreGrid.Items.Refresh();
+                    MovieActorGrid.Items.Refresh();
                 }
             }
             catch (Exception ex)
@@ -156,14 +211,28 @@ namespace Cinema
 
         private void ClearGenre_Click(object sender, RoutedEventArgs e)
         {
-            selectedGenre.Clear();
-            MovieGenere.Clear();
+            try
+            {
+                selectedGenre.Clear();
+                MovieGenere.Clear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void ClearActor_Click(object sender, RoutedEventArgs e)
         {
-            selectedActor.Clear();
-            MovieActor.Clear();
+            try
+            {
+                selectedActor.Clear();
+                MovieActor.Clear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void LoadCover_Click(object sender, RoutedEventArgs e)

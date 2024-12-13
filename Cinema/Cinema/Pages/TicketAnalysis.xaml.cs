@@ -239,12 +239,26 @@ namespace Cinema
 
         private void BeginDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            LoadData(FindData.Text, BeginDate, EndDate);
+            try
+            {
+                LoadData(FindData.Text, BeginDate, EndDate);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void EndDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            LoadData(FindData.Text, BeginDate, EndDate);
+            try
+            {
+                LoadData(FindData.Text, BeginDate, EndDate);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void FindDateChecker_Click(object sender, RoutedEventArgs e)
@@ -276,7 +290,14 @@ namespace Cinema
 
         private void FindData_TextChanged(object sender, TextChangedEventArgs e)
         {
-            LoadData(FindData.Text, BeginDate, EndDate);
+            try
+            {
+                LoadData(FindData.Text, BeginDate, EndDate);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void TicketList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
